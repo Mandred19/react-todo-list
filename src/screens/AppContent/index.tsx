@@ -3,16 +3,16 @@ import React, {FC, ReactElement} from 'react';
 
 // const useStyles = createUseStyles((theme: ITheme) => ({}));
 
-const BodyListCard: FC = (): ReactElement => {
+const AppContent: FC = (): ReactElement => {
   // const classes = useStyles();
 
   return (
     <>
       <section>
-        BodyListCard
+        AppContent
       </section>
     </>
   );
 };
 
-export default BodyListCard;
+export default AppContent;

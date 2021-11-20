@@ -3,16 +3,16 @@ import React, {FC, ReactElement} from 'react';
 
 // const useStyles = createUseStyles((theme: ITheme) => ({}));
 
-const Header: FC = (): ReactElement => {
+const AppFooter: FC = (): ReactElement => {
   // const classes = useStyles();
 
   return (
     <>
       <section>
-        Header
+        AppFooter
       </section>
     </>
   );
 };
 
-export default Header;
+export default AppFooter;

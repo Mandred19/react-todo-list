@@ -3,16 +3,16 @@ import React, {FC, ReactElement} from 'react';
 
 // const useStyles = createUseStyles((theme: ITheme) => ({}));
 
-const BodyList: FC = (): ReactElement => {
+const AppContentHeader: FC = (): ReactElement => {
   // const classes = useStyles();
 
   return (
     <>
       <section>
-        BodyList
+        AppContent
       </section>
     </>
   );
 };
 
-export default BodyList;
+export default AppContentHeader;
