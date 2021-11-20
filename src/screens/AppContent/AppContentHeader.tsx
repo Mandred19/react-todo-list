@@ -1,17 +1,49 @@
-import React, {FC, ReactElement} from 'react';
-// import {createUseStyles} from 'react-jss';
-
-// const useStyles = createUseStyles((theme: ITheme) => ({}));
+import React, { FC, ReactElement, useState } from 'react';
+import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack } from '@mui/material';
+import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import { inputChangeEventType, inputChangeHandler } from '../../utils/inputChangeHandler';
 
 const AppContentHeader: FC = (): ReactElement => {
-  // const classes = useStyles();
+  const [searchValue, setSearchValue] = useState<string>('');
 
   return (
-    <>
-      <section>
-        AppContent
-      </section>
-    </>
+    <Stack direction={'row'} spacing={2}>
+      <FormControl variant="outlined" fullWidth>
+        <InputLabel htmlFor="search-input">
+          Search
+        </InputLabel>
+
+        <OutlinedInput
+          id="search-input"
+          type={'text'}
+          value={searchValue}
+          onChange={(e: inputChangeEventType) => inputChangeHandler(e, setSearchValue)}
+          fullWidth
+          autoFocus
+          startAdornment={<SearchOutlinedIcon />}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="clear search text field"
+                onClick={() => setSearchValue('')}
+                edge="end">
+                {<ClearOutlinedIcon />}
+              </IconButton>
+            </InputAdornment>
+          }
+          label={'Search'}/>
+      </FormControl>
+
+      <Button
+        variant={'outlined'}
+        title={'Add new item'}
+        color={'primary'}
+        startIcon={<AddOutlinedIcon />}>
+        Add
+      </Button>
+    </Stack>
   );
 };
 

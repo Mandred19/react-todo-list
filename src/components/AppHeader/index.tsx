@@ -1,17 +1,13 @@
 import React, {FC, ReactElement} from 'react';
-// import {createUseStyles} from 'react-jss';
-
-// const useStyles = createUseStyles((theme: ITheme) => ({}));
+import { Stack, Typography } from '@mui/material';
 
 const AppHeader: FC = (): ReactElement => {
-  // const classes = useStyles();
-
   return (
-    <>
-      <section>
-        AppHeader
-      </section>
-    </>
+    <Stack direction={'row'} spacing={2}>
+      <Typography variant={'h4'}>
+        TO-DO list
+      </Typography>
+    </Stack>
   );
 };
 

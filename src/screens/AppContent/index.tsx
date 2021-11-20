@@ -1,17 +1,15 @@
 import React, {FC, ReactElement} from 'react';
-// import {createUseStyles} from 'react-jss';
-
-// const useStyles = createUseStyles((theme: ITheme) => ({}));
+import { Stack } from '@mui/material';
+import AppContentHeader from './AppContentHeader';
+import AppContentList from './AppContentList';
 
 const AppContent: FC = (): ReactElement => {
-  // const classes = useStyles();
-
   return (
-    <>
-      <section>
-        AppContent
-      </section>
-    </>
+    <Stack direction={'column'} spacing={2}>
+      <AppContentHeader />
+
+      <AppContentList />
+    </Stack>
   );
 };
 
