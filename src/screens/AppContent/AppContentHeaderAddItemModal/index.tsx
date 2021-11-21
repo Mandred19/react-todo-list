@@ -1,32 +1,44 @@
-import React, { FC, ReactElement } from 'react';
-import { Backdrop, Box, Button, Fade, IconButton, Modal, Stack, Typography } from '@mui/material';
+import React, { FC, ReactElement, useState } from 'react';
+import {
+  Backdrop,
+  Box,
+  Button,
+  Fade, FormControl, FormControlLabel,
+  IconButton,
+  InputLabel,
+  Modal,
+  OutlinedInput,
+  Stack, Switch, Theme,
+  Typography,
+} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { IUseModalVisibility } from '../../../hooks/useModalVisibility';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { inputChangeEventType, inputChangeHandler } from '../../../utils/inputChangeHandler';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   modalWrapper: {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    minWidth: 360,
     backgroundColor: '#fff',
-    // boxShadow: 24,
   },
   modalHeader: {
-
+    padding: theme.spacing(2),
   },
   modalContent: {
-
+    padding: theme.spacing(2),
   },
   modalFooter: {
-
+    padding: theme.spacing(2),
   },
-});
+}));
 
 const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisibility}): ReactElement => {
   const classes = useStyles();
+  const [itemTitle, setItemTitle] = useState<string>('');
 
   const closeModalHandler = () => {
     setModalVisibility(false);
@@ -44,7 +56,7 @@ const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility,
       <Fade in={modalVisibility}>
         <Box className={classes.modalWrapper}>
           <Stack direction={'row'} spacing={2} alignItems={'center'} justifyContent={'space-between'} className={classes.modalHeader}>
-            <Typography variant={'h5'}>
+            <Typography variant={'h6'}>
               Add new item
             </Typography>
 
@@ -54,7 +66,24 @@ const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility,
           </Stack>
 
           <Stack spacing={2} className={classes.modalContent}>
-            Content
+            <FormControl variant="outlined" fullWidth>
+              <InputLabel htmlFor="item-title-input">
+                Title
+              </InputLabel>
+
+              <OutlinedInput
+                id="item-title-input"
+                type={'text'}
+                value={itemTitle}
+                onChange={(e: inputChangeEventType) => inputChangeHandler(e, setItemTitle)}
+                fullWidth
+                autoFocus
+                label={'Title'}/>
+            </FormControl>
+
+            <Box>
+              <FormControlLabel control={<Switch />} label="Set as favorite" />
+            </Box>
           </Stack>
 
           <Stack direction={'row'} spacing={2} alignItems={'center'} justifyContent={'end'} className={classes.modalFooter}>

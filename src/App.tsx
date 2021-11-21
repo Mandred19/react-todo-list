@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import { Container, Stack } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { makeStyles, useTheme } from '@mui/styles';
 import AppHeader from './components/AppHeader';
 import AppContent from './screens/AppContent';
 
@@ -15,6 +15,7 @@ const useStyles = makeStyles({
 
 const App: FC = (): ReactElement => {
   const classes = useStyles();
+  const theme = useTheme();
 
   return (
     <>
