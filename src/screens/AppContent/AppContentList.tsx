@@ -75,7 +75,7 @@ const AppContentList: FC = (): ReactElement => {
               }
               disablePadding>
 
-              <ListItemButton role={undefined} onClick={checkBoxHandler(value)} dense>
+              <ListItemButton role={'checkbox'} title={'Select this item'} onClick={checkBoxHandler(value)} dense>
                 <ListItemIcon>
                   <Checkbox
                     edge="start"

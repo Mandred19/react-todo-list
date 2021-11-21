@@ -1,4 +1,4 @@
-import React, {FC, ReactElement} from 'react';
+import React, { FC, ReactElement } from 'react';
 import { Container, Stack } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import AppHeader from './components/AppHeader';
@@ -8,19 +8,26 @@ const useStyles = makeStyles({
   container: {
     height: '100%',
   },
+  modalPortalWrapper: {
+    position: 'relative',
+  },
 });
 
 const App: FC = (): ReactElement => {
   const classes = useStyles();
 
   return (
-    <Container maxWidth={'xl'} className={classes.container}>
-      <Stack direction={'column'} spacing={2}>
-        <AppHeader />
+    <>
+      <Container maxWidth={'xl'} className={classes.container}>
+        <Stack direction={'column'} spacing={2}>
+          <AppHeader />
 
-        <AppContent />
-      </Stack>
-    </Container>
+          <AppContent />
+        </Stack>
+      </Container>
+
+      <div id={'modal-portal-wrapper'} className={classes.modalPortalWrapper} />
+    </>
   );
 };
 
