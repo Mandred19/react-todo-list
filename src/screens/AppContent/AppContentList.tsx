@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from 'react';
+import React, { FC, ReactElement, useEffect, useState } from 'react';
 import {
   Box,
   Checkbox,
@@ -7,13 +7,17 @@ import {
   ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemText, Stack, Typography,
+  ListItemText,
+  Stack, Typography,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { betweenChildrenMixin } from '../../theme/styleMixins';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { fetchTodoList } from '../../store/actions/todoLIstActions';
+import { ITodoListItem } from '../../types/TodoListItem';
 
 const useStyles = makeStyles({
   listItemButtons: {
@@ -25,24 +29,26 @@ const useStyles = makeStyles({
 
 const AppContentList: FC = (): ReactElement => {
   const classes = useStyles();
-  const [checked, setChecked] = useState([0]);
+  const dispatch = useAppDispatch();
+  const {todoList} = useAppSelector((state) => state.todoListSlice);
+  const [checked, setChecked] = useState<Array<ITodoListItem>>([]);
 
-  const checkBoxHandler = (value: number) => () => {
-    const currentIndex = checked.indexOf(value);
+  useEffect(() => {
+    dispatch(fetchTodoList());
+  }, []);
+
+  const checkBoxHandler = (todoItem: ITodoListItem) => () => {
+    const currentIndex = checked.findIndex((item) => item.id === todoItem.id);
     const newChecked = [...checked];
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
+    currentIndex === -1 ? newChecked.push(todoItem) : newChecked.splice(currentIndex, 1);
 
     setChecked(newChecked);
   };
 
   const iconButtonHandler = (value: string) => {
     switch (value) {
-      case 'setCompleted': break;
+      case 'setComplete': break;
       case 'setFavorite': break;
       case 'deleteItem': break;
       default: break;
@@ -51,52 +57,55 @@ const AppContentList: FC = (): ReactElement => {
 
   return (
     <>
-      <List sx={{ width: '100%', minWidth: 360 }}>
-        {[0, 1, 2, 3].map((value) => {
-          const labelId = `checkbox-list-label-${value}`;
-
+      {todoList.length ? <List sx={{ width: '100%', minWidth: 360 }}>
+        {todoList.map((todoItem: ITodoListItem) => {
           return (
             <ListItem
-              key={value}
+              key={todoItem.id}
               secondaryAction={
                 <Box className={classes.listItemButtons}>
-                  <IconButton onClick={() => iconButtonHandler('setCompleted')} title={'Set as done'} edge="end" aria-label="done">
+                  <IconButton onClick={() => iconButtonHandler('setComplete')} title={'Set as done'} edge='end'
+                              aria-label='done'>
                     <CheckOutlinedIcon />
                   </IconButton>
 
-                  <IconButton onClick={() => iconButtonHandler('setFavorite')} title={'Set as favorite'} edge="end" aria-label="favorite">
+                  <IconButton onClick={() => iconButtonHandler('setFavorite')} title={'Set as favorite'} edge='end'
+                              aria-label='favorite'>
                     <StarBorderOutlinedIcon />
                   </IconButton>
 
-                  <IconButton onClick={() => iconButtonHandler('deleteItem')} title={'Delete this item'} edge="end" aria-label="delete">
+                  <IconButton onClick={() => iconButtonHandler('deleteItem')} title={'Delete this item'} edge='end'
+                              aria-label='delete'>
                     <DeleteOutlineOutlinedIcon />
                   </IconButton>
                 </Box>
               }
               disablePadding>
 
-              <ListItemButton role={'checkbox'} title={'Select this item'} onClick={checkBoxHandler(value)} dense>
+              <ListItemButton role={'checkbox'} onClick={checkBoxHandler(todoItem)} dense>
                 <ListItemIcon>
                   <Checkbox
-                    edge="start"
-                    checked={checked.indexOf(value) !== -1}
+                    edge='start'
+                    checked={!!checked.find((item) => item.id === todoItem.id)}
                     tabIndex={-1}
                     disableRipple
-                    inputProps={{ 'aria-labelledby': labelId }} />
+                    title={'Select this item'}
+                    inputProps={{ 'aria-labelledby': todoItem.id }} />
                 </ListItemIcon>
 
-                <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+                <ListItemText id={todoItem.id} primary={todoItem.title} title={todoItem.title} />
               </ListItemButton>
             </ListItem>
           );
         })}
-      </List>
-
-      {/*<Stack alignItems={'center'} justifyContent={'center'}>*/}
-      {/*  <Typography variant={'body1'}>*/}
-      {/*    This list is empty*/}
-      {/*  </Typography>*/}
-      {/*</Stack>*/}
+        </List>
+          :
+        <Stack alignItems={'center'} justifyContent={'center'}>
+          <Typography variant={'h6'}>
+            This list is empty
+          </Typography>
+        </Stack>
+      }
     </>
   );
 };

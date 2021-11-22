@@ -6,8 +6,10 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import AppContentHeaderAddItemModal from './AppContentHeaderAddItemModal';
 import { inputChangeEventType, inputChangeHandler } from '../../utils/inputChangeHandler';
 import { useModalVisibility } from '../../hooks/useModalVisibility';
+import { useAppSelector } from '../../store/hooks';
 
 const AppContentHeader: FC = (): ReactElement => {
+  const {todoList} = useAppSelector((state) => state.todoListSlice);
   const [searchValue, setSearchValue] = useState<string>('');
   const {modalVisibility, setModalVisibility} = useModalVisibility();
 
@@ -18,7 +20,7 @@ const AppContentHeader: FC = (): ReactElement => {
   return (
     <>
       <Stack direction={'row'} spacing={2}>
-        <FormControl variant="outlined" fullWidth>
+        <FormControl variant="outlined" fullWidth disabled={!todoList.length}>
           <InputLabel htmlFor="search-input">
             Search
           </InputLabel>
@@ -32,7 +34,7 @@ const AppContentHeader: FC = (): ReactElement => {
             autoFocus
             startAdornment={<SearchOutlinedIcon />}
             endAdornment={
-              <InputAdornment position="end">
+              searchValue && <InputAdornment position="end">
                 <IconButton
                   aria-label="clear search text field"
                   onClick={() => setSearchValue('')}
