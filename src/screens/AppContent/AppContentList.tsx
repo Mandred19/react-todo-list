@@ -16,7 +16,7 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { betweenChildrenMixin } from '../../theme/styleMixins';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { deleteTodoListItem, fetchTodoList } from '../../store/actions/todoLIstActions';
+import { deleteTodoListItem, fetchTodoList, toggleFavoriteTodoListItem } from '../../store/actions/todoLIstActions';
 import { ITodoListItem } from '../../types/TodoListItem';
 
 const useStyles = makeStyles({
@@ -46,14 +46,15 @@ const AppContentList: FC = (): ReactElement => {
     setChecked(newChecked);
   };
 
-  const iconButtonHandler = (value: string, payload: string) => {
+  const iconButtonHandler = (value: string, payload: any) => {
     switch (value) {
       case 'setComplete': break;
-      case 'setFavorite': break;
-      case 'deleteItem': {
+      case 'setFavorite':
+        dispatch(toggleFavoriteTodoListItem(payload));
+        break;
+      case 'deleteItem':
         dispatch(deleteTodoListItem(payload));
         break;
-      }
       default: break;
     }
   };
@@ -67,17 +68,29 @@ const AppContentList: FC = (): ReactElement => {
               key={todoItem.id}
               secondaryAction={
                 <Box className={classes.listItemButtons}>
-                  <IconButton onClick={() => iconButtonHandler('setComplete', '')} disabled={pending} title={'Set as done'} edge='end'
+                  <IconButton onClick={() => iconButtonHandler('setComplete', '')}
+                              color={todoItem.isComplete ? 'info' : 'default'}
+                              disabled={pending}
+                              title={'Set as done'}
+                              edge='end'
                               aria-label='done'>
                     <CheckOutlinedIcon />
                   </IconButton>
 
-                  <IconButton onClick={() => iconButtonHandler('setFavorite', '')} disabled={pending} title={'Set as favorite'} edge='end'
+                  <IconButton onClick={() => iconButtonHandler('setFavorite', {...todoItem, isFavorite: !todoItem.isFavorite})}
+                              color={todoItem.isFavorite ? 'warning' : 'default'}
+                              disabled={pending}
+                              title={'Set as favorite'}
+                              edge='end'
                               aria-label='favorite'>
                     <StarBorderOutlinedIcon />
                   </IconButton>
 
-                  <IconButton onClick={() => iconButtonHandler('deleteItem', todoItem.id)} disabled={pending} title={'Delete this item'} edge='end'
+                  <IconButton onClick={() => iconButtonHandler('deleteItem', todoItem.id)}
+                              color={'error'}
+                              disabled={pending}
+                              title={'Delete this item'}
+                              edge='end'
                               aria-label='delete'>
                     <DeleteOutlineOutlinedIcon />
                   </IconButton>

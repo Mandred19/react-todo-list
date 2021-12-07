@@ -3,13 +3,13 @@
     {
       "id": "title_1",
       "title": "title 1",
-      "isFavorite": true,
+      "isFavorite": false,
       "isComplete": false
     },
     {
       "id": "title_2",
       "title": "title 2",
-      "isFavorite": false,
+      "isFavorite": true,
       "isComplete": false
     },
     {
