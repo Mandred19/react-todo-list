@@ -16,7 +16,7 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { betweenChildrenMixin } from '../../theme/styleMixins';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchTodoList } from '../../store/actions/todoLIstActions';
+import { deleteTodoListItem, fetchTodoList } from '../../store/actions/todoLIstActions';
 import { ITodoListItem } from '../../types/TodoListItem';
 
 const useStyles = makeStyles({
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 const AppContentList: FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
-  const {todoList} = useAppSelector((state) => state.todoListSlice);
+  const {todoList, pending} = useAppSelector((state) => state.todoListSlice);
   const [checked, setChecked] = useState<Array<ITodoListItem>>([]);
 
   useEffect(() => {
@@ -46,11 +46,14 @@ const AppContentList: FC = (): ReactElement => {
     setChecked(newChecked);
   };
 
-  const iconButtonHandler = (value: string) => {
+  const iconButtonHandler = (value: string, payload: string) => {
     switch (value) {
       case 'setComplete': break;
       case 'setFavorite': break;
-      case 'deleteItem': break;
+      case 'deleteItem': {
+        dispatch(deleteTodoListItem(payload));
+        break;
+      }
       default: break;
     }
   };
@@ -64,17 +67,17 @@ const AppContentList: FC = (): ReactElement => {
               key={todoItem.id}
               secondaryAction={
                 <Box className={classes.listItemButtons}>
-                  <IconButton onClick={() => iconButtonHandler('setComplete')} title={'Set as done'} edge='end'
+                  <IconButton onClick={() => iconButtonHandler('setComplete', '')} disabled={pending} title={'Set as done'} edge='end'
                               aria-label='done'>
                     <CheckOutlinedIcon />
                   </IconButton>
 
-                  <IconButton onClick={() => iconButtonHandler('setFavorite')} title={'Set as favorite'} edge='end'
+                  <IconButton onClick={() => iconButtonHandler('setFavorite', '')} disabled={pending} title={'Set as favorite'} edge='end'
                               aria-label='favorite'>
                     <StarBorderOutlinedIcon />
                   </IconButton>
 
-                  <IconButton onClick={() => iconButtonHandler('deleteItem')} title={'Delete this item'} edge='end'
+                  <IconButton onClick={() => iconButtonHandler('deleteItem', todoItem.id)} disabled={pending} title={'Delete this item'} edge='end'
                               aria-label='delete'>
                     <DeleteOutlineOutlinedIcon />
                   </IconButton>
@@ -82,7 +85,7 @@ const AppContentList: FC = (): ReactElement => {
               }
               disablePadding>
 
-              <ListItemButton role={'checkbox'} onClick={checkBoxHandler(todoItem)} dense>
+              <ListItemButton role={'checkbox'} onClick={checkBoxHandler(todoItem)} disabled={pending} dense>
                 <ListItemIcon>
                   <Checkbox
                     edge='start'

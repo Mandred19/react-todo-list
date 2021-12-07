@@ -11,9 +11,25 @@ export const fetchTodoList = createAsyncThunk(
         method: 'GET',
       });
       return response.data;
-    } catch (error: any) {
-      thunkApi.rejectWithValue(error.message);
-      return Promise.reject(error.message);
+    } catch (error) {
+      thunkApi.rejectWithValue(error);
+      return Promise.reject(error);
+    }
+  }
+);
+
+export const deleteTodoListItem = createAsyncThunk(
+  'todoList/deleteTodoListItem',
+  async (id:string, thunkApi): Promise<string> => {
+    try {
+      await axios( {
+        url: `/todos/${id}`,
+        method: 'DELETE',
+      });
+      return id;
+    } catch (error) {
+      thunkApi.rejectWithValue(error);
+      return Promise.reject(error);
     }
   }
 );
