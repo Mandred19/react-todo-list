@@ -11,10 +11,9 @@ export const fetchTodoList = createAsyncThunk(
         method: 'GET',
       });
       return response.data;
-    } catch (error) {
-      thunkApi.rejectWithValue('List is not loaded');
-      console.warn('fetchTodoList', error);
-      return Promise.reject(error);
+    } catch (error: any) {
+      thunkApi.rejectWithValue(error.message);
+      return Promise.reject(error.message);
     }
   }
 );
