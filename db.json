@@ -1,0 +1,22 @@
+{
+  "todos": [
+    {
+      "id": "title_1",
+      "title": "title 1",
+      "isFavorite": true,
+      "isComplete": false
+    },
+    {
+      "id": "title_2",
+      "title": "title 2",
+      "isFavorite": false,
+      "isComplete": false
+    },
+    {
+      "id": "title_3",
+      "title": "title 3",
+      "isFavorite": false,
+      "isComplete": true
+    }
+  ]
+}

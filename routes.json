@@ -1,0 +1,5 @@
+{
+  "/api/v1/todos": "/todos/",
+  "/api/v1/todos/:id": "/todos/:id",
+  "/api/v1/*": "/"
+}
