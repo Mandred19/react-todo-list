@@ -4,7 +4,7 @@
       "id": "title_1",
       "title": "title 1",
       "isFavorite": false,
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": "title_2",
@@ -16,7 +16,7 @@
       "id": "title_3",
       "title": "title 3",
       "isFavorite": false,
-      "isComplete": true
+      "isComplete": false
     }
   ]
 }

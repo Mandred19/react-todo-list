@@ -1,7 +1,12 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { ITodoListItem } from '../../types/TodoListItem';
 import { Slice } from '@reduxjs/toolkit/src/createSlice';
-import { deleteTodoListItem, fetchTodoList, toggleFavoriteTodoListItem } from '../actions/todoLIstActions';
+import {
+  deleteTodoListItem,
+  fetchTodoList,
+  toggleCompleteTodoListItem,
+  toggleFavoriteTodoListItem,
+} from '../actions/todoLIstActions';
 
 export interface ITodoListSlice {
   todoList: Array<ITodoListItem>,
@@ -61,6 +66,20 @@ export const todoListSlice: Slice = createSlice({
       state.pending = false;
     },
     [toggleFavoriteTodoListItem.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+      state.pending = false;
+    },
+
+    /** TOGGLE COMPLETE ITEM */
+    [toggleCompleteTodoListItem.pending.type]: (state) => {
+      state.pending = true;
+    },
+    [toggleCompleteTodoListItem.fulfilled.type]: (state, action: PayloadAction<ITodoListItem>) => {
+      const itemIdx = state.todoList.findIndex((item) => item.id === action.payload.id);
+      state.todoList[itemIdx].isComplete = action.payload.isComplete;
+      state.pending = false;
+    },
+    [toggleCompleteTodoListItem.rejected.type]: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
       state.pending = false;
     },

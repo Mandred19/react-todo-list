@@ -30,7 +30,19 @@ export const toggleFavoriteTodoListItem = createAsyncThunk(
   'todoList/toggleFavoriteTodoListItem',
   async (data: ITodoListItem, thunkApi): Promise<ITodoListItem> => {
     try {
-      return todoListService.toggleFavoriteItem(data);
+      return todoListService.toggleStateItem(data);
+    } catch (error) {
+      thunkApi.rejectWithValue(error);
+      return Promise.reject(error);
+    }
+  }
+);
+
+export const toggleCompleteTodoListItem = createAsyncThunk(
+  'todoList/toggleCompleteTodoListItem',
+  async (data: ITodoListItem, thunkApi): Promise<ITodoListItem> => {
+    try {
+      return todoListService.toggleStateItem(data);
     } catch (error) {
       thunkApi.rejectWithValue(error);
       return Promise.reject(error);

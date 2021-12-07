@@ -16,7 +16,12 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { betweenChildrenMixin } from '../../theme/styleMixins';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { deleteTodoListItem, fetchTodoList, toggleFavoriteTodoListItem } from '../../store/actions/todoLIstActions';
+import {
+  deleteTodoListItem,
+  fetchTodoList,
+  toggleCompleteTodoListItem,
+  toggleFavoriteTodoListItem,
+} from '../../store/actions/todoLIstActions';
 import { ITodoListItem } from '../../types/TodoListItem';
 
 const useStyles = makeStyles({
@@ -46,14 +51,16 @@ const AppContentList: FC = (): ReactElement => {
     setChecked(newChecked);
   };
 
-  const iconButtonHandler = (value: string, payload: any) => {
+  const iconButtonHandler = (value: string, payload: ITodoListItem) => {
     switch (value) {
-      case 'setComplete': break;
+      case 'setComplete':
+        dispatch(toggleCompleteTodoListItem(payload));
+        break;
       case 'setFavorite':
         dispatch(toggleFavoriteTodoListItem(payload));
         break;
       case 'deleteItem':
-        dispatch(deleteTodoListItem(payload));
+        dispatch(deleteTodoListItem(payload.id));
         break;
       default: break;
     }
@@ -68,7 +75,7 @@ const AppContentList: FC = (): ReactElement => {
               key={todoItem.id}
               secondaryAction={
                 <Box className={classes.listItemButtons}>
-                  <IconButton onClick={() => iconButtonHandler('setComplete', '')}
+                  <IconButton onClick={() => iconButtonHandler('setComplete', {...todoItem, isComplete: !todoItem.isComplete})}
                               color={todoItem.isComplete ? 'info' : 'default'}
                               disabled={pending}
                               title={'Set as done'}
@@ -86,7 +93,7 @@ const AppContentList: FC = (): ReactElement => {
                     <StarBorderOutlinedIcon />
                   </IconButton>
 
-                  <IconButton onClick={() => iconButtonHandler('deleteItem', todoItem.id)}
+                  <IconButton onClick={() => iconButtonHandler('deleteItem', todoItem)}
                               color={'error'}
                               disabled={pending}
                               title={'Delete this item'}

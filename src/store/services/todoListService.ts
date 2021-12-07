@@ -16,7 +16,7 @@ export const todoListService = {
     });
     return id;
   },
-  async toggleFavoriteItem(data: ITodoListItem): Promise<ITodoListItem> {
+  async toggleStateItem(data: ITodoListItem): Promise<ITodoListItem> {
     await axios( {
       url: `/todos/${data.id}`,
       method: 'PUT',
