@@ -78,7 +78,7 @@ const AppContentList: FC = (): ReactElement => {
                   <IconButton onClick={() => iconButtonHandler('setComplete', {...todoItem, isComplete: !todoItem.isComplete})}
                               color={todoItem.isComplete ? 'info' : 'default'}
                               disabled={pending}
-                              title={'Set as done'}
+                              title={'Set as completed'}
                               edge='end'
                               aria-label='done'>
                     <CheckOutlinedIcon />
