@@ -22,7 +22,7 @@ import {
   toggleCompleteTodoListItem,
   toggleFavoriteTodoListItem,
 } from '../../store/actions/todoLIstActions';
-import { ITodoListItem } from '../../types/TodoListItem';
+import { ITodoListItem } from '../../store/reducers/todoListSlice';
 
 const useStyles = makeStyles({
   listItemButtons: {

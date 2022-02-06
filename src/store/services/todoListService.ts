@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ITodoListItem } from '../../types/TodoListItem';
+import { ITodoListItem } from '../reducers/todoListSlice';
 
 export const todoListService = {
   async fetchAllItems(): Promise<Array<ITodoListItem>> {

@@ -1,5 +1,4 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import { ITodoListItem } from '../../types/TodoListItem';
 import { Slice } from '@reduxjs/toolkit/src/createSlice';
 import {
   deleteTodoListItem,
@@ -87,3 +86,10 @@ export const todoListSlice: Slice = createSlice({
 });
 
 export default todoListSlice.reducer;
+
+export interface ITodoListItem {
+  id: string,
+  title: string,
+  isFavorite: boolean,
+  isComplete: boolean,
+}

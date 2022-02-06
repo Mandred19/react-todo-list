@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ITodoListItem } from '../../types/TodoListItem';
 import { todoListService } from '../services/todoListService';
+import { ITodoListItem } from '../reducers/todoListSlice';
 
 export const fetchTodoList = createAsyncThunk(
   'todoList/fetchTodoList',
