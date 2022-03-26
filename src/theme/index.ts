@@ -1,4 +1,5 @@
 import { createTheme, Theme } from '@mui/material';
+import { muiStyles } from './muiStyles';
 
 const theme: Theme = createTheme({
   typography: {
@@ -27,9 +28,9 @@ const theme: Theme = createTheme({
     },
   },
   spacing: 8,
-  // overrides: {
-  //   ...MuiStyles,
-  // },
+  components: {
+    ...muiStyles,
+  },
 });
 
 export default theme;

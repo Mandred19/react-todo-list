@@ -47,11 +47,13 @@ export const breakpointMixin = (min: number, max: number, content: any): IBreakp
 
 interface IFlexLayoutMixin {
   display: string,
-  alignItems: string,
-  justifyContent: string,
+  alignItems: FlexAlignItems,
+  justifyContent: FlexJustifyContent,
 }
+type FlexAlignItems = 'flex-start' | 'center' | 'flex-end' | 'baseline' | 'self-start' | 'self-end' | 'stretch' | 'revert' | 'inherit' | 'unset' | 'normal';
+type FlexJustifyContent = 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'revert' | 'inherit' | 'unset' | 'normal';
 
-export const flexLayoutMixin = (alignItems = 'center', justifyContent = 'center'): IFlexLayoutMixin => ({
+export const flexLayoutMixin = (alignItems: FlexAlignItems = 'center', justifyContent: FlexJustifyContent = 'center'): IFlexLayoutMixin => ({
   display: 'flex',
   alignItems,
   justifyContent,

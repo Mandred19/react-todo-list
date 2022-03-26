@@ -5,7 +5,11 @@ import AppHeader from './components/AppHeader';
 import AppContent from './screens/AppContent';
 
 const useStyles = makeStyles({
-  container: {
+  appContainer: {
+    height: '100%',
+  },
+  appWrapper: {
+    overflow: 'hidden',
     height: '100%',
   },
   modalPortalWrapper: {
@@ -18,8 +22,8 @@ const App: FC = (): ReactElement => {
 
   return (
     <>
-      <Container maxWidth={'xl'} className={classes.container}>
-        <Stack direction={'column'} spacing={2}>
+      <Container maxWidth={'xl'} className={classes.appContainer}>
+        <Stack direction={'column'} spacing={2} className={classes.appWrapper}>
           <AppHeader />
 
           <AppContent />

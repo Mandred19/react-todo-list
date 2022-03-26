@@ -9,7 +9,7 @@
     {
       "id": "title_2",
       "title": "title 2",
-      "isFavorite": true,
+      "isFavorite": false,
       "isComplete": false
     },
     {
@@ -17,6 +17,78 @@
       "title": "title 3",
       "isFavorite": false,
       "isComplete": false
+    },
+    {
+      "id": "title_4",
+      "title": "title 4",
+      "isFavorite": true,
+      "isComplete": true
+    },
+    {
+      "id": "title_5",
+      "title": "title 5",
+      "isFavorite": true,
+      "isComplete": false
+    },
+    {
+      "id": "title_6",
+      "title": "title 6",
+      "isFavorite": false,
+      "isComplete": true
+    },
+    {
+      "id": "title_7",
+      "title": "title 7",
+      "isFavorite": false,
+      "isComplete": false
+    },
+    {
+      "id": "title_8",
+      "title": "title 8",
+      "isFavorite": false,
+      "isComplete": true
+    },
+    {
+      "id": "title_9",
+      "title": "title 9",
+      "isFavorite": false,
+      "isComplete": false
+    },
+    {
+      "id": "title_10",
+      "title": "title 10",
+      "isFavorite": true,
+      "isComplete": true
+    },
+    {
+      "id": "title_11",
+      "title": "title 11",
+      "isFavorite": true,
+      "isComplete": false
+    },
+    {
+      "id": "title_12",
+      "title": "title 12",
+      "isFavorite": false,
+      "isComplete": true
+    },
+    {
+      "id": "title_13",
+      "title": "title 13",
+      "isFavorite": true,
+      "isComplete": true
+    },
+    {
+      "id": "title_14",
+      "title": "title 14",
+      "isFavorite": true,
+      "isComplete": true
+    },
+    {
+      "id": "title_15",
+      "title": "title 15",
+      "isFavorite": true,
+      "isComplete": true
     }
   ]
 }
