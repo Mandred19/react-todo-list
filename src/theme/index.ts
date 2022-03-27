@@ -8,6 +8,7 @@ const theme: Theme = createTheme({
   },
   palette: {
     ...muiPalette,
+    mode: 'light',
   },
   spacing: 8,
   components: {

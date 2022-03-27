@@ -1,5 +1,14 @@
 import React, { FC, ReactElement, useState } from 'react';
-import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack } from '@mui/material';
+import {
+  Button,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  Stack,
+  Theme,
+} from '@mui/material';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import AddIcon from '@mui/icons-material/Add';
@@ -7,8 +16,17 @@ import AppContentHeaderAddItemModal from './AppContentHeaderAddItemModal';
 import { inputChangeEventType, inputChangeHandler } from '../../utils/inputChangeHandler';
 import { useModalVisibility } from '../../hooks/useModalVisibility';
 import { useAppSelector } from '../../store/hooks';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme: Theme) => ({
+  appContentHeader: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+  },
+}));
 
 const AppContentHeader: FC = (): ReactElement => {
+  const classes = useStyles();
   const {todoList} = useAppSelector((state) => state.todoListSlice);
   const [searchValue, setSearchValue] = useState<string>('');
   const {modalVisibility, setModalVisibility} = useModalVisibility();
@@ -19,7 +37,7 @@ const AppContentHeader: FC = (): ReactElement => {
 
   return (
     <>
-      <Stack direction={'row'} spacing={2}>
+      <Stack direction={'row'} spacing={2} className={classes.appContentHeader}>
         <FormControl variant="outlined" fullWidth disabled={!todoList.length}>
           <InputLabel htmlFor="search-input">
             Search

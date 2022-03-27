@@ -97,8 +97,8 @@ const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility,
 
             <Button
               onClick={() => closeModalHandler()}
-              variant={'contained'}
-              title={'Save item'}
+              variant={'outlined'}
+              title={'Save'}
               color={'primary'}>
               Save
             </Button>

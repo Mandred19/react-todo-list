@@ -15,7 +15,7 @@ const AppContent: FC = (): ReactElement => {
   const classes = useStyles();
 
   return (
-    <Stack direction={'column'} spacing={2} className={classes.appContent}>
+    <Stack direction={'column'} className={classes.appContent}>
       <AppContentHeader />
 
       <AppContentList />

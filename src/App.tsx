@@ -27,7 +27,7 @@ const App: FC = (): ReactElement => {
   return (
     <Stack direction={'column'} className={classes.wrapper}>
       <Container maxWidth={'xl'} className={classes.container}>
-        <Stack direction={'column'} spacing={2} className={classes.appWrapper}>
+        <Stack direction={'column'} className={classes.appWrapper}>
           <AppHeader />
 
           <AppContent />
