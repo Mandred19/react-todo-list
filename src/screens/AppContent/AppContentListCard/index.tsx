@@ -58,7 +58,6 @@ const AppContentListCard: FC<IAppContentListCardProps> = (props: IAppContentList
 
   return (
     <ListItem
-      key={id}
       disablePadding
       secondaryAction={
         <Box className={classes.listItemButtons}>
@@ -104,7 +103,11 @@ const AppContentListCard: FC<IAppContentListCardProps> = (props: IAppContentList
         </Box>
       }>
 
-      <ListItemButton role={'checkbox'} onClick={checkBoxHandler(props)} dense>
+      <ListItemButton
+        role={'checkbox'}
+        onClick={checkBoxHandler(props)}
+        divider
+        dense>
         <ListItemIcon>
           <Checkbox
             edge='start'
