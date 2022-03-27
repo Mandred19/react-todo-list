@@ -14,7 +14,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import AddIcon from '@mui/icons-material/Add';
 import AppContentHeaderAddItemModal from './AppContentHeaderAddItemModal';
 import { inputChangeEventType, inputChangeHandler } from '../../utils/inputChangeHandler';
-import { useModalVisibility } from '../../hooks/useModalVisibility';
+import useModalVisibility from '../../hooks/useModalVisibility';
 import { useAppSelector } from '../../store/hooks';
 import { makeStyles } from '@mui/styles';
 
@@ -30,10 +30,6 @@ const AppContentHeader: FC = (): ReactElement => {
   const {todoList} = useAppSelector((state) => state.todoListSlice);
   const [searchValue, setSearchValue] = useState<string>('');
   const {modalVisibility, setModalVisibility} = useModalVisibility();
-
-  const openModalHandler = () => {
-    setModalVisibility(true);
-  };
 
   return (
     <>
@@ -65,7 +61,7 @@ const AppContentHeader: FC = (): ReactElement => {
         </FormControl>
 
         <Button
-          onClick={() => openModalHandler()}
+          onClick={() => setModalVisibility(true)}
           variant={'outlined'}
           title={'Add new item'}
           color={'primary'}
