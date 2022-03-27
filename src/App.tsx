@@ -5,7 +5,11 @@ import AppHeader from './components/AppHeader';
 import AppContent from './screens/AppContent';
 
 const useStyles = makeStyles({
-  appContainer: {
+  wrapper: {
+    backgroundColor: '#eee',
+    height: '100%',
+  },
+  container: {
     height: '100%',
   },
   appWrapper: {
@@ -21,8 +25,8 @@ const App: FC = (): ReactElement => {
   const classes = useStyles();
 
   return (
-    <>
-      <Container maxWidth={'xl'} className={classes.appContainer}>
+    <Stack direction={'column'} className={classes.wrapper}>
+      <Container maxWidth={'xl'} className={classes.container}>
         <Stack direction={'column'} spacing={2} className={classes.appWrapper}>
           <AppHeader />
 
@@ -31,7 +35,7 @@ const App: FC = (): ReactElement => {
       </Container>
 
       <div id={'modal-portal-wrapper'} className={classes.modalPortalWrapper} />
-    </>
+    </Stack>
   );
 };
 

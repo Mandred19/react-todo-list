@@ -2,7 +2,7 @@ import React, { FC, ReactElement, useState } from 'react';
 import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack } from '@mui/material';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import AddIcon from '@mui/icons-material/Add';
 import AppContentHeaderAddItemModal from './AppContentHeaderAddItemModal';
 import { inputChangeEventType, inputChangeHandler } from '../../utils/inputChangeHandler';
 import { useModalVisibility } from '../../hooks/useModalVisibility';
@@ -51,7 +51,7 @@ const AppContentHeader: FC = (): ReactElement => {
           variant={'outlined'}
           title={'Add new item'}
           color={'primary'}
-          startIcon={<AddOutlinedIcon />}>
+          startIcon={<AddIcon />}>
           Add
         </Button>
       </Stack>

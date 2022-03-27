@@ -7,12 +7,14 @@
       "isComplete": true
     },
     {
+      "pending": false,
       "id": "title_2",
       "title": "title 2",
       "isFavorite": false,
       "isComplete": false
     },
     {
+      "pending": false,
       "id": "title_3",
       "title": "title 3",
       "isFavorite": false,

@@ -1,6 +1,8 @@
 import React, { FC, ReactElement } from 'react';
-import { Stack, Theme } from '@mui/material';
+import { Button, Stack, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appContentFooter: {
@@ -14,7 +16,21 @@ const AppContentFooter: FC = (): ReactElement => {
 
   return (
     <Stack direction={'row'} spacing={2} alignItems={'center'} justifyContent={'space-between'} className={classes.appContentFooter}>
-      AppContentFooter
+      <Button
+        variant={'outlined'}
+        title={'Select all items'}
+        color={'primary'}
+        startIcon={<CheckBoxIcon />}>
+        Select all items
+      </Button>
+
+      <Button
+        variant={'outlined'}
+        title={'Delete all items'}
+        color={'error'}
+        startIcon={<DeleteForeverIcon />}>
+        Delete all items
+      </Button>
     </Stack>
   );
 };
