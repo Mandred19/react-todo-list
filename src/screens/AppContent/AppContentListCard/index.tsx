@@ -5,7 +5,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { makeStyles } from '@mui/styles';
-import { betweenChildrenMixin } from '../../../theme/styleMixins';
+import { betweenChildrenMixin } from '../../../styles/mixins';
 import { ITodoListItem } from '../../../store/reducers/todoListSlice';
 import {
   deleteTodoListItem,
@@ -65,7 +65,7 @@ const AppContentListCard: FC<IAppContentListCardProps> = (props: IAppContentList
           <IconButton
             onClick={() => iconButtonHandler('editItem', props)}
             color={'default'}
-            disabled={pending || !isComplete}
+            disabled={pending || isComplete}
             title={'Edit item'}
             edge='end'
             aria-label='edit'>

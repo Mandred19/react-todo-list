@@ -1,7 +1,9 @@
 import { muiList } from './muiList';
 import { muiCheckbox } from './muiCheckbox';
 
-export const muiStyles = {
+const muiStyles = {
   ...muiList,
   ...muiCheckbox,
 };
+
+export default muiStyles;

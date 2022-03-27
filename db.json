@@ -1,6 +1,7 @@
 {
   "todos": [
     {
+      "pending": false,
       "id": "title_1",
       "title": "title 1",
       "isFavorite": false,
@@ -39,6 +40,7 @@
       "isComplete": true
     },
     {
+      "pending": false,
       "id": "title_7",
       "title": "title 7",
       "isFavorite": false,

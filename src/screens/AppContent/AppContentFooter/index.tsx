@@ -18,10 +18,10 @@ const AppContentFooter: FC = (): ReactElement => {
     <Stack direction={'row'} spacing={2} alignItems={'center'} justifyContent={'space-between'} className={classes.appContentFooter}>
       <Button
         variant={'outlined'}
-        title={'Select all items'}
+        title={'Check all items'}
         color={'primary'}
         startIcon={<CheckBoxIcon />}>
-        Select all items
+        Check all items
       </Button>
 
       <Button
