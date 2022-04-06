@@ -14,6 +14,18 @@ export const fetchTodoList = createAsyncThunk(
   }
 );
 
+export const createTodoListItem = createAsyncThunk(
+  'todoList/createTodoListItem',
+  async (data: ITodoListItem, thunkApi): Promise<ITodoListItem> => {
+    try {
+      return todoListService.createItem(data);
+    } catch (error) {
+      thunkApi.rejectWithValue(error);
+      return Promise.reject(error);
+    }
+  }
+);
+
 export const deleteTodoListItem = createAsyncThunk(
   'todoList/deleteTodoListItem',
   async (id: string, thunkApi): Promise<string> => {

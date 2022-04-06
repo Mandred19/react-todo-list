@@ -1,6 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { Slice } from '@reduxjs/toolkit/src/createSlice';
 import {
+  createTodoListItem,
   deleteTodoListItem,
   fetchTodoList,
   toggleCompleteTodoListItem,
@@ -38,6 +39,17 @@ export const todoListSlice: Slice = createSlice({
     },
 
     /** CREATE ITEM */
+    [createTodoListItem.pending.type]: (state) => {
+      state.pending = true;
+    },
+    [createTodoListItem.fulfilled.type]: (state, action: PayloadAction<ITodoListItem>) => {
+      state.todoList.push(action.payload);
+      state.pending = false;
+    },
+    [createTodoListItem.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+      state.pending = false;
+    },
 
     /** UPDATE ITEM */
 

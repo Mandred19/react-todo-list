@@ -9,6 +9,17 @@ export const todoListService = {
     });
     return response.data;
   },
+  async createItem(data: ITodoListItem): Promise<ITodoListItem> {
+    await axios({
+      url: '/todos',
+      method: 'POST',
+      data,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return data;
+  },
   async deleteItem(id: string): Promise<string> {
     await axios( {
       url: `/todos/${id}`,
@@ -20,7 +31,7 @@ export const todoListService = {
     await axios( {
       url: `/todos/${data.id}`,
       method: 'PUT',
-      data: data,
+      data,
     });
     return data;
   },

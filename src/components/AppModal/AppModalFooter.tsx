@@ -9,15 +9,18 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const AppModalFooter: FC<IAppModalFooterProps> = ({footerSubmitButtonText, footerCancelButtonText, visibilityHandlers}): ReactElement => {
+const AppModalFooter: FC<IAppModalFooterProps> = (props): ReactElement => {
   const classes = useStyles();
+  const {footerSubmitButtonText, footerCancelButtonText, visibilityHandlers, submitHandler, isPending} = props;
 
   const closeModalHandler = () => {
     visibilityHandlers.setModalVisibility(false);
   };
 
-  const submitModalHandler = () => {
-    closeModalHandler();
+  const submitModalHandler = async (e: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>): Promise<void> => {
+    e.preventDefault();
+    await submitHandler();
+    await closeModalHandler();
   };
 
   return (
@@ -31,9 +34,10 @@ const AppModalFooter: FC<IAppModalFooterProps> = ({footerSubmitButtonText, foote
       </Button>
 
       <Button
-        onClick={() => submitModalHandler()}
+        onClick={(e) => submitModalHandler(e)}
         variant={'outlined'}
         title={footerSubmitButtonText}
+        disabled={isPending}
         color={'primary'}>
         {footerSubmitButtonText}
       </Button>
@@ -47,4 +51,6 @@ interface IAppModalFooterProps {
   footerSubmitButtonText: string,
   footerCancelButtonText: string,
   visibilityHandlers: IUseModalVisibility,
+  submitHandler: () => Promise<void>,
+  isPending: boolean,
 }
