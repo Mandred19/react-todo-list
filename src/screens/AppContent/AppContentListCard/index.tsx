@@ -1,11 +1,18 @@
 import React, { FC, ReactElement, useState } from 'react';
-import { Box, Checkbox, IconButton, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import {
+  Checkbox,
+  IconButton,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Stack,
+  Tooltip
+} from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { makeStyles } from '@mui/styles';
-import { betweenChildrenMixin } from '../../../styles/mixins';
 import { ITodoListItem } from '../../../store/reducers/todoListSlice';
 import {
   toggleCompleteTodoListItem,
@@ -15,16 +22,7 @@ import { useAppDispatch } from '../../../store/hooks';
 import useModalVisibility from '../../../hooks/useModalVisibility';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 
-const useStyles = makeStyles({
-  listItemButtons: {
-    ...betweenChildrenMixin({
-      marginRight: 16,
-    }),
-  },
-});
-
 const AppContentListCard: FC<IAppContentListCardProps> = (props: IAppContentListCardProps): ReactElement => {
-  const classes = useStyles();
   const dispatch = useAppDispatch();
   const {id, isComplete, isFavorite, title, pending} = props;
   const [checked, setChecked] = useState<Array<ITodoListItem>>([]);
@@ -65,47 +63,55 @@ const AppContentListCard: FC<IAppContentListCardProps> = (props: IAppContentList
       <ListItem
         disablePadding
         secondaryAction={
-          <Box className={classes.listItemButtons}>
-            <IconButton
-              onClick={() => iconButtonHandler('editItem', props)}
-              color={'default'}
-              disabled={pending || isComplete}
-              title={'Edit item'}
-              edge='end'
-              aria-label='edit'>
-              <EditIcon />
-            </IconButton>
+          <Stack direction={'row'} spacing={2}>
+            <Tooltip title={isComplete ? 'Completed item is not editable' : 'Edit item'}>
+              <span>
+                <IconButton
+                  onClick={() => iconButtonHandler('editItem', props)}
+                  color={'default'}
+                  disabled={pending || isComplete}
+                  aria-label={isComplete ? 'Completed item is not editable' : 'Edit item'}>
+                  <EditIcon />
+                </IconButton>
+              </span>
+            </Tooltip>
 
-            <IconButton
-              onClick={() => iconButtonHandler('setComplete', { ...props, isComplete: !isComplete })}
-              color={isComplete ? 'info' : 'default'}
-              disabled={pending}
-              title={'Set as completed'}
-              edge='end'
-              aria-label='done'>
-              <CheckCircleIcon />
-            </IconButton>
+            <Tooltip title={'Set as completed'}>
+              <span>
+                <IconButton
+                  onClick={() => iconButtonHandler('setComplete', { ...props, isComplete: !isComplete })}
+                  color={isComplete ? 'info' : 'default'}
+                  disabled={pending}
+                  aria-label='Set as completed'>
+                  <CheckCircleIcon />
+                </IconButton>
+              </span>
+            </Tooltip>
 
-            <IconButton
-              onClick={() => iconButtonHandler('setFavorite', { ...props, isFavorite: !isFavorite })}
-              color={isFavorite ? 'warning' : 'default'}
-              disabled={pending}
-              title={'Set as favorite'}
-              edge='end'
-              aria-label='favorite'>
-              <StarIcon />
-            </IconButton>
+            <Tooltip title={'Set as favorite'}>
+              <span>
+                <IconButton
+                  onClick={() => iconButtonHandler('setFavorite', { ...props, isFavorite: !isFavorite })}
+                  color={isFavorite ? 'warning' : 'default'}
+                  disabled={pending}
+                  aria-label='Set as favorite'>
+                  <StarIcon />
+                </IconButton>
+              </span>
+            </Tooltip>
 
-            <IconButton
-              onClick={() => iconButtonHandler('deleteItem', props)}
-              color={'error'}
-              disabled={pending}
-              title={'Delete this item'}
-              edge='end'
-              aria-label='delete'>
-              <DeleteIcon />
-            </IconButton>
-          </Box>
+            <Tooltip title={'Delete item'}>
+              <span>
+                <IconButton
+                  onClick={() => iconButtonHandler('deleteItem', props)}
+                  color={'error'}
+                  disabled={pending}
+                  aria-label='Delete item'>
+                  <DeleteIcon />
+                </IconButton>
+              </span>
+            </Tooltip>
+          </Stack>
         }>
 
         <ListItemButton
@@ -119,11 +125,10 @@ const AppContentListCard: FC<IAppContentListCardProps> = (props: IAppContentList
               checked={!!checked.find((item) => item.id === id)}
               tabIndex={-1}
               disableRipple
-              title={'Select this item'}
               inputProps={{ 'aria-labelledby': id }} />
           </ListItemIcon>
 
-          <ListItemText id={id} primary={title} title={title} />
+          <ListItemText id={id} primary={title} />
         </ListItemButton>
       </ListItem>
 

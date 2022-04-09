@@ -1,5 +1,5 @@
 import React, { FC, ReactElement } from 'react';
-import { Button, Stack, Theme } from '@mui/material';
+import {Button, Stack, Theme, Tooltip} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -16,21 +16,27 @@ const AppContentFooter: FC = (): ReactElement => {
 
   return (
     <Stack direction={'row'} spacing={2} alignItems={'center'} justifyContent={'space-between'} className={classes.appContentFooter}>
-      <Button
-        variant={'outlined'}
-        title={'Check all items'}
-        color={'primary'}
-        startIcon={<CheckBoxIcon />}>
-        Check all items
-      </Button>
+      <Tooltip title={'Check all items'}>
+        <span>
+          <Button
+            variant={'outlined'}
+            color={'primary'}
+            startIcon={<CheckBoxIcon />}>
+            Check all items
+          </Button>
+        </span>
+      </Tooltip>
 
-      <Button
-        variant={'outlined'}
-        title={'Delete all items'}
-        color={'error'}
-        startIcon={<DeleteForeverIcon />}>
-        Delete all items
-      </Button>
+      <Tooltip title={'Delete all items'}>
+        <span>
+          <Button
+            variant={'outlined'}
+            color={'error'}
+            startIcon={<DeleteForeverIcon />}>
+            Delete all items
+          </Button>
+        </span>
+      </Tooltip>
     </Stack>
   );
 };

@@ -1,10 +1,9 @@
 import React, { FC, ReactElement, useState } from 'react';
 import {
-  Box,
+  Box, Checkbox,
   FormControl, FormControlLabel,
   InputLabel,
   OutlinedInput,
-  Switch,
 } from '@mui/material';
 import { inputChangeEventType, inputChangeHandler } from '../../../utils/inputChangeHandler';
 import AppModal from '../../../components/AppModal';
@@ -85,9 +84,10 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
         <Box>
           <FormControlLabel
             control={
-              <Switch
+              <Checkbox
+                onChange={(e: switchChangeEventType) => switchChangeHandler(e, setItemIsFavorite)}
                 checked={itemIsFavorite}
-                onChange={(e: switchChangeEventType) => switchChangeHandler(e, setItemIsFavorite)}/>
+                title={'Set as favorite'} />
             }
             label="Set as favorite" />
         </Box>

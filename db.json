@@ -26,14 +26,16 @@
       "isComplete": false
     },
     {
+      "pending": false,
       "id": "c35bb4b1-b7ed-4b8f-8fc8-624dabc2c108",
       "title": "web-readiness",
       "description": "Voluptatibus quas tenetur voluptas sed voluptatem et consequatur placeat nobis. Facere voluptates dolor molestiae rerum neque. Expedita quia consequatur vel soluta ex rerum. Nam odio odio repellendus velit. Dolor ratione consectetur sapiente adipisci dignissimos ea qui.\nRepellat culpa quisquam itaque. Hic blanditiis impedit quis fuga vel voluptatem qui dolorem ut. Magnam harum adipisci nesciunt enim quia aperiam aut dolorem. Numquam sit sed et aut assumenda eos. Omnis blanditiis debitis hic quis est. Voluptas et qui ipsam perspiciatis.",
       "creationDate": "Thu Aug 26 2021 15:25:44 GMT+0300 (Москва, стандартное время)",
       "isFavorite": false,
-      "isComplete": false
+      "isComplete": true
     },
     {
+      "pending": false,
       "id": "86be9831-33f0-44c5-9c12-718182e1f2e6",
       "title": "methodologies",
       "description": "Qui corporis repellat et eius doloremque. Et eaque temporibus ad optio blanditiis hic omnis minus. Corrupti commodi expedita eveniet et alias. Exercitationem non et repudiandae id iure neque laborum. Blanditiis quam non in sequi excepturi sapiente culpa ut. Eos et voluptas repellat suscipit.\nVoluptatibus amet provident et non nostrum quia eaque ea et. Autem ipsam aut. Ut vitae sunt. Consequatur quam mollitia voluptates.\nNon magni dignissimos possimus est qui aperiam sit. Nam qui sed illo dicta. Magni dolor omnis rerum quod saepe. Amet qui quia voluptas est fuga ab sit eaque maiores.\nRerum qui quis modi aut. Dignissimos quidem aliquid eveniet voluptas sint autem aut. Sit eos ut natus doloremque sapiente non est aut. Error eos voluptates culpa. Magnam cum qui iusto fugiat facilis cumque. Quidem tenetur sunt.\nNatus quia iste non explicabo reprehenderit facilis qui. Nisi omnis inventore voluptatibus quo odit temporibus. Blanditiis rerum molestias. Rerum laboriosam qui non adipisci. Quidem maiores quasi repudiandae fuga minus quo asperiores voluptas vel.",
@@ -67,12 +69,13 @@
       "isComplete": false
     },
     {
+      "pending": false,
       "id": "ee8bf728-6962-45e9-9941-0523af4d8e74",
       "title": "markets",
       "description": "Explicabo molestiae temporibus. Voluptate voluptas nemo veritatis et sint tempore nihil. Velit delectus vel odit et fugiat. Et laboriosam error sint id incidunt ea consequatur voluptatibus repellat. Cupiditate sequi voluptas est.\nAtque optio temporibus maxime dolores voluptas quam voluptatem eaque. Consequatur est quo mollitia. Maiores delectus fugiat natus cum eligendi et sapiente ut. Fuga nulla voluptas voluptates vitae qui est. Qui sit possimus at dolores eos et. Id illum aut est id officiis.\nNon id iure. Repudiandae dolorem commodi quia. Odio nihil incidunt provident quia consequatur provident sint consequatur quo.\nReiciendis officia officia dolor nulla harum consequatur. Dolore laboriosam velit sit. Commodi dolore deleniti vel quo sunt ducimus et enim accusamus. Consequatur enim inventore repellendus qui rerum sunt. Amet dolores ut voluptatibus atque maiores atque.",
       "creationDate": "Mon Aug 23 2021 16:05:58 GMT+0300 (Москва, стандартное время)",
       "isFavorite": false,
-      "isComplete": false
+      "isComplete": true
     },
     {
       "pending": false,

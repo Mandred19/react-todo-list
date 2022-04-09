@@ -7,7 +7,7 @@ import {
   InputLabel,
   OutlinedInput,
   Stack,
-  Theme,
+  Theme, Tooltip,
 } from '@mui/material';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -46,28 +46,35 @@ const AppContentHeader: FC = (): ReactElement => {
             onChange={(e: inputChangeEventType) => inputChangeHandler(e, setSearchValue)}
             fullWidth
             autoFocus
-            startAdornment={<SearchOutlinedIcon />}
+            startAdornment={<SearchOutlinedIcon style={{marginRight: 8}}/>}
             endAdornment={
               searchValue && <InputAdornment position="end">
-                <IconButton
-                  aria-label="clear search text field"
-                  onClick={() => setSearchValue('')}
-                  edge="end">
-                  {<ClearOutlinedIcon />}
-                </IconButton>
+                <Tooltip title={'Clear search text field'}>
+                  <span>
+                    <IconButton
+                      aria-label="Clear search text field"
+                      onClick={() => setSearchValue('')}>
+                      {<ClearOutlinedIcon />}
+                    </IconButton>
+                  </span>
+                </Tooltip>
               </InputAdornment>
             }
             label={'Search'}/>
         </FormControl>
 
-        <Button
-          onClick={() => setModalVisibility(true)}
-          variant={'outlined'}
-          title={'Add new item'}
-          color={'primary'}
-          startIcon={<AddIcon />}>
-          Add
-        </Button>
+        <Tooltip title={'Add new item'}>
+          <span>
+            <Button
+              onClick={() => setModalVisibility(true)}
+              variant={'outlined'}
+              color={'primary'}
+              startIcon={<AddIcon />}
+              style={{height: '100%'}}>
+              Add
+            </Button>
+          </span>
+        </Tooltip>
       </Stack>
 
       <AddNewItemModal modalVisibility={modalVisibility} setModalVisibility={setModalVisibility}/>
