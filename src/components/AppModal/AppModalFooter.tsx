@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AppModalFooter: FC<IAppModalFooterProps> = (props): ReactElement => {
   const classes = useStyles();
-  const {footerSubmitButtonText, footerCancelButtonText, visibilityHandlers, submitHandler, isPending} = props;
+  const {footerSubmitButtonText, footerCancelButtonText, visibilityHandlers, submitHandler, submitButtonType, isPending} = props;
 
   const closeModalHandler = () => {
     visibilityHandlers.setModalVisibility(false);
@@ -29,7 +29,7 @@ const AppModalFooter: FC<IAppModalFooterProps> = (props): ReactElement => {
         onClick={() => closeModalHandler()}
         variant={'text'}
         title={footerCancelButtonText}
-        color={'secondary'}>
+        color={'inherit'}>
         {footerCancelButtonText}
       </Button>
 
@@ -38,7 +38,7 @@ const AppModalFooter: FC<IAppModalFooterProps> = (props): ReactElement => {
         variant={'outlined'}
         title={footerSubmitButtonText}
         disabled={isPending}
-        color={'primary'}>
+        color={submitButtonType}>
         {footerSubmitButtonText}
       </Button>
     </Stack>
@@ -52,5 +52,6 @@ interface IAppModalFooterProps {
   footerCancelButtonText: string,
   visibilityHandlers: IUseModalVisibility,
   submitHandler: () => Promise<void>,
+  submitButtonType: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning',
   isPending: boolean,
 }

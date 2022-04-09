@@ -26,10 +26,8 @@ const App: FC = (): ReactElement => {
 
   // const dispatch = useAppDispatch();
   // useEffect(() => {
-  //   for(let i = 0; i < 5; i++) {
-  //     setTimeout(() => {
-  //       dispatch(createTodoListItem(createFakeDbItem()));
-  //     }, 1000);
+  //   for(let i = 0; i < 50; i++) {
+  //     dispatch(createTodoListItem(createFakeDbItem()));
   //   }
   // });
 

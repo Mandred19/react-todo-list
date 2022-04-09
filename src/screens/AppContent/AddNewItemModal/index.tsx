@@ -13,7 +13,7 @@ import { switchChangeEventType, switchChangeHandler } from '../../../utils/switc
 import { createTodoListItem } from '../../../store/actions/todoLIstActions';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 
-const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisibility}): ReactElement => {
+const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisibility}): ReactElement => {
   const dispatch = useAppDispatch();
   const {isPending} = useAppSelector((state) => state.todoListSlice);
 
@@ -26,7 +26,7 @@ const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility,
       id: itemTitle,
       title: itemTitle,
       description: itemDescription,
-      creationDate: new Date(),
+      creationDate: new Date().toString(),
       isFavorite: itemIsFavorite,
       isComplete: false,
     }));
@@ -36,6 +36,7 @@ const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility,
 
   const resetForm = (): void => {
     setItemTitle('');
+    setItemDescription('');
     setItemIsFavorite(false);
   };
 
@@ -46,6 +47,7 @@ const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility,
       footerCancelButtonText={'Cancel'}
       visibilityHandlers={{modalVisibility, setModalVisibility}}
       submitHandler={submitHandler}
+      submitButtonType={'primary'}
       isPending={isPending}>
       <>
         <FormControl variant="outlined" fullWidth>
@@ -72,7 +74,8 @@ const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility,
             id="item-description-input"
             type={'text'}
             multiline={true}
-            maxRows={4}
+            minRows={3}
+            maxRows={6}
             value={itemDescription}
             onChange={(e: inputChangeEventType) => inputChangeHandler(e, setItemDescription)}
             fullWidth
@@ -93,4 +96,4 @@ const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility,
   );
 };
 
-export default AppContentHeaderAddItemModal;
+export default AddNewItemModal;

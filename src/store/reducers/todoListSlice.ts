@@ -103,7 +103,7 @@ export interface ITodoListItem {
   id: string,
   title: string,
   description: string,
-  creationDate: Date,
+  creationDate: string,
   isComplete: boolean,
   isFavorite: boolean,
 }

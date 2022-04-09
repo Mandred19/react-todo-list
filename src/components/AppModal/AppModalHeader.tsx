@@ -6,7 +6,10 @@ import { IUseModalVisibility } from '../../hooks/useModalVisibility';
 
 const useStyles = makeStyles((theme: Theme) => ({
   modalHeader: {
-    padding: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
   },
 }));
 

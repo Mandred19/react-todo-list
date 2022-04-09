@@ -12,7 +12,7 @@ import {
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import AddIcon from '@mui/icons-material/Add';
-import AppContentHeaderAddItemModal from './AppContentHeaderAddItemModal';
+import AddNewItemModal from './AddNewItemModal';
 import { inputChangeEventType, inputChangeHandler } from '../../utils/inputChangeHandler';
 import useModalVisibility from '../../hooks/useModalVisibility';
 import { useAppSelector } from '../../store/hooks';
@@ -70,7 +70,7 @@ const AppContentHeader: FC = (): ReactElement => {
         </Button>
       </Stack>
 
-      <AppContentHeaderAddItemModal modalVisibility={modalVisibility} setModalVisibility={setModalVisibility}/>
+      <AddNewItemModal modalVisibility={modalVisibility} setModalVisibility={setModalVisibility}/>
     </>
   );
 };

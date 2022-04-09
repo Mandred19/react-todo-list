@@ -21,13 +21,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: '#fff',
   },
   modalContent: {
-    padding: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
   },
 }));
 
 const AppModal: FC<IAppModalProps> = (props): ReactElement => {
   const classes = useStyles();
-  const {children, headerText, footerSubmitButtonText, footerCancelButtonText, visibilityHandlers, submitHandler, isPending} = props;
+  const {children, headerText, footerSubmitButtonText, footerCancelButtonText, visibilityHandlers, submitHandler, submitButtonType, isPending} = props;
   const {modalVisibility, setModalVisibility} = visibilityHandlers;
 
   return (
@@ -52,6 +55,7 @@ const AppModal: FC<IAppModalProps> = (props): ReactElement => {
             footerCancelButtonText={footerCancelButtonText}
             visibilityHandlers={visibilityHandlers}
             submitHandler={submitHandler}
+            submitButtonType={submitButtonType}
             isPending={isPending}/>
         </Box>
       </Fade>
@@ -68,5 +72,6 @@ interface IAppModalProps {
   footerCancelButtonText: string,
   visibilityHandlers: IUseModalVisibility,
   submitHandler: () => Promise<void>,
+  submitButtonType: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning',
   isPending: boolean,
 }
