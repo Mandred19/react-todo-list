@@ -1,11 +1,11 @@
 import { Components } from '@mui/material/styles/components';
 import { Theme } from '@mui/material';
-import {grey} from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 
-export const muiCheckbox: Components<Theme> = {
-  MuiCheckbox: {
+export const muiInput: Components<Theme> = {
+  MuiInputLabel: {
     styleOverrides: {
-      colorPrimary: {
+      root: {
         color: grey[500],
       },
     },

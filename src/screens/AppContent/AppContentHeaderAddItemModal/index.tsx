@@ -18,13 +18,14 @@ const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility,
   const {isPending} = useAppSelector((state) => state.todoListSlice);
 
   const [itemTitle, setItemTitle] = useState<string>('');
+  const [itemDescription, setItemDescription] = useState<string>('');
   const [itemIsFavorite, setItemIsFavorite] = useState<boolean>(false);
 
   const submitHandler = async (): Promise<void> => {
     await dispatch(createTodoListItem({
       id: itemTitle,
       title: itemTitle,
-      description: '123',
+      description: itemDescription,
       creationDate: new Date(),
       isFavorite: itemIsFavorite,
       isComplete: false,
@@ -60,6 +61,22 @@ const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility,
             fullWidth
             autoFocus
             label={'Title'}/>
+        </FormControl>
+
+        <FormControl variant="outlined" fullWidth>
+          <InputLabel htmlFor="item-description-input">
+            Description
+          </InputLabel>
+
+          <OutlinedInput
+            id="item-description-input"
+            type={'text'}
+            multiline={true}
+            maxRows={4}
+            value={itemDescription}
+            onChange={(e: inputChangeEventType) => inputChangeHandler(e, setItemDescription)}
+            fullWidth
+            label={'Description'}/>
         </FormControl>
 
         <Box>

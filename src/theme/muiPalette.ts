@@ -1,23 +1,25 @@
+import {grey, orange, red, teal} from '@mui/material/colors';
+
 const muiPalette = {
   primary: {
-    main: '#009999',
-    light: '#5CCCCC',
-    dark: '#1D7373',
+    main: teal[600],
+    light: teal[400],
+    dark: teal[700],
   },
   secondary: {
-    main: '#FF9640',
-    dark: '#FF7400',
+    main: orange[600],
+    dark: orange[900],
   },
   background: {
-    default: '#fff',
-    paper: '#5CCCCC',
+    default: grey[50],
+    paper: teal[300],
   },
   error: {
-    main: '#FF5300',
+    main: red[600],
   },
   text: {
-    primary: '#0D0C0E',
-    secondary: '#fff',
+    primary: grey[800],
+    secondary: grey[50],
   },
 };
 
