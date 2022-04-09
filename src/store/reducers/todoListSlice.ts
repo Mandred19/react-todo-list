@@ -102,6 +102,8 @@ export default todoListSlice.reducer;
 export interface ITodoListItem {
   id: string,
   title: string,
+  description: string,
+  creationDate: Date,
   isComplete: boolean,
   isFavorite: boolean,
 }

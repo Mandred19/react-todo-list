@@ -4,6 +4,7 @@ import AppContentHeader from './AppContentHeader';
 import AppContentList from './AppContentList';
 import AppContentFooter from './AppContentFooter';
 import { makeStyles } from '@mui/styles';
+import {useAppSelector} from '../../store/hooks';
 
 const useStyles = makeStyles({
   appContent: {
@@ -13,6 +14,7 @@ const useStyles = makeStyles({
 
 const AppContent: FC = (): ReactElement => {
   const classes = useStyles();
+  const { todoList } = useAppSelector((state) => state.todoListSlice);
 
   return (
     <Stack direction={'column'} className={classes.appContent}>
@@ -20,7 +22,7 @@ const AppContent: FC = (): ReactElement => {
 
       <AppContentList />
 
-      <AppContentFooter />
+      {todoList.length ? <AppContentFooter/> : ''}
     </Stack>
   );
 };

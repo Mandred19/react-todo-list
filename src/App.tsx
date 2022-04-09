@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, {FC, ReactElement} from 'react';
 import { Container, Stack } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import AppHeader from './components/AppHeader';
@@ -23,6 +23,15 @@ const useStyles = makeStyles({
 
 const App: FC = (): ReactElement => {
   const classes = useStyles();
+
+  // const dispatch = useAppDispatch();
+  // useEffect(() => {
+  //   for(let i = 0; i < 5; i++) {
+  //     setTimeout(() => {
+  //       dispatch(createTodoListItem(createFakeDbItem()));
+  //     }, 1000);
+  //   }
+  // });
 
   return (
     <Stack direction={'column'} className={classes.wrapper}>

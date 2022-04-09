@@ -24,6 +24,8 @@ const AppContentHeaderAddItemModal: FC<IUseModalVisibility> = ({modalVisibility,
     await dispatch(createTodoListItem({
       id: itemTitle,
       title: itemTitle,
+      description: '123',
+      creationDate: new Date(),
       isFavorite: itemIsFavorite,
       isComplete: false,
     }));
