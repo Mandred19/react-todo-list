@@ -1,38 +1,39 @@
 import axios from 'axios';
-import { ITodoListItem } from '../reducers/todoListSlice';
+import {ITodoListItem, ITodoListItemCreateDto} from '../reducers/todoListSlice';
+import { transformTodoList, transformTodoListItem } from '../utils/transformTodoList';
 
 export const todoListService = {
   async fetchAllItems(): Promise<Array<ITodoListItem>> {
     const response = await axios( {
-      url: '/todos',
+      url: 'http://localhost:4200/list',
       method: 'GET',
     });
-    return response.data;
+    return transformTodoList(response.data);
   },
-  async createItem(data: ITodoListItem): Promise<ITodoListItem> {
-    await axios({
-      url: '/todos',
+  async createItem(data: ITodoListItemCreateDto): Promise<ITodoListItem> {
+    const result = await axios({
+      url: 'http://localhost:4200/list',
       method: 'POST',
       data,
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    return data;
+    return transformTodoListItem(result.data);
   },
   async deleteItem(id: string): Promise<string> {
     await axios( {
-      url: `/todos/${id}`,
+      url: `http://localhost:4200/list/${id}`,
       method: 'DELETE',
     });
     return id;
   },
   async toggleStateItem(data: ITodoListItem): Promise<ITodoListItem> {
-    await axios( {
-      url: `/todos/${data.id}`,
+    const result = await axios( {
+      url: `http://localhost:4200/list/${data.id}`,
       method: 'PUT',
       data,
     });
-    return data;
+    return transformTodoListItem(result.data);
   },
 };

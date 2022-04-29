@@ -22,12 +22,9 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
 
   const submitHandler = async (): Promise<void> => {
     await dispatch(createTodoListItem({
-      id: itemTitle,
       title: itemTitle,
       description: itemDescription,
-      creationDate: new Date().toString(),
       isFavorite: itemIsFavorite,
-      isComplete: false,
     }));
 
     await resetForm();

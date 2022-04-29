@@ -24,13 +24,6 @@ const useStyles = makeStyles({
 const App: FC = (): ReactElement => {
   const classes = useStyles();
 
-  // const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   for(let i = 0; i < 50; i++) {
-  //     dispatch(createTodoListItem(createFakeDbItem()));
-  //   }
-  // });
-
   return (
     <Stack direction={'column'} className={classes.wrapper}>
       <Container maxWidth={'xl'} className={classes.container}>

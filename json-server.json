@@ -1,6 +1,0 @@
-{
-  "port": 3100,
-  "watch": true,
-  "routes": "./routes.json",
-  "delay": 0
-}

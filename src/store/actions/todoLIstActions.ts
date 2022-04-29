@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { todoListService } from '../services/todoListService';
-import { ITodoListItem } from '../reducers/todoListSlice';
+import {ITodoListItem, ITodoListItemCreateDto} from '../reducers/todoListSlice';
 
 export const fetchTodoList = createAsyncThunk(
   'todoList/fetchTodoList',
@@ -16,7 +16,7 @@ export const fetchTodoList = createAsyncThunk(
 
 export const createTodoListItem = createAsyncThunk(
   'todoList/createTodoListItem',
-  async (data: ITodoListItem, thunkApi): Promise<ITodoListItem> => {
+  async (data: ITodoListItemCreateDto, thunkApi): Promise<ITodoListItem> => {
     try {
       return todoListService.createItem(data);
     } catch (error) {

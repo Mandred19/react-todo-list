@@ -22,6 +22,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-axios.defaults.baseURL = 'http://localhost:3100/api/v1/';
+axios.defaults.baseURL = process.env.NODE_ENV === 'production'
+  ? `` : 'http://localhost:4200/';
 
 reportWebVitals();
