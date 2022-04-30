@@ -10,6 +10,13 @@ export const todoListService = {
     });
     return transformTodoList(response.data);
   },
+  async fetchTodoItemById(id: string): Promise<ITodoListItem> {
+    const response = await axios( {
+      url: `http://localhost:4200/list/${id}`,
+      method: 'GET',
+    });
+    return transformTodoListItem(response.data);
+  },
   async createItem(data: ITodoListItemCreateDto): Promise<ITodoListItem> {
     const result = await axios({
       url: 'http://localhost:4200/list',

@@ -14,18 +14,20 @@ import EditIcon from '@mui/icons-material/Edit';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { ITodoListItem } from '../../../store/reducers/todoListSlice';
+import { ITodoListItem } from '../../../../store/reducers/todoListSlice';
 import {
   toggleCompleteTodoListItem,
   toggleFavoriteTodoListItem,
-} from '../../../store/actions/todoLIstActions';
-import { useAppDispatch } from '../../../store/hooks';
-import useModalVisibility from '../../../hooks/useModalVisibility';
+} from '../../../../store/actions/todoLIstActions';
+import { useAppDispatch } from '../../../../store/hooks';
+import useModalVisibility from '../../../../hooks/useModalVisibility';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
+import { useNavigate } from 'react-router-dom';
 
-const AppContentListCard: FC<IAppContentListCardProps> = (props: IAppContentListCardProps): ReactElement => {
+const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentListCardProps): ReactElement => {
   const dispatch = useAppDispatch();
   const {id, isComplete, isFavorite, title, pending} = props;
+  const navigate = useNavigate();
   const [checked, setChecked] = useState<Array<ITodoListItem>>([]);
   const [deletedItemId, setDeletedItemId] = useState<string>('');
   const {modalVisibility, setModalVisibility} = useModalVisibility();
@@ -42,7 +44,7 @@ const AppContentListCard: FC<IAppContentListCardProps> = (props: IAppContentList
   const iconButtonHandler = (value: IconButtonHandlerValue, payload: ITodoListItem) => {
     switch (value) {
       case 'open':
-        console.warn('Go to item page', payload);
+        navigate(payload.id);
         break;
       case 'edit':
         console.warn('Open modal and edit', payload);
@@ -153,7 +155,7 @@ const AppContentListCard: FC<IAppContentListCardProps> = (props: IAppContentList
   );
 };
 
-export default AppContentListCard;
+export default AppContentListItem;
 
 interface IAppContentListCardProps extends ITodoListItem {
   pending: boolean,

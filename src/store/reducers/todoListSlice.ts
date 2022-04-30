@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { Slice } from '@reduxjs/toolkit/src/createSlice';
 import {
   createTodoListItem, deleteAllTodoListItems,
-  deleteTodoListItem,
+  deleteTodoListItem, fetchTodoItemById,
   fetchTodoList,
   toggleCompleteTodoListItem,
   toggleFavoriteTodoListItem,
@@ -10,12 +10,14 @@ import {
 
 export interface ITodoListSlice {
   todoList: Array<ITodoListItem>,
+  currentItem: ITodoListItem | null,
   pending: boolean,
   error: string,
 }
 
 const initialState: ITodoListSlice = {
   todoList: [],
+  currentItem: null,
   pending: false,
   error: '',
 };
@@ -34,6 +36,19 @@ export const todoListSlice: Slice = createSlice({
       state.pending = false;
     },
     [fetchTodoList.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+      state.pending = false;
+    },
+
+    /** GET ITEM BY ID */
+    [fetchTodoItemById.pending.type]: (state) => {
+      state.pending = true;
+    },
+    [fetchTodoItemById.fulfilled.type]: (state, action: PayloadAction<ITodoListItem>) => {
+      state.currentItem = action.payload;
+      state.pending = false;
+    },
+    [fetchTodoItemById.rejected.type]: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
       state.pending = false;
     },

@@ -1,9 +1,9 @@
 import React, { FC, ReactElement, useEffect } from 'react';
 import { List, Stack, Typography } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchTodoList } from '../../store/actions/todoLIstActions';
-import { ITodoListItem } from '../../store/reducers/todoListSlice';
-import AppContentListCard from './ListCard';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { fetchTodoList } from '../../../store/actions/todoLIstActions';
+import { ITodoListItem } from '../../../store/reducers/todoListSlice';
+import AppContentListItem from './AppContentListItem';
 
 const AppContentList: FC = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -17,7 +17,7 @@ const AppContentList: FC = (): ReactElement => {
     <>
       {todoList.length ?
         <List sx={{ width: '100%', minWidth: 360 }}>
-          {todoList.map((todoItem: ITodoListItem) => <AppContentListCard key={todoItem.id} pending={pending} {...todoItem} />)}
+          {todoList.map((todoItem: ITodoListItem) => <AppContentListItem key={todoItem.id} pending={pending} {...todoItem} />)}
         </List>
         :
         <Stack alignItems={'center'} justifyContent={'center'}>

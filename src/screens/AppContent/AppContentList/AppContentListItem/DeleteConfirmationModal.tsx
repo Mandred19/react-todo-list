@@ -1,9 +1,9 @@
 import React, {FC, ReactElement} from 'react';
 import {Stack, Typography} from '@mui/material';
-import AppModal from '../../../components/AppModal';
-import {deleteTodoListItem} from '../../../store/actions/todoLIstActions';
-import {useAppDispatch, useAppSelector} from '../../../store/hooks';
-import {IUseModalVisibility} from '../../../hooks/useModalVisibility';
+import AppModal from '../../../../components/AppModal';
+import {deleteTodoListItem} from '../../../../store/actions/todoLIstActions';
+import {useAppDispatch, useAppSelector} from '../../../../store/hooks';
+import {IUseModalVisibility} from '../../../../hooks/useModalVisibility';
 
 const DeleteConfirmationModal: FC<IDeleteConfirmationModal> = ({modalVisibility, setModalVisibility, currentId}): ReactElement => {
   const dispatch = useAppDispatch();
