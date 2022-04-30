@@ -28,6 +28,12 @@ export const todoListService = {
     });
     return id;
   },
+  async deleteAllItems(): Promise<void> {
+    await axios({
+      url: 'http://localhost:4200/list',
+      method: 'DELETE',
+    });
+  },
   async toggleStateItem(data: ITodoListItem): Promise<ITodoListItem> {
     const result = await axios( {
       url: `http://localhost:4200/list/${data.id}`,

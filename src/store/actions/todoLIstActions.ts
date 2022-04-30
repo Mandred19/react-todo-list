@@ -38,6 +38,18 @@ export const deleteTodoListItem = createAsyncThunk(
   }
 );
 
+export const deleteAllTodoListItems = createAsyncThunk(
+  'todoList/deleteAllTodoListItems',
+  async (_, thunkApi): Promise<void> => {
+    try {
+      await todoListService.deleteAllItems();
+    } catch (error) {
+      thunkApi.rejectWithValue(error);
+      return Promise.reject(error);
+    }
+  }
+);
+
 export const toggleFavoriteTodoListItem = createAsyncThunk(
   'todoList/toggleFavoriteTodoListItem',
   async (data: ITodoListItem, thunkApi): Promise<ITodoListItem> => {
