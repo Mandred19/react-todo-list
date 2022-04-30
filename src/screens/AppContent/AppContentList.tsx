@@ -3,7 +3,7 @@ import { List, Stack, Typography } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchTodoList } from '../../store/actions/todoLIstActions';
 import { ITodoListItem } from '../../store/reducers/todoListSlice';
-import AppContentListCard from './AppContentListCard';
+import AppContentListCard from './ListCard';
 
 const AppContentList: FC = (): ReactElement => {
   const dispatch = useAppDispatch();

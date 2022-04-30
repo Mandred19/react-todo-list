@@ -2,7 +2,8 @@ import React, {FC, ReactElement} from 'react';
 import { Container, Stack } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import AppHeader from './components/AppHeader';
-import AppContent from './screens/AppContent';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './screens/Router';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -25,17 +26,19 @@ const App: FC = (): ReactElement => {
   const classes = useStyles();
 
   return (
-    <Stack direction={'column'} className={classes.wrapper}>
-      <Container maxWidth={'xl'} className={classes.container}>
-        <Stack direction={'column'} className={classes.appWrapper}>
-          <AppHeader />
+    <BrowserRouter>
+      <Stack direction={'column'} className={classes.wrapper}>
+        <Container maxWidth={'xl'} className={classes.container}>
+          <Stack direction={'column'} className={classes.appWrapper}>
+            <AppHeader />
 
-          <AppContent />
-        </Stack>
-      </Container>
+            <Router />
+          </Stack>
+        </Container>
 
-      <div id={'modal-portal-wrapper'} className={classes.modalPortalWrapper} />
-    </Stack>
+        <div id={'modal-portal-wrapper'} className={classes.modalPortalWrapper} />
+      </Stack>
+    </BrowserRouter>
   );
 };
 

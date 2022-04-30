@@ -15,7 +15,7 @@ const AppHeader: FC = (): ReactElement => {
   return (
     <Stack direction={'row'} spacing={2} className={classes.appHeader}>
       <Typography variant={'h4'}>
-        TO-DO list
+        TODO list
       </Typography>
     </Stack>
   );
