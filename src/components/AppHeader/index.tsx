@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   appHeader: {
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
+    boxShadow: '0px 5px 5px -3px rgb(0 0 0 / 20%)',
   },
 }));
 
