@@ -9,6 +9,7 @@ import {useAppSelector} from '../../store/hooks';
 const useStyles = makeStyles({
   appContent: {
     overflow: 'hidden',
+    height: '100%',
   },
 });
 

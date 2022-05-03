@@ -13,6 +13,7 @@ const useStyles = makeStyles({
   },
   container: {
     overflow: 'hidden',
+    height: '100%',
   },
   modalPortalWrapper: {
     position: 'relative',
