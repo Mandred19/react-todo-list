@@ -6,16 +6,13 @@ import { BrowserRouter } from 'react-router-dom';
 import Router from './screens/Router';
 
 const useStyles = makeStyles({
-  wrapper: {
+  appWrapper: {
     backgroundColor: '#eee',
+    overflow: 'hidden',
     height: '100%',
   },
   container: {
-    height: '100%',
-  },
-  appWrapper: {
     overflow: 'hidden',
-    height: '100%',
   },
   modalPortalWrapper: {
     position: 'relative',
@@ -27,17 +24,15 @@ const App: FC = (): ReactElement => {
 
   return (
     <BrowserRouter>
-      <Stack direction={'column'} className={classes.wrapper}>
+      <Stack direction={'column'} className={classes.appWrapper}>
+        <AppHeader />
+
         <Container maxWidth={'xl'} className={classes.container}>
-          <Stack direction={'column'} className={classes.appWrapper}>
-            <AppHeader />
-
-            <Router />
-          </Stack>
+          <Router />
         </Container>
-
-        <div id={'modal-portal-wrapper'} className={classes.modalPortalWrapper} />
       </Stack>
+
+      <div id={'modal-portal-wrapper'} className={classes.modalPortalWrapper} />
     </BrowserRouter>
   );
 };
