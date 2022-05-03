@@ -7,7 +7,7 @@ import {
   ListItemIcon,
   ListItemText,
   Stack,
-  Tooltip
+  Tooltip, Typography
 } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import EditIcon from '@mui/icons-material/Edit';
@@ -23,8 +23,23 @@ import { useAppDispatch } from '../../../../store/hooks';
 import useModalVisibility from '../../../../hooks/useModalVisibility';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 import { useNavigate } from 'react-router-dom';
+import { makeStyles } from '@mui/styles';
+import { breakpointMixin } from '../../../../styles/mixins';
+
+const useStyles = makeStyles(() => ({
+  // TODO fix styles without !important
+  listItemButton: {
+    paddingRight: '120px !important',
+    overflow: 'hidden',
+
+    ...breakpointMixin(768, 0, {
+      paddingRight: '320px !important',
+    }),
+  },
+}));
 
 const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentListCardProps): ReactElement => {
+  const classes = useStyles();
   const dispatch = useAppDispatch();
   const {id, isComplete, isFavorite, title, pending} = props;
   const navigate = useNavigate();
@@ -136,7 +151,7 @@ const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentList
           role={'checkbox'}
           onClick={checkBoxHandler(props)}
           divider
-          dense>
+          className={classes.listItemButton}>
           <ListItemIcon>
             <Checkbox
               edge='start'
@@ -146,7 +161,11 @@ const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentList
               inputProps={{ 'aria-labelledby': id }} />
           </ListItemIcon>
 
-          <ListItemText id={id} primary={title} />
+          <ListItemText id={id}>
+            <Typography variant={'body1'} noWrap>
+              {title}
+            </Typography>
+          </ListItemText>
         </ListItemButton>
       </ListItem>
 
