@@ -11,7 +11,10 @@ export const muiCard: Components<Theme> = {
     },
   },
   MuiCardHeader: {
-    styleOverrides :{
+    styleOverrides: {
+      root: {
+        paddingLeft: 8,
+      },
       content: {
         overflow: 'hidden',
       },

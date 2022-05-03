@@ -25,7 +25,6 @@ const ExpandMore = styled((props: IExpandMoreProps) => {
 
 const useStyles = makeStyles(() => ({
   todoListCard: {
-    minHeight: 400,
     minWidth: 360,
     maxWidth: 500,
   },
@@ -64,7 +63,7 @@ const AppCard: FC = (): ReactElement => {
                 </Tooltip>
               }
               title={
-              <Typography variant={'h5'} noWrap>
+              <Typography variant={'h6'} noWrap>
                 {currentItem.title}
               </Typography>
               } />
@@ -92,7 +91,7 @@ const AppCard: FC = (): ReactElement => {
             </CardContent>
 
             <CardActions>
-              <Stack direction={'row'} spacing={2}>
+              <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} spacing={2} width={'100%'}>
                 <Tooltip title={expanded ? 'Hide description' : 'Show description'}>
                   <span>
                     <ExpandMore
@@ -107,49 +106,51 @@ const AppCard: FC = (): ReactElement => {
                   </span>
                 </Tooltip>
 
-                <Tooltip title={currentItem.isComplete ? 'Completed item is not editable' : 'Edit'}>
-                  <span>
-                    <IconButton
-                      color={'default'}
-                      disabled={pending || currentItem.isComplete}
-                      aria-label={currentItem.isComplete ? 'Completed item is not editable' : 'Edit'}>
-                      <EditIcon />
-                    </IconButton>
-                  </span>
-                </Tooltip>
+                <Stack direction={'row'} spacing={2}>
+                  <Tooltip title={currentItem.isComplete ? 'Completed item is not editable' : 'Edit'}>
+                    <span>
+                      <IconButton
+                        color={'default'}
+                        disabled={pending || currentItem.isComplete}
+                        aria-label={currentItem.isComplete ? 'Completed item is not editable' : 'Edit'}>
+                        <EditIcon />
+                      </IconButton>
+                    </span>
+                  </Tooltip>
 
-                <Tooltip title={'Set as completed'}>
-                  <span>
-                    <IconButton
-                      color={currentItem.isComplete ? 'info' : 'default'}
-                      disabled={pending}
-                      aria-label={'Set as completed'}>
-                      <CheckCircleIcon />
-                    </IconButton>
-                  </span>
-                </Tooltip>
+                  <Tooltip title={'Set as completed'}>
+                    <span>
+                      <IconButton
+                        color={currentItem.isComplete ? 'info' : 'default'}
+                        disabled={pending}
+                        aria-label={'Set as completed'}>
+                        <CheckCircleIcon />
+                      </IconButton>
+                    </span>
+                  </Tooltip>
 
-                <Tooltip title={'Set as favorite'}>
-                  <span>
-                    <IconButton
-                      color={currentItem.isFavorite ? 'warning' : 'default'}
-                      disabled={pending}
-                      aria-label={'Set as favorite'}>
-                      <StarIcon />
-                    </IconButton>
-                  </span>
-                </Tooltip>
+                  <Tooltip title={'Set as favorite'}>
+                    <span>
+                      <IconButton
+                        color={currentItem.isFavorite ? 'warning' : 'default'}
+                        disabled={pending}
+                        aria-label={'Set as favorite'}>
+                        <StarIcon />
+                      </IconButton>
+                    </span>
+                  </Tooltip>
 
-                <Tooltip title={'Delete'}>
-                  <span>
-                    <IconButton
-                      color={'error'}
-                      disabled={pending}
-                      aria-label={'Delete'}>
-                      <DeleteIcon />
-                    </IconButton>
-                  </span>
-                </Tooltip>
+                  <Tooltip title={'Delete'}>
+                    <span>
+                      <IconButton
+                        color={'error'}
+                        disabled={pending}
+                        aria-label={'Delete'}>
+                        <DeleteIcon />
+                      </IconButton>
+                    </span>
+                  </Tooltip>
+                </Stack>
               </Stack>
             </CardActions>
 
