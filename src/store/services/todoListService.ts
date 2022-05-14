@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {ITodoListItem, ITodoListItemCreateDto} from '../reducers/todoListSlice';
-import { transformTodoList, transformTodoListItem } from '../utils/transformTodoList';
 
 export const todoListService = {
   async fetchAllItems(): Promise<Array<ITodoListItem>> {
@@ -8,14 +7,14 @@ export const todoListService = {
       url: 'http://localhost:4200/list',
       method: 'GET',
     });
-    return transformTodoList(response.data);
+    return response.data;
   },
   async fetchTodoItemById(id: string): Promise<ITodoListItem> {
     const response = await axios( {
       url: `http://localhost:4200/list/${id}`,
       method: 'GET',
     });
-    return transformTodoListItem(response.data);
+    return response.data;
   },
   async createItem(data: ITodoListItemCreateDto): Promise<ITodoListItem> {
     const result = await axios({
@@ -26,7 +25,7 @@ export const todoListService = {
         'Content-Type': 'application/json',
       },
     });
-    return transformTodoListItem(result.data);
+    return result.data;
   },
   async deleteItem(id: string): Promise<string> {
     await axios( {
@@ -47,6 +46,6 @@ export const todoListService = {
       method: 'PUT',
       data,
     });
-    return transformTodoListItem(result.data);
+    return result.data;
   },
 };
