@@ -131,10 +131,11 @@ export interface ITodoListItem {
   id: string,
   title: string,
   description: string,
-  createdDate: Date,
-  updatedDate: Date,
   isComplete: boolean,
   isFavorite: boolean,
+  createdAt: Date,
+  updatedAt: Date,
+  author: any,
 }
 
 export interface ITodoListItemCreateDto {

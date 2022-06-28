@@ -75,7 +75,7 @@ const AppCard: FC = (): ReactElement => {
                 </Typography>
 
                 <Typography variant={'caption'}>
-                  {currentItem.createdDate}
+                  {currentItem.createdAt}
                 </Typography>
               </Stack>
 
@@ -85,7 +85,7 @@ const AppCard: FC = (): ReactElement => {
                 </Typography>
 
                 <Typography variant={'caption'}>
-                  {currentItem.updatedDate}
+                  {currentItem.updatedAt}
                 </Typography>
               </Stack>
             </CardContent>

@@ -1,24 +1,24 @@
-import axios from 'axios';
+import { API } from '../../utils';
 import {ITodoListItem, ITodoListItemCreateDto} from '../reducers/todoListSlice';
 
 export const todoListService = {
   async fetchAllItems(): Promise<Array<ITodoListItem>> {
-    const response = await axios( {
-      url: 'http://localhost:4200/list',
+    const response = await API( {
+      url: '/list',
       method: 'GET',
     });
     return response.data;
   },
   async fetchTodoItemById(id: string): Promise<ITodoListItem> {
-    const response = await axios( {
-      url: `http://localhost:4200/list/${id}`,
+    const response = await API( {
+      url: `/list/${id}`,
       method: 'GET',
     });
     return response.data;
   },
   async createItem(data: ITodoListItemCreateDto): Promise<ITodoListItem> {
-    const result = await axios({
-      url: 'http://localhost:4200/list',
+    const result = await API({
+      url: '/list',
       method: 'POST',
       data,
       headers: {
@@ -28,21 +28,21 @@ export const todoListService = {
     return result.data;
   },
   async deleteItem(id: string): Promise<string> {
-    await axios( {
-      url: `http://localhost:4200/list/${id}`,
+    await API( {
+      url: `/list/${id}`,
       method: 'DELETE',
     });
     return id;
   },
   async deleteAllItems(): Promise<void> {
-    await axios({
-      url: 'http://localhost:4200/list',
+    await API({
+      url: '/list',
       method: 'DELETE',
     });
   },
   async toggleStateItem(data: ITodoListItem): Promise<ITodoListItem> {
-    const result = await axios( {
-      url: `http://localhost:4200/list/${data.id}`,
+    const result = await API( {
+      url: `/list/${data.id}`,
       method: 'PUT',
       data,
     });

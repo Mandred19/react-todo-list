@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
-import axios from 'axios';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CssBaseline, ThemeProvider } from '@mui/material';
@@ -21,8 +20,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-axios.defaults.baseURL = process.env.NODE_ENV === 'production'
-  ? `` : 'http://localhost:4200/';
 
 reportWebVitals();
