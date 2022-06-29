@@ -2,6 +2,17 @@ import { API } from '../../utils';
 import {ITodoListItem, ITodoListItemCreateDto} from '../reducers/todoListSlice';
 
 export const todoListService = {
+  async createItem(data: ITodoListItemCreateDto): Promise<ITodoListItem> {
+    const result = await API({
+      url: '/list',
+      method: 'POST',
+      data,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return result.data;
+  },
   async fetchAllItems(): Promise<Array<ITodoListItem>> {
     const response = await API( {
       url: '/list',
@@ -15,17 +26,6 @@ export const todoListService = {
       method: 'GET',
     });
     return response.data;
-  },
-  async createItem(data: ITodoListItemCreateDto): Promise<ITodoListItem> {
-    const result = await API({
-      url: '/list',
-      method: 'POST',
-      data,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    return result.data;
   },
   async deleteItem(id: string): Promise<string> {
     await API( {
