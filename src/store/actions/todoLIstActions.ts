@@ -2,6 +2,18 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { todoListService } from '../services/todoListService';
 import {ITodoListItem, ITodoListItemCreateDto} from '../reducers/todoListSlice';
 
+export const createTodoListItem = createAsyncThunk(
+  'todoList/createTodoListItem',
+  async (data: ITodoListItemCreateDto, thunkApi): Promise<ITodoListItem> => {
+    try {
+      return todoListService.createItem(data);
+    } catch (error) {
+      thunkApi.rejectWithValue(error);
+      return Promise.reject(error);
+    }
+  }
+);
+
 export const fetchTodoList = createAsyncThunk(
   'todoList/fetchTodoList',
   async (_, thunkApi): Promise<Array<ITodoListItem>> => {
@@ -19,18 +31,6 @@ export const fetchTodoItemById = createAsyncThunk(
   async (id: string, thunkApi): Promise<ITodoListItem> => {
     try {
       return todoListService.fetchTodoItemById(id);
-    } catch (error) {
-      thunkApi.rejectWithValue(error);
-      return Promise.reject(error);
-    }
-  }
-);
-
-export const createTodoListItem = createAsyncThunk(
-  'todoList/createTodoListItem',
-  async (data: ITodoListItemCreateDto, thunkApi): Promise<ITodoListItem> => {
-    try {
-      return todoListService.createItem(data);
     } catch (error) {
       thunkApi.rejectWithValue(error);
       return Promise.reject(error);

@@ -7,6 +7,7 @@ import {
   toggleCompleteTodoListItem,
   toggleFavoriteTodoListItem,
 } from '../actions/todoLIstActions';
+import { UserEntity } from './userSlice';
 
 export interface ITodoListSlice {
   todoList: Array<ITodoListItem>,
@@ -27,33 +28,6 @@ export const todoListSlice: Slice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    /** GET ALL ITEMS */
-    [fetchTodoList.pending.type]: (state) => {
-      state.pending = true;
-    },
-    [fetchTodoList.fulfilled.type]: (state, action: PayloadAction<Array<ITodoListItem>>) => {
-      state.todoList = action.payload;
-      state.pending = false;
-    },
-    [fetchTodoList.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
-      state.pending = false;
-    },
-
-    /** GET ITEM BY ID */
-    [fetchTodoItemById.pending.type]: (state) => {
-      state.pending = true;
-    },
-    [fetchTodoItemById.fulfilled.type]: (state, action: PayloadAction<ITodoListItem>) => {
-      state.currentItem = action.payload;
-      state.pending = false;
-    },
-    [fetchTodoItemById.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
-      state.pending = false;
-    },
-
-    /** CREATE ITEM */
     [createTodoListItem.pending.type]: (state) => {
       state.pending = true;
     },
@@ -66,9 +40,30 @@ export const todoListSlice: Slice = createSlice({
       state.pending = false;
     },
 
-    /** UPDATE ITEM */
+    [fetchTodoList.pending.type]: (state) => {
+      state.pending = true;
+    },
+    [fetchTodoList.fulfilled.type]: (state, action: PayloadAction<Array<ITodoListItem>>) => {
+      state.todoList = action.payload;
+      state.pending = false;
+    },
+    [fetchTodoList.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+      state.pending = false;
+    },
 
-    /** DELETE ITEM */
+    [fetchTodoItemById.pending.type]: (state) => {
+      state.pending = true;
+    },
+    [fetchTodoItemById.fulfilled.type]: (state, action: PayloadAction<ITodoListItem>) => {
+      state.currentItem = action.payload;
+      state.pending = false;
+    },
+    [fetchTodoItemById.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+      state.pending = false;
+    },
+
     [deleteTodoListItem.pending.type]: (state) => {
       state.pending = true;
     },
@@ -82,7 +77,6 @@ export const todoListSlice: Slice = createSlice({
       state.pending = false;
     },
 
-    /** DELETE ALL ITEMS */
     [deleteAllTodoListItems.pending.type]: (state) => {
       state.pending = true;
     },
@@ -95,7 +89,6 @@ export const todoListSlice: Slice = createSlice({
       state.pending = false;
     },
 
-    /** TOGGLE FAVORITE ITEM */
     [toggleFavoriteTodoListItem.pending.type]: (state) => {
       state.pending = true;
     },
@@ -109,7 +102,6 @@ export const todoListSlice: Slice = createSlice({
       state.pending = false;
     },
 
-    /** TOGGLE COMPLETE ITEM */
     [toggleCompleteTodoListItem.pending.type]: (state) => {
       state.pending = true;
     },
@@ -135,7 +127,7 @@ export interface ITodoListItem {
   isFavorite: boolean,
   createdAt: Date,
   updatedAt: Date,
-  author: any,
+  author: UserEntity,
 }
 
 export interface ITodoListItemCreateDto {
