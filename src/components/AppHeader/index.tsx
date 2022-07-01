@@ -1,6 +1,7 @@
 import React, {FC, ReactElement} from 'react';
 import { Container, Stack, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { APP_NAME } from '../../utils';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appHeaderWrapper: {
@@ -20,7 +21,7 @@ const AppHeader: FC = (): ReactElement => {
       <Container maxWidth={'xl'}>
         <Stack direction={'row'} spacing={2} alignItems={'center'} justifyContent={'space-between'} className={classes.appHeader}>
           <Typography variant={'h4'}>
-            TODO list
+            {APP_NAME}
           </Typography>
         </Stack>
       </Container>
