@@ -18,7 +18,7 @@ const AppHeader: FC = (): ReactElement => {
   return (
     <Stack className={classes.appHeaderWrapper}>
       <Container maxWidth={'xl'}>
-        <Stack direction={'row'} spacing={2} className={classes.appHeader}>
+        <Stack direction={'row'} spacing={2} alignItems={'center'} justifyContent={'space-between'} className={classes.appHeader}>
           <Typography variant={'h4'}>
             TODO list
           </Typography>

@@ -1,9 +1,10 @@
 import React, {FC, ReactElement} from 'react';
 import { Container, Stack } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import AppHeader from './components/AppHeader';
+// import AppHeader from './components/AppHeader';
 import { BrowserRouter } from 'react-router-dom';
-import Router from './screens/Router';
+// import ProtectedRouter from './screens/Router/ProtectedRouter';
+import PublicRouter from './screens/Router/PublicRouter';
 
 const useStyles = makeStyles({
   appWrapper: {
@@ -25,11 +26,17 @@ const App: FC = (): ReactElement => {
 
   return (
     <BrowserRouter>
-      <Stack direction={'column'} className={classes.appWrapper}>
-        <AppHeader />
+      {/*<Stack direction={'column'} className={classes.appWrapper}>*/}
+      {/*  <AppHeader />*/}
 
+      {/*  <Container maxWidth={'xl'} className={classes.container}>*/}
+      {/*    <ProtectedRouter />*/}
+      {/*  </Container>*/}
+      {/*</Stack>*/}
+
+      <Stack direction={'column'} className={classes.appWrapper}>
         <Container maxWidth={'xl'} className={classes.container}>
-          <Router />
+          <PublicRouter />
         </Container>
       </Stack>
 
