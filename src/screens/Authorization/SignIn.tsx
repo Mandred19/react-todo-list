@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useEffect, useState } from 'react';
+import React, { FC, ReactElement, useState } from 'react';
 import AuthorizationField from './AuthorizationField';
 import { IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
@@ -36,11 +36,9 @@ const SignIn: FC<Props> = ({ isSignInRoute }: Props): ReactElement => {
     initialValues,
     validationSchema,
     onSubmit: handleSubmit,
+    validateOnBlur: true,
   });
-
-  useEffect(() => {
-    formik.resetForm();
-  }, [isSignInRoute]);
+  const { touched, dirty, errors, getFieldProps } = formik;
 
   return (
     <AuthorizationForm submitHandler={formik.handleSubmit}>
@@ -48,9 +46,9 @@ const SignIn: FC<Props> = ({ isSignInRoute }: Props): ReactElement => {
       label={'Email'}
       type={'email'}
       autoFocus={isSignInRoute}
-      helperText={formik.touched.email && formik.errors.email}
-      error={formik.touched.email && Boolean(formik.errors.email)}
-      {...formik.getFieldProps('email')}/>
+      helperText={touched.email && dirty && errors.email}
+      error={touched.email && dirty && Boolean(errors.email)}
+      {...getFieldProps('email')}/>
 
       <AuthorizationField
       label={'Password'}
@@ -64,9 +62,9 @@ const SignIn: FC<Props> = ({ isSignInRoute }: Props): ReactElement => {
           </InputAdornment>
         ),
       }}
-      helperText={formik.touched.password && formik.errors.password}
-      error={formik.touched.password && Boolean(formik.errors.password)}
-      {...formik.getFieldProps('password')}/>
+      helperText={touched.password && dirty && errors.password}
+      error={touched.password && dirty && Boolean(errors.password)}
+      {...getFieldProps('password')}/>
 
       <AuthorizationControls isSignInRoute={isSignInRoute}/>
     </AuthorizationForm>

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useEffect, useState } from 'react';
+import React, { FC, ReactElement, useState } from 'react';
 import { object, string } from 'yup';
 import { FormikHelpers, useFormik } from 'formik';
 import AuthorizationForm from './AuthorizationForm';
@@ -38,11 +38,9 @@ const SignUp: FC<Props> = ({ isSignInRoute }: Props): ReactElement => {
     initialValues,
     validationSchema,
     onSubmit: handleSubmit,
+    validateOnBlur: true,
   });
-
-  useEffect(() => {
-    formik.resetForm();
-  }, [isSignInRoute]);
+  const { touched, dirty, errors, getFieldProps } = formik;
 
   return (
     <AuthorizationForm submitHandler={formik.handleSubmit}>
@@ -50,17 +48,17 @@ const SignUp: FC<Props> = ({ isSignInRoute }: Props): ReactElement => {
       label={'Name'}
       type={'text'}
       autoFocus={true}
-      helperText={formik.touched.name && formik.errors.name}
-      error={formik.touched.name && Boolean(formik.errors.name)}
-      {...formik.getFieldProps('name')}/>
+      helperText={touched.name && dirty && errors.name}
+      error={touched.name && dirty && Boolean(errors.name)}
+      {...getFieldProps('name')}/>
 
       <AuthorizationField
       label={'Email'}
       type={'email'}
       autoFocus={isSignInRoute}
-      helperText={formik.touched.email && formik.errors.email}
-      error={formik.touched.email && Boolean(formik.errors.email)}
-      {...formik.getFieldProps('email')}/>
+      helperText={touched.email && dirty && errors.email}
+      error={touched.email && dirty && Boolean(errors.email)}
+      {...getFieldProps('email')}/>
 
       <AuthorizationField
       label={'Password'}
@@ -74,9 +72,9 @@ const SignUp: FC<Props> = ({ isSignInRoute }: Props): ReactElement => {
           </InputAdornment>
         ),
       }}
-      helperText={formik.touched.password && formik.errors.password}
-      error={formik.touched.password && Boolean(formik.errors.password)}
-      {...formik.getFieldProps('password')}/>
+      helperText={touched.password && dirty && errors.password}
+      error={touched.password && dirty && Boolean(errors.password)}
+      {...getFieldProps('password')}/>
 
       <AuthorizationControls isSignInRoute={isSignInRoute}/>
     </AuthorizationForm>
