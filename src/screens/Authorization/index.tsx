@@ -1,16 +1,16 @@
-import React, { FC, ReactElement, useMemo } from 'react';
+import React, { FC, ReactElement } from 'react';
 import {
   Box,
   Stack,
   Theme,
   Typography
 } from '@mui/material';
-import { useLocation } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { betweenChildrenMixin, breakpointMixin, flexLayoutMixin } from '../../styles/mixins';
 import { APP_NAME } from '../../utils';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import { useAuthRouteCondition } from './useAuthRouteCondition';
 
 const useStyles = makeStyles((theme: Theme) => ({
   formWrapper: {
@@ -34,8 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Authorization: FC = (): ReactElement => {
   const classes = useStyles();
-  const { pathname } = useLocation();
-  const isSignInRoute = useMemo(() => pathname === '/sign-in', [pathname]);
+  const isSignInRoute = useAuthRouteCondition();
 
   return (
     <Stack direction={'column'} alignItems={'center'} justifyContent={'center'} height={'100%'}>
@@ -45,7 +44,7 @@ const Authorization: FC = (): ReactElement => {
         <Typography variant={'h5'}>{isSignInRoute ? 'Sign In' : 'Sign Up'}</Typography>
 
         {
-          isSignInRoute ? <SignIn isSignInRoute={isSignInRoute}/> : <SignUp isSignInRoute={isSignInRoute}/>
+          isSignInRoute ? <SignIn/> : <SignUp/>
         }
       </Box>
     </Stack>

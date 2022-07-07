@@ -1,8 +1,11 @@
 import React, { FC, ReactElement } from 'react';
 import { Button, Grid, Link } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import { useAuthRouteCondition } from './useAuthRouteCondition';
 
-const AuthorizationControls: FC<Props> = ({ isSignInRoute }: Props): ReactElement => {
+const AuthorizationControls: FC = (): ReactElement => {
+  const isSignInRoute = useAuthRouteCondition();
+
   return (
     <>
       <Button type={'submit'} fullWidth variant={'contained'} size={'large'} color={'primary'}>
@@ -29,7 +32,3 @@ const AuthorizationControls: FC<Props> = ({ isSignInRoute }: Props): ReactElemen
 };
 
 export default AuthorizationControls;
-
-interface Props {
-  isSignInRoute: boolean;
-}

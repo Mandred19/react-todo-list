@@ -6,6 +6,7 @@ import AuthorizationControls from './AuthorizationControls';
 import AuthorizationForm from './AuthorizationForm';
 import { FormikHelpers, useFormik } from 'formik';
 import { object, string } from 'yup';
+import { useAuthRouteCondition } from './useAuthRouteCondition';
 
 const initialValues: InitialValues = {
   email: '',
@@ -17,10 +18,11 @@ const validationSchema = object().shape({
   password: string().required('Password is required').min(8, 'Min length error').max(36, 'Max length error'),
 });
 
-const SignIn: FC<Props> = ({ isSignInRoute }: Props): ReactElement => {
+const SignIn: FC = (): ReactElement => {
   const [stateValues, setStateValues] = useState<State>({
     showPassword: false,
   });
+  const isSignInRoute = useAuthRouteCondition();
 
   const handleShowPassword = () => {
     setStateValues({ ...stateValues, showPassword: !stateValues.showPassword });
@@ -66,7 +68,7 @@ const SignIn: FC<Props> = ({ isSignInRoute }: Props): ReactElement => {
       error={touched.password && dirty && Boolean(errors.password)}
       {...getFieldProps('password')}/>
 
-      <AuthorizationControls isSignInRoute={isSignInRoute}/>
+      <AuthorizationControls/>
     </AuthorizationForm>
   );
 };
@@ -80,8 +82,4 @@ interface InitialValues {
 
 interface State {
   showPassword: boolean;
-}
-
-interface Props {
-  isSignInRoute: boolean;
 }

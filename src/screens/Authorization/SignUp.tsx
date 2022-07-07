@@ -6,6 +6,7 @@ import AuthorizationField from './AuthorizationField';
 import { IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import AuthorizationControls from './AuthorizationControls';
+import { useAuthRouteCondition } from './useAuthRouteCondition';
 
 const initialValues: InitialValues = {
   name: '',
@@ -19,10 +20,11 @@ const validationSchema = object().shape({
   password: string().required('Password is required').min(8, 'Min length error').max(36, 'Max length error'),
 });
 
-const SignUp: FC<Props> = ({ isSignInRoute }: Props): ReactElement => {
+const SignUp: FC = (): ReactElement => {
   const [stateValues, setStateValues] = useState<State>({
     showPassword: false,
   });
+  const isSignInRoute = useAuthRouteCondition();
 
   const handleShowPassword = () => {
     setStateValues({ ...stateValues, showPassword: !stateValues.showPassword });
@@ -76,7 +78,7 @@ const SignUp: FC<Props> = ({ isSignInRoute }: Props): ReactElement => {
       error={touched.password && dirty && Boolean(errors.password)}
       {...getFieldProps('password')}/>
 
-      <AuthorizationControls isSignInRoute={isSignInRoute}/>
+      <AuthorizationControls/>
     </AuthorizationForm>
   );
 };
@@ -91,8 +93,4 @@ interface InitialValues {
 
 interface State {
   showPassword: boolean;
-}
-
-interface Props {
-  isSignInRoute: boolean;
 }
