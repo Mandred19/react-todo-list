@@ -14,17 +14,12 @@ import EditIcon from '@mui/icons-material/Edit';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { ITodoListItem } from '../../../../store/reducers/todoListSlice';
-import {
-  toggleCompleteTodoListItem,
-  toggleFavoriteTodoListItem,
-} from '../../../../store/actions/todoLIstActions';
-import { useAppDispatch } from '../../../../store/hooks';
 import useModalVisibility from '../../../../hooks/useModalVisibility';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { breakpointMixin } from '../../../../styles/mixins';
+import { ITodoListItem } from '../../../../store/types/todoList.types';
 
 const useStyles = makeStyles(() => ({
   // TODO fix styles without !important
@@ -40,7 +35,6 @@ const useStyles = makeStyles(() => ({
 
 const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentListCardProps): ReactElement => {
   const classes = useStyles();
-  const dispatch = useAppDispatch();
   const {id, isComplete, isFavorite, title, pending} = props;
   const navigate = useNavigate();
   const [checked, setChecked] = useState<Array<ITodoListItem>>([]);
@@ -65,10 +59,10 @@ const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentList
         console.warn('Open modal and edit', payload);
         break;
       case 'setComplete':
-        dispatch(toggleCompleteTodoListItem(payload));
+        // dispatch(toggleCompleteTodoListItem(payload));
         break;
       case 'setFavorite':
-        dispatch(toggleFavoriteTodoListItem(payload));
+        // dispatch(toggleFavoriteTodoListItem(payload));
         break;
       case 'delete':
         setDeletedItemId(payload.id);

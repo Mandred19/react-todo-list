@@ -1,15 +1,12 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import { Slice } from '@reduxjs/toolkit/src/createSlice';
-import { createUser, deleteUser, fetchUser } from '../actions/userActions';
+import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
+import { SignInResponseDto, UserEntity } from '../types/user.types';
+import { signIn, signUp } from '../actions/user.action';
 
-export interface UserSlice {
-  currentUser: UserEntity | null,
-  pending: boolean,
-  error: string,
-}
-
-const initialState: UserSlice = {
-  currentUser: null,
+const initialState: InitialState = {
+  user: null,
+  accessToken: '',
+  // refreshToken: '',
+  // expiresIn: '',
   pending: false,
   error: '',
 };
@@ -19,38 +16,28 @@ export const userSlice: Slice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [createUser.pending.type]: (state) => {
+    [signUp.pending.type]: (state) => {
       state.pending = true;
     },
-    [createUser.fulfilled.type]: (state, action: PayloadAction<UserEntity>) => {
-      state.currentUser = action.payload;
+    [signUp.fulfilled.type]: (state, action: PayloadAction<UserEntity>) => {
+      state.user = action.payload;
+      // state.accessToken = action.payload.accessToken; // TODO Сделать обработку accessToken при создании пользователя
       state.pending = false;
     },
-    [createUser.rejected.type]: (state, action: PayloadAction<string>) => {
+    [signUp.rejected.type]: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
       state.pending = false;
     },
 
-    [fetchUser.pending.type]: (state) => {
+    [signIn.pending.type]: (state) => {
       state.pending = true;
     },
-    [fetchUser.fulfilled.type]: (state, action: PayloadAction<UserEntity>) => {
-      state.currentUser = action.payload;
+    [signIn.fulfilled.type]: (state, action: PayloadAction<SignInResponseDto>) => {
+      state.user = action.payload.payload;
+      state.accessToken = action.payload.accessToken;
       state.pending = false;
     },
-    [fetchUser.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
-      state.pending = false;
-    },
-
-    [deleteUser.pending.type]: (state) => {
-      state.pending = true;
-    },
-    [deleteUser.fulfilled.type]: (state) => {
-      state.currentUser = null;
-      state.pending = false;
-    },
-    [deleteUser.rejected.type]: (state, action: PayloadAction<string>) => {
+    [signIn.rejected.type]: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
       state.pending = false;
     },
@@ -59,18 +46,11 @@ export const userSlice: Slice = createSlice({
 
 export default userSlice.reducer;
 
-export interface UserEntity {
-  id: string,
-  name: string,
-  email: string,
-  avatar: string,
-  createdAt: Date,
-  updatedAt: Date,
-}
-
-export interface UserEntityCreateDto {
-  name: string,
-  email: string,
-  password: string,
-  avatar: string,
+interface InitialState {
+  user: UserEntity | null,
+  accessToken: string,
+  // refreshToken: string,
+  // expiresIn: string,
+  pending: boolean,
+  error: string,
 }

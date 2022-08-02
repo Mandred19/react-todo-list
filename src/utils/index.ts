@@ -1,8 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
+import { API_VERSION } from './constants';
 
-export const APP_NAME = 'TODO list';
-
-const API_VERSION = 'api/v1';
 export const API: AxiosInstance = axios.create({
   baseURL: process.env.NODE_ENV === 'production' ? `http://localhost:7200/${API_VERSION}` : `http://localhost:5000/${API_VERSION}`,
 });

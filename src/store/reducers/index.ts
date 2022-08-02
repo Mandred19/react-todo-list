@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import todoListSlice from './todoListSlice';
+import { commonService } from '../services';
 import userSlice from './userSlice';
 
 export const rootReducer = combineReducers({
-  todoListSlice,
+  [commonService.reducerPath]: commonService.reducer,
   userSlice,
 });

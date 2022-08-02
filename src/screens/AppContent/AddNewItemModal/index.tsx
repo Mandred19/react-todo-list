@@ -9,23 +9,23 @@ import { inputChangeEventType, inputChangeHandler } from '../../../utils/inputCh
 import AppModal from '../../../components/AppModal';
 import { IUseModalVisibility } from '../../../hooks/useModalVisibility';
 import { switchChangeEventType, switchChangeHandler } from '../../../utils/switchChangeHandler';
-import { createTodoListItem } from '../../../store/actions/todoLIstActions';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { useAppDispatch } from '../../../store/hooks';
+import { useFetchAllItemsQuery } from '../../../store/services/todoList.service';
 
 const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisibility}): ReactElement => {
   const dispatch = useAppDispatch();
-  const {isPending} = useAppSelector((state) => state.todoListSlice);
+  const { isFetching: isPending } = useFetchAllItemsQuery();
 
   const [itemTitle, setItemTitle] = useState<string>('');
   const [itemDescription, setItemDescription] = useState<string>('');
   const [itemIsFavorite, setItemIsFavorite] = useState<boolean>(false);
 
   const submitHandler = async (): Promise<void> => {
-    await dispatch(createTodoListItem({
-      title: itemTitle,
-      description: itemDescription,
-      isFavorite: itemIsFavorite,
-    }));
+    // await dispatch(createTodoListItem({
+    //   title: itemTitle,
+    //   description: itemDescription,
+    //   isFavorite: itemIsFavorite,
+    // }));
 
     await resetForm();
   };

@@ -4,7 +4,7 @@ import AppContentHeader from './AppContentHeader';
 import AppContentList from './AppContentList';
 import AppContentFooter from './AppContentFooter';
 import { makeStyles } from '@mui/styles';
-import {useAppSelector} from '../../store/hooks';
+import { useFetchAllItemsQuery } from '../../store/services/todoList.service';
 
 const useStyles = makeStyles({
   appContent: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 
 const AppContent: FC = (): ReactElement => {
   const classes = useStyles();
-  const { todoList } = useAppSelector((state) => state.todoListSlice);
+  const { data: todoList = [] } = useFetchAllItemsQuery();
 
   return (
     <Stack direction={'column'} className={classes.appContent}>

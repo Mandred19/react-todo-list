@@ -3,12 +3,13 @@ import { Button, Grid, Link } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { useAuthRouteCondition } from './useAuthRouteCondition';
 
-const AuthorizationControls: FC = (): ReactElement => {
+const AuthorizationControls: FC<Props> = (props: Props): ReactElement => {
   const isSignInRoute = useAuthRouteCondition();
+  const { isFetching } = props;
 
   return (
     <>
-      <Button type={'submit'} fullWidth variant={'contained'} size={'large'} color={'primary'}>
+      <Button type={'submit'} fullWidth variant={'contained'} size={'large'} color={'primary'} disabled={isFetching}>
         {isSignInRoute ? 'Sign In' : 'Sign Up'}
       </Button>
 
@@ -32,3 +33,7 @@ const AuthorizationControls: FC = (): ReactElement => {
 };
 
 export default AuthorizationControls;
+
+interface Props {
+  isFetching: boolean;
+}

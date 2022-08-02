@@ -7,10 +7,10 @@ import {
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { betweenChildrenMixin, breakpointMixin, flexLayoutMixin } from '../../styles/mixins';
-import { APP_NAME } from '../../utils';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import { useAuthRouteCondition } from './useAuthRouteCondition';
+import { APP_NAME } from '../../utils/constants';
 
 const useStyles = makeStyles((theme: Theme) => ({
   formWrapper: {

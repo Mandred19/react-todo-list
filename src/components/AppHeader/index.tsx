@@ -1,7 +1,7 @@
 import React, {FC, ReactElement} from 'react';
 import { Container, Stack, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { APP_NAME } from '../../utils';
+import { APP_NAME } from '../../utils/constants';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appHeaderWrapper: {
