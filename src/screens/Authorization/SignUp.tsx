@@ -29,7 +29,7 @@ const SignUp: FC = (): ReactElement => {
   });
   const isSignInRoute = useAuthRouteCondition();
   const dispatch = useAppDispatch();
-  const { pending: isFetching, error } = useAppSelector((state) => state.userSlice);
+  const { isFetching, error } = useAppSelector((state) => state.userSlice);
 
   const handleShowPassword = () => {
     setStateValues({ ...stateValues, showPassword: !stateValues.showPassword });

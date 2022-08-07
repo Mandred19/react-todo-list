@@ -10,6 +10,7 @@ import { useAuthRouteCondition } from './useAuthRouteCondition';
 import { SignInRequestDto } from '../../store/types/user.types';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { signIn } from '../../store/actions/user.action';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues: SignInRequestDto = {
   email: '',
@@ -27,17 +28,17 @@ const SignIn: FC = (): ReactElement => {
   });
   const isSignInRoute = useAuthRouteCondition();
   const dispatch = useAppDispatch();
-  const { pending: isFetching, error } = useAppSelector((state) => state.userSlice);
+  const { isFetching, error } = useAppSelector((state) => state.userSlice);
+  const navigate = useNavigate();
 
   const handleShowPassword = () => {
     setStateValues({ ...stateValues, showPassword: !stateValues.showPassword });
   };
 
   const handleSubmit = async (values: SignInRequestDto, formikHelpers: FormikHelpers<SignInRequestDto>): Promise<void> => {
-    const response = await dispatch(signIn(values));
-    // eslint-disable-next-line no-console
-    console.log(111, response);
+    await dispatch(signIn(values));
     formikHelpers.setSubmitting(false);
+    navigate('list');
     return Promise.resolve();
   };
 

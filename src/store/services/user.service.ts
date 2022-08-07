@@ -38,27 +38,4 @@ export const {
 } = userService;
 */
 
-import { UserEntity, UserEntityCreateDto } from '../types/user.types';
-import { API } from '../../utils';
-import { BASE_URL } from '../../utils/constants';
-
-export const userService = {
-  async signUp(data: UserEntityCreateDto): Promise<UserEntity> {
-    const result = await API({
-      url: `${BASE_URL}/users`,
-      method: 'POST',
-      data,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    return result.data;
-  },
-  async signIn(id: string): Promise<UserEntity> {
-    const response = await API( {
-      url: `/users/${id}`,
-      method: 'GET',
-    });
-    return response.data;
-  },
-};
+export default {};
