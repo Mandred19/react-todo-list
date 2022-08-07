@@ -2,6 +2,7 @@ import React, {FC, ReactElement} from 'react';
 import { Container, Stack, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { APP_NAME } from '../../utils/constants';
+import Logout from '../Logout';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appHeaderWrapper: {
@@ -23,6 +24,8 @@ const AppHeader: FC = (): ReactElement => {
           <Typography variant={'h4'}>
             {APP_NAME}
           </Typography>
+
+          <Logout variant={'iconButton'}/>
         </Stack>
       </Container>
     </Stack>
