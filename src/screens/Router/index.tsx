@@ -1,7 +1,6 @@
 import React, { FC, ReactElement, useEffect } from 'react';
 import { Container, Stack } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { autoLogin } from '../../store/actions/user.action';
 import AppHeader from '../../components/AppHeader';
@@ -23,15 +22,10 @@ const useStyles = makeStyles({
 const Router: FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const { isAuth } = useAppSelector((state) => state.userSlice);
 
   useEffect(() => {
     dispatch(autoLogin());
-
-    if (isAuth) {
-      navigate('list');
-    }
   }, []);
 
   return (
