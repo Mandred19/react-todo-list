@@ -3,6 +3,7 @@ import { Container, Stack, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { APP_NAME } from '../../utils/constants';
 import Logout from '../Logout';
+import UserInfoButton from './UserInfoButton';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appHeaderWrapper: {
@@ -25,7 +26,11 @@ const AppHeader: FC = (): ReactElement => {
             {APP_NAME}
           </Typography>
 
-          <Logout variant={'iconButton'}/>
+          <Stack direction={'row'} spacing={2} alignItems={'center'} justifyContent={'start'}>
+            <UserInfoButton/>
+
+            <Logout variant={'iconButton'}/>
+          </Stack>
         </Stack>
       </Container>
     </Stack>
