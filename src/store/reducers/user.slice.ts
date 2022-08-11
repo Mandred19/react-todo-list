@@ -81,5 +81,3 @@ export const userSlice: Slice = createSlice({
 });
 
 export default userSlice.reducer;
-
-// export const { logout } = userSlice.actions;
