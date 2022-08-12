@@ -9,12 +9,11 @@ import { inputChangeEventType, inputChangeHandler } from '../../../utils/inputCh
 import AppModal from '../../../components/AppModal';
 import { IUseModalVisibility } from '../../../hooks/useModalVisibility';
 import { switchChangeEventType, switchChangeHandler } from '../../../utils/switchChangeHandler';
-import { useAppDispatch } from '../../../store/hooks';
-import { useFetchAllItemsQuery } from '../../../store/services/todoList.service';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 
 const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisibility}): ReactElement => {
   const dispatch = useAppDispatch();
-  const { isFetching: isPending } = useFetchAllItemsQuery();
+  const { isFetching: isPending } = useAppSelector((state) => state.todoListSlice);
 
   const [itemTitle, setItemTitle] = useState<string>('');
   const [itemDescription, setItemDescription] = useState<string>('');

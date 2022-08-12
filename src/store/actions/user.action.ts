@@ -10,15 +10,10 @@ export const signIn = createAsyncThunk(
         url: `/auth/sign-in`,
         method: 'POST',
         data,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-        },
       });
       
-      const { accessToken } = response.data;
-
-      if (accessToken) {
-        localStorage.setItem('accessToken', accessToken);
+      if (response.data.accessToken) {
+        localStorage.setItem('accessToken', response.data.accessToken);
       }
 
       return response.data;
@@ -40,9 +35,6 @@ export const autoLogin = createAsyncThunk(
           url: `/auth/auto-login`,
           method: 'POST',
           data: { accessToken },
-          headers: {
-            'Content-Type': 'application/json;charset=UTF-8',
-          },
         });
 
         return {
@@ -69,9 +61,6 @@ export const signUp = createAsyncThunk(
         url: `/users`,
         method: 'POST',
         data,
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-        },
       });
 
       return result.data;

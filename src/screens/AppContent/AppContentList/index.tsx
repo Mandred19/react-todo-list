@@ -1,11 +1,17 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, useEffect } from 'react';
 import { List, Stack, Typography } from '@mui/material';
 import AppContentListItem from './AppContentListItem';
-import { useFetchAllItemsQuery } from '../../../store/services/todoList.service';
 import { ITodoListItem } from '../../../store/types/todoList.types';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { fetchTodoList } from '../../../store/actions/todoList.action';
 
 const AppContentList: FC = (): ReactElement => {
-  const { data: todoList = [], isFetching: pending } = useFetchAllItemsQuery();
+  const dispatch = useAppDispatch();
+  const { todoList, isFetching: pending } = useAppSelector((state) => state.todoListSlice);
+
+  useEffect(() => {
+    dispatch(fetchTodoList());
+  }, []);
 
   return (
     <>

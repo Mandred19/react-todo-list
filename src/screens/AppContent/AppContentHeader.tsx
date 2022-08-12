@@ -17,7 +17,6 @@ import { inputChangeEventType, inputChangeHandler } from '../../utils/inputChang
 import useModalVisibility from '../../hooks/useModalVisibility';
 import { useAppSelector } from '../../store/hooks';
 import { makeStyles } from '@mui/styles';
-import { useFetchAllItemsQuery } from '../../store/services/todoList.service';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appContentHeader: {
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AppContentHeader: FC = (): ReactElement => {
   const classes = useStyles();
-  const { data: todoList = [] } = useFetchAllItemsQuery();
+  const { todoList } = useAppSelector((state) => state.todoListSlice);
   const [searchValue, setSearchValue] = useState<string>('');
   const {modalVisibility, setModalVisibility} = useModalVisibility();
 

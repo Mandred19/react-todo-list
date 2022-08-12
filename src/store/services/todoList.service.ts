@@ -1,3 +1,4 @@
+/*
 import { ITodoListItem, ITodoListItemCreateDto } from '../types/todoList.types';
 import { commonService } from './index';
 
@@ -51,3 +52,6 @@ export const {
   useDeleteAllItemsMutation,
   useToggleStateItemMutation,
 } = todoListService;
+*/
+
+export default {};

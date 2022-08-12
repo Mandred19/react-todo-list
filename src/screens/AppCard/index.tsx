@@ -1,6 +1,6 @@
 import React, { FC, ReactElement, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAppDispatch } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { Card, CardActions, CardContent, CardHeader, Collapse, IconButton, IconButtonProps, Stack, Tooltip, Typography } from '@mui/material';
 import { makeStyles, styled } from '@mui/styles';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -10,7 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import { useFetchAllItemsQuery, useFetchTodoItemByIdQuery } from '../../store/services/todoList.service';
+import { fetchTodoItemById } from '../../store/actions/todoList.action';
 
 const ExpandMore = styled((props: IExpandMoreProps) => {
   const { expand, ...other } = props;
@@ -35,11 +35,11 @@ const AppCard: FC = (): ReactElement => {
   const navigate = useNavigate();
   const { id: paramsId = '' } = useParams();
   const dispatch = useAppDispatch();
+  const { currentItem, isFetching: pending } = useAppSelector((state) => state.todoListSlice);
   const [expanded, setExpanded] = React.useState(false);
-  const { data: currentItem, isFetching: pending } = useFetchTodoItemByIdQuery(paramsId);
 
   useEffect(() => {
-    // dispatch(fetchTodoItemById(paramsId));
+    dispatch(fetchTodoItemById(paramsId));
   }, [paramsId]);
 
   return (
