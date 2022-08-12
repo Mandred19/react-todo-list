@@ -21,10 +21,10 @@ const UserInfoButton: FC = (): ReactElement => {
   return (
     <Tooltip title={'User info'}>
       <Button
-        onClick={() => navigate('user-info')}
-        variant={'text'}
-        color={'primary'}
-        aria-label={'User info'}>
+      onClick={() => navigate('user-info')}
+      variant={'text'}
+      color={'inherit'}
+      aria-label={'User info'}>
         <Stack direction={'column'} spacing={2} alignItems={'center'} justifyContent={'start'} className={classes.userInfoButtonData}>
           <Typography variant={'subtitle2'}>
             {name}

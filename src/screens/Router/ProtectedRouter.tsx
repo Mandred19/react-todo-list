@@ -9,7 +9,7 @@ const ProtectedRouter: FC = (): ReactElement => {
     <Routes>
       <Route path={'list'} element={<AppContent />} />
       <Route path={'list/:id'} element={<AppCard />} />
-      <Route path={'user-info'} element={UserInfo} />
+      <Route path={'user-info'} element={<UserInfo />} />
       <Route path="*" element={<Navigate to={'list'} replace={true} />} />
     </Routes>
   );
