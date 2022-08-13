@@ -23,23 +23,16 @@ const validationSchema = object().shape({
 });
 
 const SignIn: FC = (): ReactElement => {
-  const [stateValues, setStateValues] = useState<State>({
-    showPassword: false,
-  });
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const isSignInRoute = useAuthRouteCondition();
   const dispatch = useAppDispatch();
   const { isFetching, error } = useAppSelector((state) => state.userSlice);
   const navigate = useNavigate();
 
-  const handleShowPassword = () => {
-    setStateValues({ ...stateValues, showPassword: !stateValues.showPassword });
-  };
-
   const handleSubmit = async (values: SignInRequestDto, formikHelpers: FormikHelpers<SignInRequestDto>): Promise<void> => {
     await dispatch(signIn(values));
     formikHelpers.setSubmitting(false);
     navigate('list');
-    return Promise.resolve();
   };
 
   const formik = useFormik({
@@ -63,12 +56,12 @@ const SignIn: FC = (): ReactElement => {
 
         <AuthorizationField
           label={'Password'}
-          type={stateValues.showPassword ? 'text' : 'password'}
+          type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton aria-label="toggle password visibility" onClick={handleShowPassword}>
-                  {stateValues.showPassword ? <Visibility /> : <VisibilityOff />}
+                <IconButton aria-label="toggle password visibility" onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
             ),
@@ -90,7 +83,3 @@ const SignIn: FC = (): ReactElement => {
 };
 
 export default SignIn;
-
-interface State {
-  showPassword: boolean;
-}

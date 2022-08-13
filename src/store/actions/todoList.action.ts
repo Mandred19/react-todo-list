@@ -6,9 +6,14 @@ export const fetchTodoList = createAsyncThunk(
   'todoList/fetchTodoList',
   async (_, thunkApi): Promise<ITodoListItem[]> => {
     try {
+      const accessToken = localStorage.getItem('accessToken');
+
       const res =  await API({
         url: `/list`,
         method: 'GET',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        }
       });
 
       return res.data;
@@ -23,9 +28,14 @@ export const fetchTodoItemById = createAsyncThunk(
   'todoList/fetchTodoItemById',
   async (id: string, thunkApi): Promise<ITodoListItem> => {
     try {
+      const accessToken = localStorage.getItem('accessToken');
+
       const res = await API({
         url: `/list/${id}`,
         method: 'GET',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        }
       });
 
       return res.data;

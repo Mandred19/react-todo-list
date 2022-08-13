@@ -1,13 +1,10 @@
 import axios, { AxiosInstance } from 'axios';
 import { API_VERSION } from './constants';
 
-const accessToken = localStorage.getItem('accessToken');
-
 export const API: AxiosInstance = axios.create({
   baseURL: process.env.NODE_ENV === 'production' ? `http://localhost:7200/${API_VERSION}` : `http://localhost:5000/${API_VERSION}`,
   headers: {
     'Content-Type': 'application/json;charset=UTF-8',
-    'Authorization': `Bearer ${accessToken}`,
   },
 });
 
