@@ -10,6 +10,7 @@ import AppModal from '../../../components/AppModal';
 import { IUseModalVisibility } from '../../../hooks/useModalVisibility';
 import { switchChangeEventType, switchChangeHandler } from '../../../utils/switchChangeHandler';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { createTodoListItem } from '../../../store/actions/todoList.action';
 
 const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisibility}): ReactElement => {
   const dispatch = useAppDispatch();
@@ -20,11 +21,11 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
   const [itemIsFavorite, setItemIsFavorite] = useState<boolean>(false);
 
   const submitHandler = async (): Promise<void> => {
-    // await dispatch(createTodoListItem({
-    //   title: itemTitle,
-    //   description: itemDescription,
-    //   isFavorite: itemIsFavorite,
-    // }));
+    await dispatch(createTodoListItem({
+      title: itemTitle,
+      description: itemDescription,
+      isFavorite: itemIsFavorite,
+    }));
 
     await resetForm();
   };

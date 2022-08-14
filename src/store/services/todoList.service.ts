@@ -1,4 +1,3 @@
-/*
 import { ITodoListItem, ITodoListItemCreateDto } from '../types/todoList.types';
 import { commonService } from './index';
 
@@ -9,18 +8,6 @@ export const todoListService = commonService.injectEndpoints({
         method: 'POST',
         url: `/list`,
         body: data,
-      }),
-    }),
-    fetchAllItems: builder.query<ITodoListItem[], void>({
-      query: () => ({
-        method: 'GET',
-        url: `/list`,
-      }),
-    }),
-    fetchTodoItemById: builder.query<ITodoListItem, string>({
-      query: (id: string) => ({
-        method: 'GET',
-        url: `/list/${id}`,
       }),
     }),
     deleteItem: builder.mutation<string, string>({
@@ -37,7 +24,7 @@ export const todoListService = commonService.injectEndpoints({
     }),
     toggleStateItem: builder.mutation<ITodoListItem, ITodoListItem>({
       query: (data: ITodoListItem) => ({
-        method: 'PUT',
+        method: 'PATCH',
         url: `/list/${data}`,
       }),
     }),
@@ -46,12 +33,7 @@ export const todoListService = commonService.injectEndpoints({
 
 export const {
   useCreateItemMutation,
-  useFetchAllItemsQuery,
-  useFetchTodoItemByIdQuery,
   useDeleteItemMutation,
   useDeleteAllItemsMutation,
   useToggleStateItemMutation,
 } = todoListService;
-*/
-
-export default {};

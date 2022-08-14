@@ -3,13 +3,14 @@ import {Stack, Typography} from '@mui/material';
 import AppModal from '../../../../components/AppModal';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import {IUseModalVisibility} from '../../../../hooks/useModalVisibility';
+import { deleteTodoListItem } from '../../../../store/actions/todoList.action';
 
 const DeleteConfirmationModal: FC<IDeleteConfirmationModal> = ({modalVisibility, setModalVisibility, currentId}): ReactElement => {
   const dispatch = useAppDispatch();
   const { isFetching: isPending } = useAppSelector((state) => state.todoListSlice);
 
   const submitHandler = async (): Promise<void> => {
-    // await dispatch(deleteTodoListItem(currentId));
+    await dispatch(deleteTodoListItem(currentId));
   };
 
   return (

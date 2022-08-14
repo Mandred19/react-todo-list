@@ -7,7 +7,6 @@ export const commonService = createApi({
     baseUrl: BASE_URL,
     prepareHeaders: headers => {
       headers.set('Content-Type', 'application/json;charset=UTF-8');
-      // headers.set('Authorization', 'anonymous'); // TODO Добавить обработку этого заголовка тут или где-то еще
       return headers;
     },
   }),

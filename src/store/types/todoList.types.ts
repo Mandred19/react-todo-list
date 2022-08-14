@@ -16,3 +16,11 @@ export interface ITodoListItemCreateDto {
   description: string,
   isFavorite: boolean,
 }
+
+export interface ITodoListItemUpdateDto {
+  id: string,
+  title?: string,
+  description?: string,
+  isFavorite?: boolean,
+  isComplete?: boolean,
+}

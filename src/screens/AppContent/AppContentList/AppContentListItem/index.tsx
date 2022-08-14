@@ -19,7 +19,9 @@ import DeleteConfirmationModal from './DeleteConfirmationModal';
 import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { breakpointMixin } from '../../../../styles/mixins';
-import { ITodoListItem } from '../../../../store/types/todoList.types';
+import { ITodoListItem, ITodoListItemUpdateDto } from '../../../../store/types/todoList.types';
+import { toggleStateItem } from '../../../../store/actions/todoList.action';
+import { useAppDispatch } from '../../../../store/hooks';
 
 const useStyles = makeStyles(() => ({
   // TODO fix styles without !important
@@ -37,6 +39,7 @@ const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentList
   const classes = useStyles();
   const {id, isComplete, isFavorite, title, pending} = props;
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [checked, setChecked] = useState<Array<ITodoListItem>>([]);
   const [deletedItemId, setDeletedItemId] = useState<string>('');
   const {modalVisibility, setModalVisibility} = useModalVisibility();
@@ -50,27 +53,13 @@ const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentList
     setChecked(newChecked);
   };
 
-  const iconButtonHandler = (value: IconButtonHandlerValue, payload: ITodoListItem) => {
-    switch (value) {
-      case 'open':
-        navigate(payload.id);
-        break;
-      case 'edit':
-        console.warn('Open modal and edit', payload);
-        break;
-      case 'setComplete':
-        // dispatch(toggleCompleteTodoListItem(payload));
-        break;
-      case 'setFavorite':
-        // dispatch(toggleFavoriteTodoListItem(payload));
-        break;
-      case 'delete':
-        setDeletedItemId(payload.id);
-        setModalVisibility(true);
-        break;
-      default:
-        break;
-    }
+  const changeStateItem = (data: ITodoListItemUpdateDto) => {
+    dispatch(toggleStateItem(data));
+  };
+
+  const prepareDeleteItem = (id: string) => {
+    setDeletedItemId(id);
+    setModalVisibility(true);
   };
 
   return (
@@ -82,7 +71,7 @@ const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentList
             <Tooltip title={'Open'}>
               <span>
                 <IconButton
-                  onClick={() => iconButtonHandler('open', props)}
+                  onClick={() => navigate(`list/${id}`)}
                   color={'default'}
                   disabled={pending}
                   aria-label={'Open'}>
@@ -94,7 +83,7 @@ const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentList
             <Tooltip title={isComplete ? 'Completed item is not editable' : 'Edit'}>
               <span>
                 <IconButton
-                  onClick={() => iconButtonHandler('edit', props)}
+                  onClick={() => console.warn('EDIT', props) }
                   color={'default'}
                   disabled={pending || isComplete}
                   aria-label={isComplete ? 'Completed item is not editable' : 'Edit'}>
@@ -106,7 +95,7 @@ const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentList
             <Tooltip title={'Set as completed'}>
               <span>
                 <IconButton
-                  onClick={() => iconButtonHandler('setComplete', { ...props, isComplete: !isComplete })}
+                  onClick={() => changeStateItem({ id, isComplete: !isComplete })}
                   color={isComplete ? 'info' : 'default'}
                   disabled={pending}
                   aria-label='Set as completed'>
@@ -118,7 +107,7 @@ const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentList
             <Tooltip title={'Set as favorite'}>
               <span>
                 <IconButton
-                  onClick={() => iconButtonHandler('setFavorite', { ...props, isFavorite: !isFavorite })}
+                  onClick={() => changeStateItem({ id, isFavorite: !isFavorite })}
                   color={isFavorite ? 'warning' : 'default'}
                   disabled={pending}
                   aria-label='Set as favorite'>
@@ -130,7 +119,7 @@ const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentList
             <Tooltip title={'Delete'}>
               <span>
                 <IconButton
-                  onClick={() => iconButtonHandler('delete', props)}
+                  onClick={() => prepareDeleteItem(id)}
                   color={'error'}
                   disabled={pending}
                   aria-label='Delete'>
@@ -173,5 +162,3 @@ export default AppContentListItem;
 interface IAppContentListCardProps extends ITodoListItem {
   pending: boolean,
 }
-
-type IconButtonHandlerValue = 'open' | 'edit' | 'setComplete' | 'setFavorite' | 'delete';
