@@ -6,6 +6,8 @@ import { autoLogin } from '../../store/actions/user.action';
 import AppHeader from '../../components/AppHeader';
 import ProtectedRouter from './ProtectedRouter';
 import PublicRouter from './PublicRouter';
+import AppBreadcrumbs from '../../components/AppNavigationButtons';
+import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles({
   appWrapper: {
@@ -22,6 +24,7 @@ const useStyles = makeStyles({
 const Router: FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
+  const { pathname } = useLocation();
   const { isAuth } = useAppSelector((state) => state.userSlice);
 
   useEffect(() => {
@@ -32,6 +35,10 @@ const Router: FC = (): ReactElement => {
     <Stack direction={'column'} className={classes.appWrapper}>
       {
         isAuth && <AppHeader/>
+      }
+
+      {
+        isAuth && pathname !== '/list' && <AppBreadcrumbs/>
       }
 
       <Container maxWidth={'xl'} className={classes.container}>
