@@ -1,17 +1,14 @@
 import React, { FC, ReactElement } from 'react';
 import { Button, IconButton, Tooltip } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useAppDispatch } from '../../store/hooks';
-import { logout } from '../../store/actions/user.action';
-import { useNavigate } from 'react-router-dom';
+import useModalVisibility from '../../hooks/useModalVisibility';
+import LogoutConfirmationModal from '../LogoutConfirmationModal';
 
 const Logout: FC<Props> = ({ variant }): ReactElement => {
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const {modalVisibility, setModalVisibility} = useModalVisibility();
 
   const logoutHandle = async () => {
-    await dispatch(logout());
-    navigate('sign-in');
+    setModalVisibility(true);
   };
 
   return (
@@ -37,6 +34,8 @@ const Logout: FC<Props> = ({ variant }): ReactElement => {
             </Button>
           </Tooltip>
       }
+
+      <LogoutConfirmationModal modalVisibility={modalVisibility} setModalVisibility={setModalVisibility}/>
     </>
   );
 };
