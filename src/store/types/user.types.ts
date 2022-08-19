@@ -13,6 +13,13 @@ export interface UserEntityCreateDto {
   password: string,
 }
 
+export interface UserEntityUpdateDto {
+  id: string,
+  name?: string,
+  email?: string,
+  avatar?: string,
+}
+
 export interface SignInRequestDto {
   email: string;
   password: string;

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { SignInResponseDto, UserEntity } from '../types/user.types';
-import { autoLogin, logout, signIn, signUp } from '../actions/user.action';
+import { autoLogin, logout, signIn, signUp, updateUserInfo } from '../actions/user.action';
 
 interface InitialState {
   user: UserEntity | null,
@@ -76,6 +76,18 @@ export const userSlice: Slice = createSlice({
       state.user = null;
       state.accessToken = '';
       state.isAuth = false;
+    },
+
+    [updateUserInfo.pending.type]: (state) => {
+      state.isFetching = true;
+    },
+    [updateUserInfo.fulfilled.type]: (state, action: PayloadAction<UserEntity>) => {
+      state.user = action.payload;
+      state.isFetching = false;
+    },
+    [updateUserInfo.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+      state.isFetching = false;
     },
   },
 });

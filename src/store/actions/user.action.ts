@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { SignInRequestDto, SignInResponseDto, UserEntity, UserEntityCreateDto } from '../types/user.types';
+import { SignInRequestDto, SignInResponseDto, UserEntity, UserEntityCreateDto, UserEntityUpdateDto } from '../types/user.types';
 import { API } from '../../utils';
 
 export const signIn = createAsyncThunk(
@@ -75,5 +75,29 @@ export const logout = createAsyncThunk(
   'user/logout',
   (): void => {
     localStorage.removeItem('accessToken');
+  },
+);
+
+export const updateUserInfo = createAsyncThunk(
+  'user/updateUserInfo',
+  async (data: UserEntityUpdateDto, thunkApi): Promise<UserEntity> => {
+    try {
+      const accessToken = localStorage.getItem('accessToken');
+      const { id, ...changedData } = data;
+
+      const result = await API({
+        url: `/users/${id}`,
+        method: 'PATCH',
+        data: changedData,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      return result.data;
+    } catch (e) {
+      thunkApi.rejectWithValue('Не удалось создать пользователя');
+      return Promise.reject();
+    }
   },
 );

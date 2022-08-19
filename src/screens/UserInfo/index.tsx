@@ -10,6 +10,8 @@ import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import EditUserInfoModal from './EditUserInfoModal';
+import useModalVisibility from '../../hooks/useModalVisibility';
 
 const useStyles = makeStyles((theme: Theme) => ({
   userInfoWrapper: {
@@ -30,6 +32,7 @@ const UserInfo: FC = (): ReactElement => {
   const {user} = useAppSelector((state) => state.userSlice);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const openMenu = Boolean(anchorEl);
+  const {modalVisibility, setModalVisibility} = useModalVisibility();
 
   const {id, name, email, avatar, createdAt, updatedAt} = user;
 
@@ -47,8 +50,7 @@ const UserInfo: FC = (): ReactElement => {
   };
 
   const editHandle = () => {
-    // eslint-disable-next-line no-console
-    console.log(111);
+    setModalVisibility(true);
   };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -153,6 +155,8 @@ const UserInfo: FC = (): ReactElement => {
           Add photo from library
         </MenuItem>
       </Menu>
+
+      <EditUserInfoModal modalVisibility={modalVisibility} setModalVisibility={setModalVisibility}/>
     </>
   );
 };
