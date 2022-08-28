@@ -29,14 +29,14 @@ const SignUp: FC = (): ReactElement => {
   });
   const isSignInRoute = useAuthRouteCondition();
   const dispatch = useAppDispatch();
-  const { isFetching, error } = useAppSelector((state) => state.userSlice);
+  const { isFetching } = useAppSelector((state) => state.userSlice);
 
   const handleShowPassword = () => {
     setStateValues({ ...stateValues, showPassword: !stateValues.showPassword });
   };
 
   const handleSubmit = async (values: UserEntityCreateDto, formikHelpers: FormikHelpers<UserEntityCreateDto>): Promise<void> => {
-    const response = await dispatch(signUp(values));
+    await dispatch(signUp(values));
     formikHelpers.setSubmitting(false);
     return Promise.resolve();
   };

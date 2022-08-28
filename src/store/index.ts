@@ -1,5 +1,4 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { listenerMiddleware } from './middleware/listenerMiddleware';
 import { RootMiddleware } from './middleware';
 import { rootReducer } from './reducers';
 

@@ -96,7 +96,7 @@ const UserInfo: FC = (): ReactElement => {
             <Tooltip title={'Click to delete avatar'}>
               <span>
                 <IconButton
-                  onClick={() => console.log(333)}
+                  onClick={() => console.warn(333)}
                   color={'error'}
                   disabled={false}
                   size={'large'}
@@ -168,14 +168,14 @@ const UserInfo: FC = (): ReactElement => {
             mt: 1.5,
           },
         }}>
-        <MenuItem onClick={() => console.log(111111) }>
+        <MenuItem onClick={() => console.warn(111111) }>
           <ListItemIcon>
             <CameraAltIcon fontSize={'medium'} />
           </ListItemIcon>
           Make a photo with a webcam
         </MenuItem>
 
-        <MenuItem onClick={() => console.log(222222) }>
+        <MenuItem onClick={() => console.warn(222222) }>
           <ListItemIcon>
             <AddPhotoAlternateIcon fontSize={'medium'} />
           </ListItemIcon>

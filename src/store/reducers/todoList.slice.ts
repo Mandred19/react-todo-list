@@ -1,4 +1,4 @@
-import { ITodoListItem, ITodoListItemUpdateDto } from '../types/todoList.types';
+import { ITodoListItem } from '../types/todoList.types';
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { createTodoListItem, deleteAllTodoListItems, deleteTodoListItem, fetchTodoItemById, fetchTodoList, toggleStateItem } from '../actions/todoList.action';
 
