@@ -1,10 +1,10 @@
-import React, { FC, ReactElement, useEffect, useMemo, useState } from 'react';
+import React, { FC, ReactElement, useEffect, useState } from 'react';
 import { FormControl, InputLabel, OutlinedInput } from '@mui/material';
 import { inputChangeEventType, inputChangeHandler } from '../../utils/inputChangeHandler';
 import AppModal from '../../components/AppModal';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { IUseModalVisibility } from '../../hooks/useModalVisibility';
-import { updateUserInfo } from '../../store/actions/user.action';
+import { changeUserInfo } from '../../store/actions/user.action';
 
 const EditUserInfoModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisibility}): ReactElement => {
   const dispatch = useAppDispatch();
@@ -20,7 +20,7 @@ const EditUserInfoModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVi
   }, []);
 
   const submitHandler = async (): Promise<void> => {
-    await dispatch(updateUserInfo({
+    await dispatch(changeUserInfo({
       id,
       name: userName,
       email: userEmail,

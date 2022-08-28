@@ -1,7 +1,7 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, useEffect } from 'react';
 import { Button, IconButton, ListItemIcon, Menu, MenuItem, Stack, Theme, Tooltip } from '@mui/material';
 import AppAvatar from '../../components/AppAvatar';
-import { useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import UserInfoItem from './UserInfoItem';
 import { makeStyles } from '@mui/styles';
 import Logout from '../../components/Logout';
@@ -12,6 +12,7 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import EditUserInfoModal from './EditUserInfoModal';
 import useModalVisibility from '../../hooks/useModalVisibility';
+import { changeUserInfo, updateUserInfo } from '../../store/actions/user.action';
 
 const useStyles = makeStyles((theme: Theme) => ({
   userInfoWrapper: {
@@ -29,12 +30,19 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const UserInfo: FC = (): ReactElement => {
   const classes = useStyles();
+  const dispatch = useAppDispatch();
   const {user} = useAppSelector((state) => state.userSlice);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const openMenu = Boolean(anchorEl);
   const {modalVisibility, setModalVisibility} = useModalVisibility();
 
   const {id, name, email, avatar, createdAt, updatedAt} = user;
+
+  useEffect(() => {
+    if (user) {
+      dispatch(updateUserInfo(user.id));
+    }
+  }, []);
 
   const formatDate = (date: string): string => {
     return new Intl.DateTimeFormat('en-US', {

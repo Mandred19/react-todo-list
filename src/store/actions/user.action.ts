@@ -80,6 +80,28 @@ export const logout = createAsyncThunk(
 
 export const updateUserInfo = createAsyncThunk(
   'user/updateUserInfo',
+  async (id: string, thunkApi): Promise<UserEntity> => {
+    try {
+      const accessToken = localStorage.getItem('accessToken');
+
+      const result = await API({
+        url: `/users/${id}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      return result.data;
+    } catch (e) {
+      thunkApi.rejectWithValue('Не удалось загрузить пользователя');
+      return Promise.reject();
+    }
+  },
+);
+
+export const changeUserInfo = createAsyncThunk(
+  'user/changeUserInfo',
   async (data: UserEntityUpdateDto, thunkApi): Promise<UserEntity> => {
     try {
       const accessToken = localStorage.getItem('accessToken');
