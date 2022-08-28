@@ -11,8 +11,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import EditUserInfoModal from './EditUserInfoModal';
+import DeleteUserModal from './DeleteUserModal';
 import useModalVisibility from '../../hooks/useModalVisibility';
-import { changeUserInfo, updateUserInfo } from '../../store/actions/user.action';
+import { updateUserInfo } from '../../store/actions/user.action';
 
 const useStyles = makeStyles((theme: Theme) => ({
   userInfoWrapper: {
@@ -34,14 +35,13 @@ const UserInfo: FC = (): ReactElement => {
   const {user} = useAppSelector((state) => state.userSlice);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const openMenu = Boolean(anchorEl);
-  const {modalVisibility, setModalVisibility} = useModalVisibility();
+  const {modalVisibility: editModalVisibility, setModalVisibility: setEditModalVisibility} = useModalVisibility();
+  const {modalVisibility: deleteModalVisibility, setModalVisibility: setDeleteModalVisibility} = useModalVisibility();
 
   const {id, name, email, avatar, createdAt, updatedAt} = user;
 
   useEffect(() => {
-    if (user) {
-      dispatch(updateUserInfo(user.id));
-    }
+    dispatch(updateUserInfo(user.id));
   }, []);
 
   const formatDate = (date: string): string => {
@@ -58,7 +58,11 @@ const UserInfo: FC = (): ReactElement => {
   };
 
   const editHandle = () => {
-    setModalVisibility(true);
+    setEditModalVisibility(true);
+  };
+
+  const deleteHandle = () => {
+    setDeleteModalVisibility(true);
   };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -124,14 +128,29 @@ const UserInfo: FC = (): ReactElement => {
                   color={'inherit'}
                   startIcon={<EditIcon />}
                   aria-label={'Click to edit user info'}>
-                  Edit
+                  Edit user
                 </Button>
               </Tooltip>
             </Stack>
           </Stack>
 
-          <Stack flexShrink={0} alignSelf={'flex-start'}>
-            <Logout variant={'textButton'}/>
+          <Stack alignItems={'center'} justifyContent={'space-between'} direction={'row'}>
+            <Stack flexShrink={0} alignSelf={'flex-start'}>
+              <Logout variant={'textButton'}/>
+            </Stack>
+
+            <Stack flexShrink={0} alignSelf={'flex-start'}>
+              <Tooltip title={'Click to delete user'}>
+                <Button
+                  onClick={() => deleteHandle()}
+                  variant={'outlined'}
+                  color={'error'}
+                  startIcon={<DeleteIcon />}
+                  aria-label={'Click to delete user'}>
+                  Delete user
+                </Button>
+              </Tooltip>
+            </Stack>
           </Stack>
         </Stack>
       </Stack>
@@ -164,7 +183,9 @@ const UserInfo: FC = (): ReactElement => {
         </MenuItem>
       </Menu>
 
-      <EditUserInfoModal modalVisibility={modalVisibility} setModalVisibility={setModalVisibility}/>
+      <EditUserInfoModal modalVisibility={editModalVisibility} setModalVisibility={setEditModalVisibility}/>
+
+      <DeleteUserModal modalVisibility={deleteModalVisibility} setModalVisibility={setDeleteModalVisibility} currentId={user.id}/>
     </>
   );
 };

@@ -123,3 +123,25 @@ export const changeUserInfo = createAsyncThunk(
     }
   },
 );
+
+export const deleteUser = createAsyncThunk(
+  'user/deleteUser',
+  async (id: string, thunkApi): Promise<UserEntity> => {
+    try {
+      const accessToken = localStorage.getItem('accessToken');
+
+      const result = await API({
+        url: `/users/${id}`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      return result.data;
+    } catch (e) {
+      thunkApi.rejectWithValue('Не удалось удалить пользователя');
+      return Promise.reject();
+    }
+  },
+);
