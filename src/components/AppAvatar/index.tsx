@@ -25,7 +25,8 @@ const AppAvatar: FC<Props> = (props: Props): ReactElement => {
   };
 
   const avatarDatas = (userName: string) => {
-    const firstWord = `${userName.split(' ')[0] || ''}`;
+    /* If userName is empty string, firstWord = '-' */
+    const firstWord = `${userName.split(' ')[0] || '-'}`;
     const secondWord = `${userName.split(' ')[1] || ''}`;
 
     return {
