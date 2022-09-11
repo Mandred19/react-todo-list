@@ -2,5 +2,8 @@
   "Add": "Add",
   "Add new task": "Add new task",
   "Clear list": "Clear list",
-  "List is empty": "List is empty"
+  "List is empty": "List is empty",
+
+  "Confirm delete all tasks": "Confirm delete all tasks",
+  "You are about to delete all tasks in list": "You are about to delete all tasks in list"
 }

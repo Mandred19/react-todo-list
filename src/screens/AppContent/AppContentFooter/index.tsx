@@ -26,15 +26,15 @@ const AppContentFooter: FC = (): ReactElement => {
   return (
     <>
       <Stack direction={'row'} spacing={2} alignItems={'center'} justifyContent={'flex-end'} className={classes.appContentFooter}>
-        <Tooltip title={t('Clear list')}>
+        <Tooltip title={t('Clear list', { ns: 'list' })}>
         <span>
           <Button
             onClick={() => setModalVisibility(true)}
             variant={'outlined'}
             color={'error'}
             startIcon={<DeleteForeverIcon />}
-            aria-label={t('Clear list')}>
-            Clear list
+            aria-label={t('Clear list', { ns: 'list' })}>
+            {t('Clear list', { ns: 'list' })}
           </Button>
         </span>
         </Tooltip>

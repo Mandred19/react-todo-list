@@ -2,5 +2,8 @@
   "Add": "Добавить",
   "Add new task": "Добавить новую задачу",
   "Clear list": "Очистить список",
-  "List is empty": "Список пуст"
+  "List is empty": "Список пуст",
+
+  "Confirm delete all tasks": "Подтверждение удаления всех задач",
+  "You are about to delete all tasks in list": "Вы удалите все задачи из списка"
 }

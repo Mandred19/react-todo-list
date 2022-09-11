@@ -33,7 +33,7 @@ const Logout: FC<Props> = ({ variant }): ReactElement => {
               color={'warning'}
               startIcon={<LogoutIcon />}
               aria-label={t('Click to logged out')}>
-              {t('Click to logged out')}
+              {t('Logout')}
             </Button>
           </Tooltip>
       }

@@ -15,18 +15,27 @@ import DeleteUserModal from './DeleteUserModal';
 import useModalVisibility from '../../hooks/useModalVisibility';
 import { updateUserInfo } from '../../store/actions/user.action';
 import { useTranslation } from 'react-i18next';
+import { flexLayoutMixin } from '../../styles/mixins';
+import ChangeLanguage from './ChangeLanguage';
 
 const useStyles = makeStyles((theme: Theme) => ({
   userInfoWrapper: {
     height: '100%',
-    padding: theme.spacing(2),
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
   userInfoItem: {
     height: '100%',
   },
+  userAvatarWrapper: {
+    ...flexLayoutMixin('flex-start', 'center'),
+    flexFlow: 'column nowrap',
+    marginBottom: theme.spacing(2),
+  },
   userInfoAvatar: {
     width: '150px !important',
     height: '150px !important',
+    marginBottom: theme.spacing(1),
   },
 }));
 
@@ -79,35 +88,39 @@ const UserInfo: FC = (): ReactElement => {
     <>
       <Stack direction={'row'} spacing={2} flexGrow={1} className={classes.userInfoWrapper}>
         <Stack direction={'column'} spacing={2} flexGrow={1} className={classes.userInfoItem}>
-          <AppAvatar src={avatar} alt={name} user={user} className={classes.userInfoAvatar}/>
+          <div className={classes.userAvatarWrapper}>
+            <AppAvatar src={avatar} alt={name} user={user} className={classes.userInfoAvatar}/>
 
-          <Stack direction={'row'} spacing={1}>
-            <Tooltip title={t('Click to upgrade avatar', { ns: 'userInfo' })}>
-              <span>
-                <IconButton
-                onClick={handleClick}
-                color={'primary'}
-                disabled={false}
-                size={'large'}
-                aria-label={t('Click to upgrade avatar', { ns: 'userInfo' })}>
-                  <AddAPhotoIcon />
-                </IconButton>
-              </span>
-            </Tooltip>
+            <Stack direction={'row'} spacing={1}>
+              <Tooltip title={t('Click to upgrade avatar', { ns: 'userInfo' })}>
+                <span>
+                  <IconButton
+                    onClick={handleClick}
+                    color={'primary'}
+                    disabled={false}
+                    size={'large'}
+                    aria-label={t('Click to upgrade avatar', { ns: 'userInfo' })}>
+                    <AddAPhotoIcon />
+                  </IconButton>
+                </span>
+              </Tooltip>
 
-            <Tooltip title={t('Click to delete avatar', { ns: 'userInfo' })}>
-              <span>
-                <IconButton
-                onClick={() => console.warn(333)}
-                color={'error'}
-                disabled={false}
-                size={'large'}
-                aria-label={t('Click to delete avatar', { ns: 'userInfo' })}>
-                  <DeleteIcon />
-                </IconButton>
-              </span>
-            </Tooltip>
-          </Stack>
+              <Tooltip title={t('Click to delete avatar', { ns: 'userInfo' })}>
+                <span>
+                  <IconButton
+                    onClick={() => console.warn(333)}
+                    color={'error'}
+                    disabled={false}
+                    size={'large'}
+                    aria-label={t('Click to delete avatar', { ns: 'userInfo' })}>
+                    <DeleteIcon />
+                  </IconButton>
+                </span>
+              </Tooltip>
+            </Stack>
+          </div>
+
+          <ChangeLanguage/>
         </Stack>
 
         <Stack direction={'column'} spacing={2} flexGrow={1} className={classes.userInfoItem} justifyContent={'space-between'}>

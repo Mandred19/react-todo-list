@@ -41,7 +41,7 @@ const UserInfoButton: FC = (): ReactElement => {
 
   return (
     <>
-      <Tooltip title={'User info'}>
+      <Tooltip title={t('User info', { ns: 'userInfo' })}>
         <Button
         onClick={handleClick}
         variant={'text'}

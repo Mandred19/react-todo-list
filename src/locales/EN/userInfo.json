@@ -9,9 +9,12 @@
   "Delete user": "Delete user",
   "Make a photo with a webcam": "Make a photo with a webcam",
   "Add photo from library": "Add photo from library",
+  "User info": "User info",
 
   "Confirm delete user": "Confirm delete user",
   "You are about to delete user": "You are about to delete user",
 
-  "Edit user info": "Edit user info"
+  "Edit user info": "Edit user info",
+
+  "Change language": "Change language"
 }

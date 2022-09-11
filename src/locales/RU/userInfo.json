@@ -9,9 +9,12 @@
   "Delete user": "Удалить пользователя",
   "Make a photo with a webcam": "Сделать фото с помощью веб-камеры",
   "Add photo from library": "Выбрать фото из компьютера",
+  "User info": "Информация о пользователе",
 
   "Confirm delete user": "Подтверждение удаления пользователя",
-  "You are about to delete user": "Вы действительно хотите удалить пользователя?",
+  "You are about to delete user": "Вы удалите пользователя",
 
-  "Edit user info": "Редактирование пользователя"
+  "Edit user info": "Редактирование пользователя",
+
+  "Change language": "Изменить язык"
 }
