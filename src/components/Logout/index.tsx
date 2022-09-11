@@ -3,8 +3,10 @@ import { Button, IconButton, Tooltip } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import useModalVisibility from '../../hooks/useModalVisibility';
 import LogoutConfirmationModal from '../LogoutConfirmationModal';
+import { useTranslation } from 'react-i18next';
 
 const Logout: FC<Props> = ({ variant }): ReactElement => {
+  const { t } = useTranslation(['common']);
   const {modalVisibility, setModalVisibility} = useModalVisibility();
 
   const logoutHandle = async () => {
@@ -15,23 +17,23 @@ const Logout: FC<Props> = ({ variant }): ReactElement => {
     <>
       {
         variant === 'iconButton' ?
-          <Tooltip title={'Click to logged out'}>
+          <Tooltip title={t('Click to logged out')}>
             <IconButton
               onClick={() => logoutHandle()}
               color={'warning'}
-              aria-label={'Click to logged out'}>
+              aria-label={t('Click to logged out')}>
               <LogoutIcon/>
             </IconButton>
           </Tooltip>
         :
-          <Tooltip title={'Click to logged out'}>
+          <Tooltip title={t('Click to logged out')}>
             <Button
               onClick={() => logoutHandle()}
               variant={'outlined'}
               color={'warning'}
               startIcon={<LogoutIcon />}
-              aria-label={'Click to logged out'}>
-              Logout
+              aria-label={t('Click to logged out')}>
+              {t('Click to logged out')}
             </Button>
           </Tooltip>
       }

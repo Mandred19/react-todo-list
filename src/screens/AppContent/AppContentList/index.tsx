@@ -4,8 +4,10 @@ import AppContentListItem from './AppContentListItem';
 import { ITodoListItem } from '../../../store/types/todoList.types';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { fetchTodoList } from '../../../store/actions/todoList.action';
+import { useTranslation } from 'react-i18next';
 
 const AppContentList: FC = (): ReactElement => {
+  const { t } = useTranslation(['list']);
   const dispatch = useAppDispatch();
   const { todoList, isFetching: pending } = useAppSelector((state) => state.todoListSlice);
 
@@ -22,7 +24,7 @@ const AppContentList: FC = (): ReactElement => {
         :
         <Stack alignItems={'center'} justifyContent={'center'}>
           <Typography variant={'h6'}>
-            List is empty
+            {t('List is empty', { ns: 'list' })}
           </Typography>
         </Stack>
       }

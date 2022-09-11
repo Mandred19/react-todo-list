@@ -10,6 +10,7 @@ import { useAuthRouteCondition } from './useAuthRouteCondition';
 import { UserEntityCreateDto } from '../../store/types/user.types';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { signUp } from '../../store/actions/user.action';
+import { useTranslation } from 'react-i18next';
 
 const initialValues: UserEntityCreateDto = {
   name: '',
@@ -24,6 +25,7 @@ const validationSchema = object().shape({
 });
 
 const SignUp: FC = (): ReactElement => {
+  const { t } = useTranslation(['authorization']);
   const [stateValues, setStateValues] = useState<State>({
     showPassword: false,
   });
@@ -53,7 +55,7 @@ const SignUp: FC = (): ReactElement => {
     <>
       <AuthorizationForm submitHandler={formik.handleSubmit}>
         <AuthorizationField
-          label={'Name'}
+          label={t('Name', { ns: 'authorization' })}
           type={'text'}
           autoFocus={true}
           helperText={touched.name && dirty && errors.name}
@@ -61,7 +63,7 @@ const SignUp: FC = (): ReactElement => {
           {...getFieldProps('name')}/>
 
         <AuthorizationField
-          label={'Email'}
+          label={t('Email', { ns: 'authorization' })}
           type={'email'}
           autoFocus={isSignInRoute}
           helperText={touched.email && dirty && errors.email}
@@ -69,7 +71,7 @@ const SignUp: FC = (): ReactElement => {
           {...getFieldProps('email')}/>
 
         <AuthorizationField
-          label={'Password'}
+          label={t('Password', { ns: 'authorization' })}
           type={stateValues.showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (

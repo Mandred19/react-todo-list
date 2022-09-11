@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from 'react';
+import React, { FC, ReactElement, useState, Suspense } from 'react';
 import {
   Button,
   FormControl,
@@ -17,6 +17,7 @@ import { inputChangeEventType, inputChangeHandler } from '../../utils/inputChang
 import useModalVisibility from '../../hooks/useModalVisibility';
 import { useAppSelector } from '../../store/hooks';
 import { makeStyles } from '@mui/styles';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appContentHeader: {
@@ -27,6 +28,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AppContentHeader: FC = (): ReactElement => {
   const classes = useStyles();
+  const { t } = useTranslation(['common', 'list']);
   const { todoList } = useAppSelector((state) => state.todoListSlice);
   const [searchValue, setSearchValue] = useState<string>('');
   const {modalVisibility, setModalVisibility} = useModalVisibility();
@@ -36,42 +38,43 @@ const AppContentHeader: FC = (): ReactElement => {
       <Stack direction={'row'} spacing={2} className={classes.appContentHeader}>
         <FormControl variant="outlined" fullWidth disabled={!todoList.length}>
           <InputLabel htmlFor="search-input">
-            Search
+            {t('Search')}
           </InputLabel>
 
           <OutlinedInput
-            id="search-input"
-            type={'text'}
-            value={searchValue}
-            onChange={(e: inputChangeEventType) => inputChangeHandler(e, setSearchValue)}
-            fullWidth
-            autoFocus
-            startAdornment={<SearchOutlinedIcon style={{marginRight: 8}}/>}
-            endAdornment={
-              searchValue && <InputAdornment position="end">
-                <Tooltip title={'Clear search text field'}>
-                  <span>
-                    <IconButton
-                      aria-label="Clear search text field"
-                      onClick={() => setSearchValue('')}>
-                      {<ClearOutlinedIcon />}
-                    </IconButton>
-                  </span>
-                </Tooltip>
-              </InputAdornment>
-            }
-            label={'Search'}/>
+          id="search-input"
+          type={'text'}
+          value={searchValue}
+          onChange={(e: inputChangeEventType) => inputChangeHandler(e, setSearchValue)}
+          fullWidth
+          autoFocus
+          startAdornment={<SearchOutlinedIcon style={{marginRight: 8}}/>}
+          endAdornment={
+            searchValue && <InputAdornment position="end">
+              <Tooltip title={t('Clear search text field')}>
+                <span>
+                  <IconButton
+                  aria-label={t('Clear search text field')}
+                  onClick={() => setSearchValue('')}>
+                    {<ClearOutlinedIcon />}
+                  </IconButton>
+                </span>
+              </Tooltip>
+            </InputAdornment>
+          }
+          label={t('Search')}/>
         </FormControl>
 
-        <Tooltip title={'Add new item'}>
+        <Tooltip title={t('Add new task', { ns: 'list' })}>
           <span>
             <Button
-              onClick={() => setModalVisibility(true)}
-              variant={'outlined'}
-              color={'primary'}
-              startIcon={<AddIcon />}
-              style={{height: '100%'}}>
-              Add
+            onClick={() => setModalVisibility(true)}
+            variant={'outlined'}
+            color={'primary'}
+            startIcon={<AddIcon />}
+            style={{height: '100%'}}
+            aria-label={t('Add new task', { ns: 'list' })}>
+            {t('Add', { ns: 'list' })}
             </Button>
           </span>
         </Tooltip>

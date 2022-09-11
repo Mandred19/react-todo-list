@@ -3,6 +3,7 @@ import { IconButton, Stack, Theme, Typography } from '@mui/material';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { makeStyles } from '@mui/styles';
 import { IUseModalVisibility } from '../../hooks/useModalVisibility';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme: Theme) => ({
   modalHeader: {
@@ -15,6 +16,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AppModalHeader: FC<IAppModalHeaderProps> = ({headerText, visibilityHandlers}): ReactElement => {
   const classes = useStyles();
+  const { t } = useTranslation(['common']);
 
   const closeModalHandler = () => {
     visibilityHandlers.setModalVisibility(false);
@@ -26,7 +28,7 @@ const AppModalHeader: FC<IAppModalHeaderProps> = ({headerText, visibilityHandler
         {headerText}
       </Typography>
 
-      <IconButton onClick={() => closeModalHandler()} title={'Close modal'} edge="end" aria-label="close modal">
+      <IconButton onClick={() => closeModalHandler()} title={t('Close modal')} edge="end" aria-label={t('Close modal')}>
         <CloseOutlinedIcon />
       </IconButton>
     </Stack>

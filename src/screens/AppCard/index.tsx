@@ -11,6 +11,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { fetchTodoItemById } from '../../store/actions/todoList.action';
+import { useTranslation } from 'react-i18next';
 
 const ExpandMore = styled((props: IExpandMoreProps) => {
   const { expand, ...other } = props;
@@ -32,15 +33,31 @@ const useStyles = makeStyles(() => ({
 
 const AppCard: FC = (): ReactElement => {
   const classes = useStyles();
+  const { t } = useTranslation(['common', 'listItem']);
   const navigate = useNavigate();
   const { id: paramsId = '' } = useParams();
   const dispatch = useAppDispatch();
   const { currentItem, isFetching: pending } = useAppSelector((state) => state.todoListSlice);
   const [expanded, setExpanded] = React.useState(false);
 
+  const { title, description, createdAt, updatedAt, isComplete, isFavorite } = currentItem;
+
   useEffect(() => {
     dispatch(fetchTodoItemById(paramsId));
   }, [paramsId]);
+
+  const formatDate = (date: string): string => {
+    return new Intl.DateTimeFormat('en-US', {
+      hour12: false,
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+    }).format(new Date(date));
+  };
 
   return (
     <Stack alignItems={'center'} justifyContent={'center'} height={'100%'}>
@@ -50,13 +67,13 @@ const AppCard: FC = (): ReactElement => {
           <Card raised className={classes.todoListCard} sx={{width: 360}}>
             <CardHeader
               avatar={
-                <Tooltip title={'Back'}>
+                <Tooltip title={t('Back')}>
                   <span>
                     <IconButton
                       onClick={() => navigate('list')}
                       color={'default'}
                       disabled={pending}
-                      aria-label={'Back'}>
+                      aria-label={t('Back')}>
                       <ArrowBackIcon />
                     </IconButton>
                   </span>
@@ -64,41 +81,41 @@ const AppCard: FC = (): ReactElement => {
               }
               title={
               <Typography variant={'h6'} noWrap>
-                {currentItem.title}
+                {title}
               </Typography>
               } />
 
             <CardContent>
               <Stack direction={'row'} alignItems={'flex-start'} justifyContent={'flex-start'} width={'100%'}>
                 <Typography variant={'caption'}>
-                  Created date:&nbsp;
+                  {t('Created date', { ns: 'listItem' })}:&nbsp;
                 </Typography>
 
                 <Typography variant={'caption'}>
-                  {currentItem.createdAt}
+                  {formatDate(createdAt)}
                 </Typography>
               </Stack>
 
               <Stack direction={'row'} alignItems={'flex-start'} justifyContent={'flex-start'} width={'100%'}>
                 <Typography variant={'caption'}>
-                  Updated date:&nbsp;
+                  {t('Updated date', { ns: 'listItem' })}:&nbsp;
                 </Typography>
 
                 <Typography variant={'caption'}>
-                  {currentItem.updatedAt}
+                  {formatDate(updatedAt)}
                 </Typography>
               </Stack>
             </CardContent>
 
             <CardActions>
               <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} spacing={2} width={'100%'}>
-                <Tooltip title={expanded ? 'Hide description' : 'Show description'}>
+                <Tooltip title={expanded ? t('Hide description', { ns: 'listItem' }) : t('Show description', { ns: 'listItem' })}>
                   <span>
                     <ExpandMore
                       expand={expanded}
                       onClick={() => setExpanded(!expanded)}
                       aria-expanded={expanded}
-                      aria-label={expanded ? 'Hide description' : 'Show description'}>
+                      aria-label={expanded ? t('Hide description', { ns: 'listItem' }) : t('Show description', { ns: 'listItem' })}>
                       {
                         expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />
                       }
@@ -107,45 +124,45 @@ const AppCard: FC = (): ReactElement => {
                 </Tooltip>
 
                 <Stack direction={'row'} spacing={2}>
-                  <Tooltip title={currentItem.isComplete ? 'Completed item is not editable' : 'Edit'}>
+                  <Tooltip title={isComplete ? t('Completed task is not editable', { ns: 'listItem' }) : t('Edit', { ns: 'listItem' })}>
                     <span>
                       <IconButton
                         color={'default'}
-                        disabled={pending || currentItem.isComplete}
-                        aria-label={currentItem.isComplete ? 'Completed item is not editable' : 'Edit'}>
+                        disabled={pending || isComplete}
+                        aria-label={isComplete ? t('Completed task is not editable', { ns: 'listItem' }) : t('Edit', { ns: 'listItem' })}>
                         <EditIcon />
                       </IconButton>
                     </span>
                   </Tooltip>
 
-                  <Tooltip title={'Set as completed'}>
+                  <Tooltip title={t('Set as completed', { ns: 'listItem' })}>
                     <span>
                       <IconButton
-                        color={currentItem.isComplete ? 'info' : 'default'}
+                        color={isComplete ? 'info' : 'default'}
                         disabled={pending}
-                        aria-label={'Set as completed'}>
+                        aria-label={t('Set as completed', { ns: 'listItem' })}>
                         <CheckCircleIcon />
                       </IconButton>
                     </span>
                   </Tooltip>
 
-                  <Tooltip title={'Set as favorite'}>
+                  <Tooltip title={t('Set as favorite', { ns: 'listItem' })}>
                     <span>
                       <IconButton
-                        color={currentItem.isFavorite ? 'warning' : 'default'}
+                        color={isFavorite ? 'warning' : 'default'}
                         disabled={pending}
-                        aria-label={'Set as favorite'}>
+                        aria-label={t('Set as favorite', { ns: 'listItem' })}>
                         <StarIcon />
                       </IconButton>
                     </span>
                   </Tooltip>
 
-                  <Tooltip title={'Delete'}>
+                  <Tooltip title={t('Delete')}>
                     <span>
                       <IconButton
                         color={'error'}
                         disabled={pending}
-                        aria-label={'Delete'}>
+                        aria-label={t('Delete')}>
                         <DeleteIcon />
                       </IconButton>
                     </span>
@@ -157,7 +174,7 @@ const AppCard: FC = (): ReactElement => {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
                 <Typography variant={'body1'} paragraph>
-                  {currentItem.description ? currentItem.description : 'Description is empty'}
+                  {description ? description : t('Description is empty', { ns: 'listItem' })}
                 </Typography>
               </CardContent>
             </Collapse>
@@ -166,7 +183,7 @@ const AppCard: FC = (): ReactElement => {
           <Card>
             <CardContent>
               <Typography variant="h6">
-                Item by id: <strong>{paramsId}</strong> is not found
+                {t('itemNotFound', { ns: 'listItem', id: <strong>{paramsId}</strong> })}
               </Typography>
             </CardContent>
           </Card>

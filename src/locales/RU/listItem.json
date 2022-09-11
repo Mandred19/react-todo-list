@@ -1,0 +1,17 @@
+{
+  "Open": "Открыть",
+  "Edit": "Редактировать",
+  "Set as favorite": "Добавить в избранное",
+  "Set as completed": "Выполнить",
+  "Completed task is not editable": "Выполненная задача не редактируется",
+  "Description is empty": "Описание отсутствует",
+  "itemNotFound": "Задача с ID: {{id}} не найдена",
+  "Hide description": "Скрыть описание",
+  "Show description": "Show description",
+
+  "Add new task": "Добавить новую задачу",
+  "Title": "Название",
+  "Description": "Описание",
+  "Confirm delete task": "Подтверждение удаления задачи",
+  "You are about to delete this task": "Вы действительно хотите удалить эту задачу?"
+}

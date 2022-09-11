@@ -11,6 +11,7 @@ import { SignInRequestDto } from '../../store/types/user.types';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { signIn } from '../../store/actions/user.action';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const initialValues: SignInRequestDto = {
   email: '',
@@ -23,6 +24,7 @@ const validationSchema = object().shape({
 });
 
 const SignIn: FC = (): ReactElement => {
+  const { t } = useTranslation(['authorization']);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const isSignInRoute = useAuthRouteCondition();
   const dispatch = useAppDispatch();
@@ -47,7 +49,7 @@ const SignIn: FC = (): ReactElement => {
     <>
       <AuthorizationForm submitHandler={formik.handleSubmit}>
         <AuthorizationField
-          label={'Email'}
+          label={t('Email', { ns: 'authorization' })}
           type={'email'}
           autoFocus={isSignInRoute}
           helperText={touched.email && dirty && errors.email}
@@ -55,7 +57,7 @@ const SignIn: FC = (): ReactElement => {
           {...getFieldProps('email')}/>
 
         <AuthorizationField
-          label={'Password'}
+          label={t('Password', { ns: 'authorization' })}
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (

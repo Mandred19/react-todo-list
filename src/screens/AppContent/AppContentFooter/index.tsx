@@ -5,6 +5,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import useModalVisibility from '../../../hooks/useModalVisibility';
 import DeleteAllItemsConfirmationModal from './DeleteAllItemsConfirmationModal';
 import { betweenChildrenMixin } from '../../../styles/mixins';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appContentFooter: {
@@ -19,19 +20,20 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AppContentFooter: FC = (): ReactElement => {
   const classes = useStyles();
+  const { t } = useTranslation(['list']);
   const {modalVisibility, setModalVisibility} = useModalVisibility();
 
   return (
     <>
       <Stack direction={'row'} spacing={2} alignItems={'center'} justifyContent={'flex-end'} className={classes.appContentFooter}>
-        <Tooltip title={'Clear list'}>
+        <Tooltip title={t('Clear list')}>
         <span>
           <Button
             onClick={() => setModalVisibility(true)}
             variant={'outlined'}
             color={'error'}
             startIcon={<DeleteForeverIcon />}
-            aria-label={'Clear list'}>
+            aria-label={t('Clear list')}>
             Clear list
           </Button>
         </span>

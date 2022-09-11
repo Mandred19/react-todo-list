@@ -11,8 +11,10 @@ import { IUseModalVisibility } from '../../../hooks/useModalVisibility';
 import { switchChangeEventType, switchChangeHandler } from '../../../utils/switchChangeHandler';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { createTodoListItem } from '../../../store/actions/todoList.action';
+import { useTranslation } from 'react-i18next';
 
 const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisibility}): ReactElement => {
+  const { t } = useTranslation(['common', 'listItem']);
   const dispatch = useAppDispatch();
   const { isFetching: isPending } = useAppSelector((state) => state.todoListSlice);
 
@@ -38,9 +40,9 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
 
   return (
     <AppModal
-      headerText={'Add new item'}
-      footerSubmitButtonText={'Create'}
-      footerCancelButtonText={'Cancel'}
+      headerText={t('Add new task', { ns: 'listItem' })}
+      footerSubmitButtonText={t('Create')}
+      footerCancelButtonText={t('Cancel')}
       visibilityHandlers={{modalVisibility, setModalVisibility}}
       submitHandler={submitHandler}
       submitButtonType={'primary'}
@@ -48,7 +50,7 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
       <>
         <FormControl variant="outlined" fullWidth>
           <InputLabel htmlFor="item-title-input">
-            Title
+            {t('Title', { ns: 'listItem' })}
           </InputLabel>
 
           <OutlinedInput
@@ -58,12 +60,12 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
             onChange={(e: inputChangeEventType) => inputChangeHandler(e, setItemTitle)}
             fullWidth
             autoFocus
-            label={'Title'}/>
+            label={t('Title', { ns: 'listItem' })}/>
         </FormControl>
 
         <FormControl variant="outlined" fullWidth>
           <InputLabel htmlFor="item-description-input">
-            Description
+            {t('Description', { ns: 'listItem' })}
           </InputLabel>
 
           <OutlinedInput
@@ -75,7 +77,7 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
             value={itemDescription}
             onChange={(e: inputChangeEventType) => inputChangeHandler(e, setItemDescription)}
             fullWidth
-            label={'Description'}/>
+            label={t('Description', { ns: 'listItem' })}/>
         </FormControl>
 
         <Box>
@@ -84,9 +86,9 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
               <Checkbox
                 onChange={(e: switchChangeEventType) => switchChangeHandler(e, setItemIsFavorite)}
                 checked={itemIsFavorite}
-                title={'Set as favorite'} />
+                title={t('Set as favorite', { ns: 'listItem' })} />
             }
-            label="Set as favorite" />
+            label={t('Set as favorite', { ns: 'listItem' })} />
         </Box>
       </>
     </AppModal>

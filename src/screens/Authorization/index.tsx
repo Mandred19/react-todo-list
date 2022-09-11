@@ -11,6 +11,7 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import { useAuthRouteCondition } from './useAuthRouteCondition';
 import { APP_NAME } from '../../utils/constants';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme: Theme) => ({
   formWrapper: {
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const Authorization: FC = (): ReactElement => {
+  const { t } = useTranslation(['authorization']);
   const classes = useStyles();
   const isSignInRoute = useAuthRouteCondition();
 
@@ -41,7 +43,9 @@ const Authorization: FC = (): ReactElement => {
       <Box className={classes.formWrapper}>
         <Typography variant={'h4'}>{APP_NAME}</Typography>
 
-        <Typography variant={'h5'}>{isSignInRoute ? 'Sign In' : 'Sign Up'}</Typography>
+        <Typography variant={'h5'}>
+          {isSignInRoute ? t('Sign in', { ns: 'authorization' }) : t('Sign up', { ns: 'authorization' })}
+        </Typography>
 
         {
           isSignInRoute ? <SignIn/> : <SignUp/>

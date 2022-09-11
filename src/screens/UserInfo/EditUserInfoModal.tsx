@@ -5,8 +5,10 @@ import AppModal from '../../components/AppModal';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { IUseModalVisibility } from '../../hooks/useModalVisibility';
 import { changeUserInfo } from '../../store/actions/user.action';
+import { useTranslation } from 'react-i18next';
 
 const EditUserInfoModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisibility}): ReactElement => {
+  const { t } = useTranslation(['common', 'userInfo']);
   const dispatch = useAppDispatch();
   const { user, isFetching: isPending } = useAppSelector((state) => state.userSlice);
   const [userName, setUserName] = useState<string>('');
@@ -36,9 +38,9 @@ const EditUserInfoModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVi
 
   return (
     <AppModal
-      headerText={'Edit user info'}
-      footerSubmitButtonText={'Save'}
-      footerCancelButtonText={'Cancel'}
+      headerText={t('Edit user info', { ns: 'userInfo' })}
+      footerSubmitButtonText={t('Save')}
+      footerCancelButtonText={t('Cancel')}
       visibilityHandlers={{modalVisibility, setModalVisibility}}
       submitHandler={submitHandler}
       submitButtonType={'primary'}
@@ -46,7 +48,7 @@ const EditUserInfoModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVi
       <>
         <FormControl variant="outlined" fullWidth>
           <InputLabel htmlFor="user-name-input">
-            User name
+            {t('Name', { ns: 'userInfo' })}
           </InputLabel>
 
           <OutlinedInput
@@ -56,12 +58,12 @@ const EditUserInfoModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVi
             onChange={(e: inputChangeEventType) => inputChangeHandler(e, setUserName)}
             fullWidth
             autoFocus
-            label={'User name'}/>
+            label={t('Name', { ns: 'userInfo' })}/>
         </FormControl>
 
         <FormControl variant="outlined" fullWidth>
           <InputLabel htmlFor="user-email-input">
-            User email
+            {t('Email', { ns: 'userInfo' })}
           </InputLabel>
 
           <OutlinedInput
@@ -70,7 +72,7 @@ const EditUserInfoModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVi
             value={userEmail}
             onChange={(e: inputChangeEventType) => inputChangeHandler(e, setUserEmail)}
             fullWidth
-            label={'User email'}/>
+            label={t('Email', { ns: 'userInfo' })}/>
         </FormControl>
       </>
     </AppModal>

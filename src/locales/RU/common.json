@@ -1,0 +1,26 @@
+{
+  "Search": "Поиск",
+  "Clear search text field": "Очистить поле ввода поиска",
+
+  "Back": "Назад",
+  "Click to go back": "Нажмите для возврата назад",
+
+  "Created date": "Дата создания",
+  "Updated date": "Дата обновления",
+
+  "User profile": "Профиль пользователя",
+
+  "Logout": "Выйти из профиля",
+  "Click to logged out": "Нажмите для выхода из профиля",
+  "You will be logged out": "Вы выйдете из текущего профиля пользователя",
+  "Confirm logout": "Подтверждение выхода",
+
+  "Close modal": "Закрыть модал",
+
+  "Create": "Создать",
+  "Delete": "Удалить",
+  "Cancel": "Отмена",
+  "Save": "Сохранить",
+
+  "Are you sure": "Вы уверены?"
+}

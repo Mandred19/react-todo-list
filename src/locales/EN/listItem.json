@@ -1,0 +1,17 @@
+{
+  "Open": "Open",
+  "Edit": "Edit",
+  "Set as favorite": "Set as favorite",
+  "Set as completed": "Set as completed",
+  "Completed task is not editable": "Completed task is not editable",
+  "Description is empty": "Description is empty",
+  "itemNotFound": "Item by ID: {{id}} is not found",
+  "Hide description": "Hide description",
+  "Show description": "Show description",
+
+  "Add new task": "Add new task",
+  "Title": "Title",
+  "Description": "Description",
+  "Confirm delete task": "Confirm delete task",
+  "You are about to delete this task": "You are about to delete this task"
+}

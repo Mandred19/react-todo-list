@@ -8,6 +8,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
 import useModalVisibility from '../../../hooks/useModalVisibility';
 import LogoutConfirmationModal from '../../LogoutConfirmationModal';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme: Theme) => ({
   userInfoButtonData: {
@@ -17,6 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const UserInfoButton: FC = (): ReactElement => {
   const classes = useStyles();
+  const { t } = useTranslation(['common']);
   const {user} = useAppSelector((state) => state.userSlice);
   const navigate = useNavigate();
   const {modalVisibility, setModalVisibility} = useModalVisibility();
@@ -74,14 +76,14 @@ const UserInfoButton: FC = (): ReactElement => {
           <ListItemIcon>
             <AccountCircleIcon fontSize={'medium'} />
           </ListItemIcon>
-          User Profile
+          {t('User profile')}
         </MenuItem>
 
         <MenuItem onClick={() => handleLogout()}>
           <ListItemIcon>
             <LogoutIcon fontSize={'medium'} />
           </ListItemIcon>
-          Logout
+          {t('Logout')}
         </MenuItem>
       </Menu>
 

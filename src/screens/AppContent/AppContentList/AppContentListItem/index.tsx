@@ -22,6 +22,7 @@ import { breakpointMixin } from '../../../../styles/mixins';
 import { ITodoListItem, ITodoListItemUpdateDto } from '../../../../store/types/todoList.types';
 import { toggleStateItem } from '../../../../store/actions/todoList.action';
 import { useAppDispatch } from '../../../../store/hooks';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(() => ({
   // TODO fix styles without !important
@@ -37,6 +38,7 @@ const useStyles = makeStyles(() => ({
 
 const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentListCardProps): ReactElement => {
   const classes = useStyles();
+  const { t } = useTranslation(['common', 'listItem']);
   const {id, isComplete, isFavorite, title, pending} = props;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -68,61 +70,61 @@ const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentList
         disablePadding
         secondaryAction={
           <Stack direction={'row'} spacing={2}>
-            <Tooltip title={'Open'}>
+            <Tooltip title={t('Open', { ns: 'listItem' })}>
               <span>
                 <IconButton
                   onClick={() => navigate(`list/${id}`)}
                   color={'default'}
                   disabled={pending}
-                  aria-label={'Open'}>
+                  aria-label={t('Open', { ns: 'listItem' })}>
                   <OpenInNewIcon />
                 </IconButton>
               </span>
             </Tooltip>
 
-            <Tooltip title={isComplete ? 'Completed item is not editable' : 'Edit'}>
+            <Tooltip title={isComplete ? t('Completed task is not editable', { ns: 'listItem' }) : t('Edit', { ns: 'listItem' })}>
               <span>
                 <IconButton
                   onClick={() => console.warn('EDIT', props) }
                   color={'default'}
                   disabled={pending || isComplete}
-                  aria-label={isComplete ? 'Completed item is not editable' : 'Edit'}>
+                  aria-label={isComplete ? t('Completed task is not editable', { ns: 'listItem' }) : t('Edit', { ns: 'listItem' })}>
                   <EditIcon />
                 </IconButton>
               </span>
             </Tooltip>
 
-            <Tooltip title={'Set as completed'}>
+            <Tooltip title={t('Set as completed', { ns: 'listItem' })}>
               <span>
                 <IconButton
                   onClick={() => changeStateItem({ id, isComplete: !isComplete })}
                   color={isComplete ? 'info' : 'default'}
                   disabled={pending}
-                  aria-label='Set as completed'>
+                  aria-label={t('Set as completed', { ns: 'listItem' })}>
                   <CheckCircleIcon />
                 </IconButton>
               </span>
             </Tooltip>
 
-            <Tooltip title={'Set as favorite'}>
+            <Tooltip title={t('Set as favorite', { ns: 'listItem' })}>
               <span>
                 <IconButton
                   onClick={() => changeStateItem({ id, isFavorite: !isFavorite })}
                   color={isFavorite ? 'warning' : 'default'}
                   disabled={pending}
-                  aria-label='Set as favorite'>
+                  aria-label={t('Set as favorite', { ns: 'listItem' })}>
                   <StarIcon />
                 </IconButton>
               </span>
             </Tooltip>
 
-            <Tooltip title={'Delete'}>
+            <Tooltip title={t('Delete')}>
               <span>
                 <IconButton
                   onClick={() => prepareDeleteItem(id)}
                   color={'error'}
                   disabled={pending}
-                  aria-label='Delete'>
+                  aria-label={t('Delete')}>
                   <DeleteIcon />
                 </IconButton>
               </span>

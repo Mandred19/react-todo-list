@@ -3,6 +3,7 @@ import { Button, Container, Stack, Theme, Tooltip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useTranslation } from 'react-i18next';
 // import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -13,6 +14,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AppBreadcrumbs  : FC = (): ReactElement => {
   const classes = useStyles();
+  const { t } = useTranslation(['common']);
   const navigation = useNavigate();
   const { pathname } = useLocation();
 
@@ -21,14 +23,14 @@ const AppBreadcrumbs  : FC = (): ReactElement => {
       <Stack direction={'row'} spacing={2} alignItems={'center'} justifyContent={'flex-start'}>
         {
           pathname !== '/list' &&
-          <Tooltip title={'Click to go back'}>
+          <Tooltip title={t('Click to go back')}>
             <Button
               onClick={() => navigation(-1)}
               variant={'outlined'}
               color={'inherit'}
               startIcon={<ArrowBackIcon />}
-              aria-label={'Click to go back'}>
-              Back
+              aria-label={t('Click to go back')}>
+              {t('Back')}
             </Button>
           </Tooltip>
         }

@@ -5,8 +5,10 @@ import { Stack, Typography } from '@mui/material';
 import { deleteUser } from '../../store/actions/user.action';
 import { IUseModalVisibility } from '../../hooks/useModalVisibility';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const DeleteUserModal: FC<Props> = ({modalVisibility, setModalVisibility, currentId}): ReactElement => {
+  const { t } = useTranslation(['common', 'userInfo']);
   const dispatch = useAppDispatch();
   const { isFetching: isPending } = useAppSelector((state) => state.userSlice);
   const navigate = useNavigate();
@@ -18,20 +20,20 @@ const DeleteUserModal: FC<Props> = ({modalVisibility, setModalVisibility, curren
 
   return (
     <AppModal
-      headerText={'Confirm delete user'}
-      footerSubmitButtonText={'Delete'}
-      footerCancelButtonText={'Cancel'}
+      headerText={t('Confirm delete user', { ns: 'userInfo' })}
+      footerSubmitButtonText={t('Delete')}
+      footerCancelButtonText={t('Cancel')}
       visibilityHandlers={{modalVisibility, setModalVisibility}}
       submitHandler={submitHandler}
       submitButtonType={'error'}
       isPending={isPending}>
       <Stack direction={'column'} spacing={2}>
         <Typography variant={'body1'}>
-          You are about to delete user.
+          {t('You are about to delete user', { ns: 'userInfo' })}
         </Typography>
 
         <Typography variant={'body1'}>
-          Are you sure?
+          {t('Are you sure')}
         </Typography>
       </Stack>
     </AppModal>
