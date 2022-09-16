@@ -29,14 +29,14 @@ const ChangeLanguage: FC = (): ReactElement => {
     <div>
       <FormControl fullWidth>
         <InputLabel id="change-lang">
-          {t('Language', { ns: 'userInfo' })}
+          {t('user_info_language_input_label', { ns: 'userInfo' })}
         </InputLabel>
 
         <Select
         labelId="change-lang"
         id="change-lang"
         value={language}
-        label={t('Language', { ns: 'userInfo' })}
+        label={t('user_info_language_input_label', { ns: 'userInfo' })}
         onChange={(event) => handleChangeLanguage(event.target.value as AppLang)}>
           <MenuItem value={AppLang.EN_US}>English</MenuItem>
           <MenuItem value={AppLang.RU_RU}>Русский</MenuItem>

@@ -1,26 +1,27 @@
 {
-  "Search": "Поиск",
-  "Clear search text field": "Очистить поле ввода поиска",
+  "common_search_label_input": "Поиск",
+  "common_search_clear_button_title": "Очистить поле ввода поиска",
 
-  "Back": "Назад",
-  "Click to go back": "Нажмите для возврата назад",
+  "common_back_button": "Назад",
+  "common_back_button_title": "Нажмите для возврата назад",
 
-  "Created date": "Дата создания",
-  "Updated date": "Дата обновления",
+  "common_created_date_p": "Дата создания",
+  "common_updated_date_p": "Дата обновления",
 
-  "User profile": "Профиль пользователя",
+  "common_user_profile_li": "Профиль пользователя",
 
-  "Logout": "Выйти из профиля",
-  "Click to logged out": "Нажмите для выхода из профиля",
-  "Confirm logout": "Подтверждение выхода",
-  "You will be logged out": "Вы выйдете из текущего профиля пользователя",
+  "common_logout_li": "Выйти из профиля",
+  "common_logout_button": "Выйти",
+  "common_logout_button_title": "Нажмите для выхода из профиля",
+  "common_logout_modal_title": "Подтверждение выхода",
+  "common_logout_modal_message": "Вы выйдете из текущего профиля пользователя",
 
-  "Close modal": "Закрыть модал",
+  "common_close_modal_button_title": "Закрыть модал",
 
-  "Create": "Создать",
-  "Delete": "Удалить",
-  "Cancel": "Отмена",
-  "Save": "Сохранить",
+  "common_create_text": "Создать",
+  "common_delete_text": "Удалить",
+  "common_cancel_text": "Отмена",
+  "common_save_text": "Сохранить",
 
-  "Are you sure": "Вы уверены?"
+  "common_are_you_sure_message": "Вы уверены?"
 }

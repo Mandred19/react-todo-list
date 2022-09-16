@@ -28,7 +28,7 @@ const AppModalHeader: FC<IAppModalHeaderProps> = ({headerText, visibilityHandler
         {headerText}
       </Typography>
 
-      <IconButton onClick={() => closeModalHandler()} title={t('Close modal')} edge="end" aria-label={t('Close modal')}>
+      <IconButton onClick={() => closeModalHandler()} title={t('common_close_modal_button_title')} edge="end" aria-label={t('common_close_modal_button_title')}>
         <CloseOutlinedIcon />
       </IconButton>
     </Stack>

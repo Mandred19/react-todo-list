@@ -24,7 +24,7 @@ const AppContentList: FC = (): ReactElement => {
         :
         <Stack alignItems={'center'} justifyContent={'center'}>
           <Typography variant={'h6'}>
-            {t('List is empty', { ns: 'list' })}
+            {t('list_is_empty_p', { ns: 'list' })}
           </Typography>
         </Stack>
       }

@@ -38,9 +38,9 @@ const EditUserInfoModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVi
 
   return (
     <AppModal
-      headerText={t('Edit user info', { ns: 'userInfo' })}
-      footerSubmitButtonText={t('Save')}
-      footerCancelButtonText={t('Cancel')}
+      headerText={t('user_info_edit_user_modal_title', { ns: 'userInfo' })}
+      footerSubmitButtonText={t('common_save_text')}
+      footerCancelButtonText={t('common_cancel_text')}
       visibilityHandlers={{modalVisibility, setModalVisibility}}
       submitHandler={submitHandler}
       submitButtonType={'primary'}
@@ -48,7 +48,7 @@ const EditUserInfoModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVi
       <>
         <FormControl variant="outlined" fullWidth>
           <InputLabel htmlFor="user-name-input">
-            {t('Name', { ns: 'userInfo' })}
+            {t('authorization_name_label_input', { ns: 'authorization' })}
           </InputLabel>
 
           <OutlinedInput
@@ -58,12 +58,12 @@ const EditUserInfoModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVi
             onChange={(e: inputChangeEventType) => inputChangeHandler(e, setUserName)}
             fullWidth
             autoFocus
-            label={t('Name', { ns: 'userInfo' })}/>
+            label={t('authorization_name_label_input', { ns: 'authorization' })}/>
         </FormControl>
 
         <FormControl variant="outlined" fullWidth>
           <InputLabel htmlFor="user-email-input">
-            {t('Email', { ns: 'userInfo' })}
+            {t('authorization_email_label_input', { ns: 'authorization' })}
           </InputLabel>
 
           <OutlinedInput
@@ -72,7 +72,7 @@ const EditUserInfoModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVi
             value={userEmail}
             onChange={(e: inputChangeEventType) => inputChangeHandler(e, setUserEmail)}
             fullWidth
-            label={t('Email', { ns: 'userInfo' })}/>
+            label={t('authorization_email_label_input', { ns: 'authorization' })}/>
         </FormControl>
       </>
     </AppModal>

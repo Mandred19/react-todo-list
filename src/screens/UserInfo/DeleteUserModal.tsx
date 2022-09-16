@@ -20,20 +20,20 @@ const DeleteUserModal: FC<Props> = ({modalVisibility, setModalVisibility, curren
 
   return (
     <AppModal
-      headerText={t('Confirm delete user', { ns: 'userInfo' })}
-      footerSubmitButtonText={t('Delete')}
-      footerCancelButtonText={t('Cancel')}
+      headerText={t('user_info_delete_user_modal_title', { ns: 'userInfo' })}
+      footerSubmitButtonText={t('common_delete_text')}
+      footerCancelButtonText={t('common_cancel_text')}
       visibilityHandlers={{modalVisibility, setModalVisibility}}
       submitHandler={submitHandler}
       submitButtonType={'error'}
       isPending={isPending}>
       <Stack direction={'column'} spacing={2}>
         <Typography variant={'body1'}>
-          {t('You are about to delete user', { ns: 'userInfo' })}
+          {t('user_info_delete_user_modal_message', { ns: 'userInfo' })}
         </Typography>
 
         <Typography variant={'body1'}>
-          {t('Are you sure')}
+          {t('common_are_you_sure_message')}
         </Typography>
       </Stack>
     </AppModal>

@@ -1,20 +1,20 @@
 {
-  "Click to upgrade avatar": "Click to upgrade avatar",
-  "Click to delete avatar": "Click to delete avatar",
-  "Name": "Name",
-  "Email": "Email",
-  "Click to edit user info": "Click to edit user info",
-  "Edit user": "Edit user",
-  "Click to delete user info": "Click to delete user info",
-  "Delete user": "Delete user",
-  "Make a photo with a webcam": "Make a photo with a webcam",
-  "Add photo from library": "Add photo from library",
-  "User info": "User info",
+  "user_info_upgrade_avatar_button_title": "Click to upgrade avatar",
+  "user_info_delete_avatar_button_title": "Click to delete avatar",
+  "user_info_name_p": "User name",
+  "user_info_email_p": "User e-mail",
+  "user_info_edit_user_info_button": "Edit user",
+  "user_info_edit_user_info_button_title": "Click to edit user info",
+  "user_info_delete_user_button": "Delete user",
+  "user_info_delete_user_button_title": "Click to delete user",
+  "user_info_change_avatar_from_webcam_button_title": "Make a photo with a webcam",
+  "user_info_change_avatar_from_library_button_title": "Add photo from library",
+  "user_info_dropdown_title": "User info",
 
-  "Confirm delete user": "Confirm delete user",
-  "You are about to delete user": "You are about to delete user",
+  "user_info_delete_user_modal_title": "Confirm delete user",
+  "user_info_delete_user_modal_message": "You are about to delete user",
 
-  "Edit user info": "Edit user info",
+  "user_info_edit_user_modal_title": "Edit user info",
 
-  "Language": "Language"
+  "user_info_language_input_label": "Language"
 }

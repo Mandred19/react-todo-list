@@ -41,12 +41,12 @@ const UserInfoButton: FC = (): ReactElement => {
 
   return (
     <>
-      <Tooltip title={t('User info', { ns: 'userInfo' })}>
+      <Tooltip title={t('user_info_dropdown_title', { ns: 'userInfo' })}>
         <Button
         onClick={handleClick}
         variant={'text'}
         color={'inherit'}
-        aria-label={'User info'}>
+        aria-label={'user_info_dropdown_title'}>
           <Stack direction={'column'} spacing={2} alignItems={'center'} justifyContent={'start'} className={classes.userInfoButtonData}>
             <Typography variant={'subtitle2'}>
               {name}
@@ -76,14 +76,14 @@ const UserInfoButton: FC = (): ReactElement => {
           <ListItemIcon>
             <AccountCircleIcon fontSize={'medium'} />
           </ListItemIcon>
-          {t('User profile')}
+          {t('common_user_profile_li')}
         </MenuItem>
 
         <MenuItem onClick={() => handleLogout()}>
           <ListItemIcon>
             <LogoutIcon fontSize={'medium'} />
           </ListItemIcon>
-          {t('Logout')}
+          {t('common_logout_li')}
         </MenuItem>
       </Menu>
 

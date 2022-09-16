@@ -1,10 +1,12 @@
 {
-  "Sign in": "Sign in",
-  "Sign up": "Sign up",
-  "Forgot password": "Forgot password?",
-  "Don't have an account? Sign up": "Don't have an account? Sign up",
-  "Already have an account? Sign in": "Already have an account? Sign in",
-  "Email": "Email",
-  "Password": "Password",
-  "Name": "Name"
+  "authorization_sign_in_p": "Sign in",
+  "authorization_sign_in_button": "Sign in",
+  "authorization_sign_up_p": "Sign up",
+  "authorization_sign_up_button": "Sign up",
+  "authorization_forgot_password_p": "Forgot password",
+  "authorization_without_akk_p": "Don't have an account? Sign up",
+  "authorization_already_have_akk_p": "Already have an account? Sign in",
+  "authorization_name_label_input": "Name",
+  "authorization_email_label_input": "Email",
+  "authorization_password_label_input": "Password"
 }

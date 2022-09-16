@@ -12,21 +12,21 @@ const AuthorizationControls: FC<Props> = (props: Props): ReactElement => {
   return (
     <>
       <Button type={'submit'} fullWidth variant={'contained'} size={'large'} color={'primary'} disabled={isFetching}>
-        {isSignInRoute ? t('Sign in', { ns: 'authorization' }) : t('Sign up', { ns: 'authorization' })}
+        {isSignInRoute ? t('authorization_sign_in_button', { ns: 'authorization' }) : t('authorization_sign_up_button', { ns: 'authorization' })}
       </Button>
 
       <Grid container justifyContent={isSignInRoute ? 'space-between' : 'flex-end'}>
         {isSignInRoute && (
           <Grid item xs>
             <Link variant="body2" underline={'hover'}>
-              { t('Forgot password', { ns: 'authorization' })}
+              { t('authorization_forgot_password_p', { ns: 'authorization' })}
             </Link>
           </Grid>
         )}
 
         <Grid item>
           <Link component={RouterLink} to={isSignInRoute ? '/sign-up' : '/sign-in'} variant="body2" underline={'hover'}>
-            {isSignInRoute ? t('Don\'t have an account? Sign up', { ns: 'authorization'}) : t('Already have an account? Sign in', { ns: 'authorization'})}
+            {isSignInRoute ? t('authorization_without_akk_p', { ns: 'authorization'}) : t('authorization_already_have_akk_p', { ns: 'authorization'})}
           </Link>
         </Grid>
       </Grid>

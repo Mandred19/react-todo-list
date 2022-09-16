@@ -55,7 +55,7 @@ const SignUp: FC = (): ReactElement => {
     <>
       <AuthorizationForm submitHandler={formik.handleSubmit}>
         <AuthorizationField
-          label={t('Name', { ns: 'authorization' })}
+          label={t('authorization_name_label_input', { ns: 'authorization' })}
           type={'text'}
           autoFocus={true}
           helperText={touched.name && dirty && errors.name}
@@ -63,7 +63,7 @@ const SignUp: FC = (): ReactElement => {
           {...getFieldProps('name')}/>
 
         <AuthorizationField
-          label={t('Email', { ns: 'authorization' })}
+          label={t('authorization_email_label_input', { ns: 'authorization' })}
           type={'email'}
           autoFocus={isSignInRoute}
           helperText={touched.email && dirty && errors.email}
@@ -71,7 +71,7 @@ const SignUp: FC = (): ReactElement => {
           {...getFieldProps('email')}/>
 
         <AuthorizationField
-          label={t('Password', { ns: 'authorization' })}
+          label={t('authorization_password_label_input', { ns: 'authorization' })}
           type={stateValues.showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (

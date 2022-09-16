@@ -40,9 +40,9 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
 
   return (
     <AppModal
-      headerText={t('Add new task', { ns: 'listItem' })}
-      footerSubmitButtonText={t('Create')}
-      footerCancelButtonText={t('Cancel')}
+      headerText={t('add_new_task_modal_title', { ns: 'listItem' })}
+      footerSubmitButtonText={t('common_create_text')}
+      footerCancelButtonText={t('common_cancel_text')}
       visibilityHandlers={{modalVisibility, setModalVisibility}}
       submitHandler={submitHandler}
       submitButtonType={'primary'}
@@ -50,7 +50,7 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
       <>
         <FormControl variant="outlined" fullWidth>
           <InputLabel htmlFor="item-title-input">
-            {t('Title', { ns: 'listItem' })}
+            {t('list_item_title_input_label', { ns: 'listItem' })}
           </InputLabel>
 
           <OutlinedInput
@@ -60,12 +60,12 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
             onChange={(e: inputChangeEventType) => inputChangeHandler(e, setItemTitle)}
             fullWidth
             autoFocus
-            label={t('Title', { ns: 'listItem' })}/>
+            label={t('list_item_title_input_label', { ns: 'listItem' })}/>
         </FormControl>
 
         <FormControl variant="outlined" fullWidth>
           <InputLabel htmlFor="item-description-input">
-            {t('Description', { ns: 'listItem' })}
+            {t('list_item_desc_input_label', { ns: 'listItem' })}
           </InputLabel>
 
           <OutlinedInput
@@ -77,7 +77,7 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
             value={itemDescription}
             onChange={(e: inputChangeEventType) => inputChangeHandler(e, setItemDescription)}
             fullWidth
-            label={t('Description', { ns: 'listItem' })}/>
+            label={t('list_item_desc_input_label', { ns: 'listItem' })}/>
         </FormControl>
 
         <Box>
@@ -86,9 +86,9 @@ const AddNewItemModal: FC<IUseModalVisibility> = ({modalVisibility, setModalVisi
               <Checkbox
                 onChange={(e: switchChangeEventType) => switchChangeHandler(e, setItemIsFavorite)}
                 checked={itemIsFavorite}
-                title={t('Set as favorite', { ns: 'listItem' })} />
+                title={t('list_item_favorite_button_title', { ns: 'listItem' })} />
             }
-            label={t('Set as favorite', { ns: 'listItem' })} />
+            label={t('list_item_favorite_button_title', { ns: 'listItem' })} />
         </Box>
       </>
     </AppModal>

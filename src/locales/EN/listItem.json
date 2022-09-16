@@ -1,17 +1,17 @@
 {
-  "Open": "Open",
-  "Edit": "Edit",
-  "Set as favorite": "Set as favorite",
-  "Set as completed": "Set as completed",
-  "Completed task is not editable": "Completed task is not editable",
-  "Description is empty": "Description is empty",
-  "itemNotFound": "Item by ID: {{id}} is not found",
-  "Hide description": "Hide description",
-  "Show description": "Show description",
+  "list_item_open_button_title": "Open",
+  "list_item_edit_button_title": "Edit",
+  "list_item_favorite_button_title": "Set as favorite",
+  "list_item_completed_button_title": "Set as completed",
+  "list_item_completed_disable_button_title": "Completed task is not editable",
+  "list_item_description_empty_p": "Description is empty",
+  "list_item_not_found": "Item by ID: {{id}} is not found",
+  "list_item_hide_desc_button_title": "Hide description",
+  "list_item_show_desc_button_title": "Show description",
 
-  "Add new task": "Add new task",
-  "Title": "Title",
-  "Description": "Description",
-  "Confirm delete task": "Confirm delete task",
-  "You are about to delete this task": "You are about to delete this task"
+  "add_new_task_modal_title": "Add new task",
+  "list_item_title_input_label": "Title",
+  "list_item_desc_input_label": "Description",
+  "list_item_delete_task_modal_title": "Confirm delete task",
+  "list_item_delete_task_modal_message": "You are about to delete this task"
 }

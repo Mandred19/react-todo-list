@@ -17,23 +17,23 @@ const Logout: FC<Props> = ({ variant }): ReactElement => {
     <>
       {
         variant === 'iconButton' ?
-          <Tooltip title={t('Click to logged out')}>
+          <Tooltip title={t('common_logout_button_title')}>
             <IconButton
               onClick={() => logoutHandle()}
               color={'warning'}
-              aria-label={t('Click to logged out')}>
+              aria-label={t('common_logout_button_title')}>
               <LogoutIcon/>
             </IconButton>
           </Tooltip>
         :
-          <Tooltip title={t('Click to logged out')}>
+          <Tooltip title={t('common_logout_button_title')}>
             <Button
               onClick={() => logoutHandle()}
               variant={'outlined'}
               color={'warning'}
               startIcon={<LogoutIcon />}
-              aria-label={t('Click to logged out')}>
-              {t('Logout')}
+              aria-label={t('common_logout_button_title')}>
+              {t('common_logout_li')}
             </Button>
           </Tooltip>
       }

@@ -38,7 +38,7 @@ const AppContentHeader: FC = (): ReactElement => {
       <Stack direction={'row'} spacing={2} className={classes.appContentHeader}>
         <FormControl variant="outlined" fullWidth disabled={!todoList.length}>
           <InputLabel htmlFor="search-input">
-            {t('Search')}
+            {t('common_search_label_input')}
           </InputLabel>
 
           <OutlinedInput
@@ -51,10 +51,10 @@ const AppContentHeader: FC = (): ReactElement => {
           startAdornment={<SearchOutlinedIcon style={{marginRight: 8}}/>}
           endAdornment={
             searchValue && <InputAdornment position="end">
-              <Tooltip title={t('Clear search text field')}>
+              <Tooltip title={t('common_search_clear_button_title')}>
                 <span>
                   <IconButton
-                  aria-label={t('Clear search text field')}
+                  aria-label={t('common_search_clear_button_title')}
                   onClick={() => setSearchValue('')}>
                     {<ClearOutlinedIcon />}
                   </IconButton>
@@ -62,10 +62,10 @@ const AppContentHeader: FC = (): ReactElement => {
               </Tooltip>
             </InputAdornment>
           }
-          label={t('Search')}/>
+          label={t('common_search_label_input')}/>
         </FormControl>
 
-        <Tooltip title={t('Add new task', { ns: 'list' })}>
+        <Tooltip title={t('list_add_button_title', { ns: 'list' })}>
           <span>
             <Button
             onClick={() => setModalVisibility(true)}
@@ -73,8 +73,8 @@ const AppContentHeader: FC = (): ReactElement => {
             color={'primary'}
             startIcon={<AddIcon />}
             style={{height: '100%'}}
-            aria-label={t('Add new task', { ns: 'list' })}>
-            {t('Add', { ns: 'list' })}
+            aria-label={t('list_add_button_title', { ns: 'list' })}>
+            {t('list_add_button', { ns: 'list' })}
             </Button>
           </span>
         </Tooltip>

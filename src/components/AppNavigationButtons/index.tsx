@@ -23,14 +23,14 @@ const AppBreadcrumbs  : FC = (): ReactElement => {
       <Stack direction={'row'} spacing={2} alignItems={'center'} justifyContent={'flex-start'}>
         {
           pathname !== '/list' &&
-          <Tooltip title={t('Click to go back')}>
+          <Tooltip title={t('common_back_button_title')}>
             <Button
               onClick={() => navigation(-1)}
               variant={'outlined'}
               color={'inherit'}
               startIcon={<ArrowBackIcon />}
-              aria-label={t('Click to go back')}>
-              {t('Back')}
+              aria-label={t('common_back_button_title')}>
+              {t('common_back_button')}
             </Button>
           </Tooltip>
         }

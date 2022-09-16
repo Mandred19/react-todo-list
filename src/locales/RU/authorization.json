@@ -1,10 +1,12 @@
 {
-  "Sign in": "Войти",
-  "Sign up": "Зарегистрироваться",
-  "Forgot password": "Зфбыли пароль?",
-  "Don't have an account? Sign up": "У вас еще нет аккаунта? Зарегистрироваться",
-  "Already have an account? Sign in": "У вас уже есть аккаунт? Войти",
-  "Email": "Электронная почта",
-  "Password": "Пароль",
-  "Name": "Имя"
+  "authorization_sign_in_p": "Войти",
+  "authorization_sign_in_button": "Войти",
+  "authorization_sign_up_p": "Зарегистрироваться",
+  "authorization_sign_up_button": "Зарегистрироваться",
+  "authorization_forgot_password_p": "Зфбыли пароль?",
+  "authorization_without_akk_p": "У вас еще нет аккаунта? Зарегистрироваться",
+  "authorization_already_have_akk_p": "У вас уже есть аккаунт? Войти",
+  "authorization_name_label_input": "Пароль",
+  "authorization_email_label_input": "Электронная почта",
+  "authorization_password_label_input": "Пароль"
 }

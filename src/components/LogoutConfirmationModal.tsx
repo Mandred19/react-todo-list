@@ -19,20 +19,20 @@ const LogoutConfirmationModal: FC<IUseModalVisibility> = ({modalVisibility, setM
 
   return (
     <AppModal
-      headerText={t('Confirm logout')}
-      footerSubmitButtonText={t('Logout')}
-      footerCancelButtonText={t('Cancel')}
+      headerText={t('common_logout_modal_title')}
+      footerSubmitButtonText={t('common_logout_li')}
+      footerCancelButtonText={t('common_cancel_text')}
       visibilityHandlers={{modalVisibility, setModalVisibility}}
       submitHandler={submitHandler}
       submitButtonType={'warning'}
       isPending={false}>
       <Stack direction={'column'} spacing={2}>
         <Typography variant={'body1'}>
-          {t('You will be logged out')}
+          {t('common_logout_modal_message')}
         </Typography>
 
         <Typography variant={'body1'}>
-          {t('Are you sure')}
+          {t('common_are_you_sure_message')}
         </Typography>
       </Stack>
     </AppModal>

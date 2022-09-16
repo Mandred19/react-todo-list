@@ -1,20 +1,20 @@
 {
-  "Click to upgrade avatar": "Нажните для обновления аватара",
-  "Click to delete avatar": "Нажните для удаления аватара",
-  "Name": "Имя",
-  "Email": "Электронная почта",
-  "Click to edit user info": "Нажмите для редактирования информации о пользователе",
-  "Edit user": "Редактировать имя пользователя",
-  "Click to delete user info": "Нажмите для удаления пользователя",
-  "Delete user": "Удалить пользователя",
-  "Make a photo with a webcam": "Сделать фото с помощью веб-камеры",
-  "Add photo from library": "Выбрать фото из компьютера",
-  "User info": "Информация о пользователе",
+  "user_info_upgrade_avatar_button_title": "Нажните для обновления аватара",
+  "user_info_delete_avatar_button_title": "Нажните для удаления аватара",
+  "user_info_name_p": "Имя пользователя",
+  "user_info_email_p": "Электронная почта",
+  "user_info_edit_user_info_button": "Редактировать имя пользователя",
+  "user_info_edit_user_info_button_title": "Нажмите для редактирования информации о пользователе",
+  "user_info_delete_user_button": "Удалить пользователя",
+  "user_info_delete_user_button_title": "Нажмите для удаления пользователя",
+  "user_info_change_avatar_from_webcam_button_title": "Сделать фото с помощью веб-камеры",
+  "user_info_change_avatar_from_library_button_title": "Выбрать фото из компьютера",
+  "user_info_dropdown_title": "Информация о пользователе",
 
-  "Confirm delete user": "Подтверждение удаления пользователя",
-  "You are about to delete user": "Вы удалите пользователя",
+  "user_info_delete_user_modal_title": "Подтверждение удаления пользователя",
+  "user_info_delete_user_modal_message": "Вы удалите пользователя",
 
-  "Edit user info": "Редактирование пользователя",
+  "user_info_edit_user_modal_title": "Редактирование пользователя",
 
-  "Language": "Язык"
+  "user_info_language_input_label": "Язык"
 }

@@ -70,61 +70,61 @@ const AppContentListItem: FC<IAppContentListCardProps> = (props: IAppContentList
         disablePadding
         secondaryAction={
           <Stack direction={'row'} spacing={2}>
-            <Tooltip title={t('Open', { ns: 'listItem' })}>
+            <Tooltip title={t('list_item_open_button_title', { ns: 'listItem' })}>
               <span>
                 <IconButton
                   onClick={() => navigate(`list/${id}`)}
                   color={'default'}
                   disabled={pending}
-                  aria-label={t('Open', { ns: 'listItem' })}>
+                  aria-label={t('list_item_open_button_title', { ns: 'listItem' })}>
                   <OpenInNewIcon />
                 </IconButton>
               </span>
             </Tooltip>
 
-            <Tooltip title={isComplete ? t('Completed task is not editable', { ns: 'listItem' }) : t('Edit', { ns: 'listItem' })}>
+            <Tooltip title={isComplete ? t('list_item_completed_disable_button_title', { ns: 'listItem' }) : t('list_item_edit_button_title', { ns: 'listItem' })}>
               <span>
                 <IconButton
                   onClick={() => console.warn('EDIT', props) }
                   color={'default'}
                   disabled={pending || isComplete}
-                  aria-label={isComplete ? t('Completed task is not editable', { ns: 'listItem' }) : t('Edit', { ns: 'listItem' })}>
+                  aria-label={isComplete ? t('list_item_completed_disable_button_title', { ns: 'listItem' }) : t('list_item_edit_button_title', { ns: 'listItem' })}>
                   <EditIcon />
                 </IconButton>
               </span>
             </Tooltip>
 
-            <Tooltip title={t('Set as completed', { ns: 'listItem' })}>
+            <Tooltip title={t('list_item_completed_button_title', { ns: 'listItem' })}>
               <span>
                 <IconButton
                   onClick={() => changeStateItem({ id, isComplete: !isComplete })}
                   color={isComplete ? 'info' : 'default'}
                   disabled={pending}
-                  aria-label={t('Set as completed', { ns: 'listItem' })}>
+                  aria-label={t('list_item_completed_button_title', { ns: 'listItem' })}>
                   <CheckCircleIcon />
                 </IconButton>
               </span>
             </Tooltip>
 
-            <Tooltip title={t('Set as favorite', { ns: 'listItem' })}>
+            <Tooltip title={t('list_item_favorite_button_title', { ns: 'listItem' })}>
               <span>
                 <IconButton
                   onClick={() => changeStateItem({ id, isFavorite: !isFavorite })}
                   color={isFavorite ? 'warning' : 'default'}
                   disabled={pending}
-                  aria-label={t('Set as favorite', { ns: 'listItem' })}>
+                  aria-label={t('list_item_favorite_button_title', { ns: 'listItem' })}>
                   <StarIcon />
                 </IconButton>
               </span>
             </Tooltip>
 
-            <Tooltip title={t('Delete')}>
+            <Tooltip title={t('common_delete_text')}>
               <span>
                 <IconButton
                   onClick={() => prepareDeleteItem(id)}
                   color={'error'}
                   disabled={pending}
-                  aria-label={t('Delete')}>
+                  aria-label={t('common_delete_text')}>
                   <DeleteIcon />
                 </IconButton>
               </span>

@@ -1,9 +1,9 @@
 {
-  "Add": "Добавить",
-  "Add new task": "Добавить новую задачу",
-  "Clear list": "Очистить список",
-  "List is empty": "Список пуст",
+  "list_add_button": "Добавить",
+  "list_add_button_title": "Добавить новую задачу",
+  "list_clear_list_button": "Очистить список",
+  "list_is_empty_p": "Список пуст",
 
-  "Confirm delete all tasks": "Подтверждение удаления всех задач",
-  "You are about to delete all tasks in list": "Вы удалите все задачи из списка"
+  "list_clear_list_modal_title": "Подтверждение удаления всех задач",
+  "list_clear_list_modal_message": "Вы удалите все задачи из списка"
 }

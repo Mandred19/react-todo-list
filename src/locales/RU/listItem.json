@@ -1,17 +1,17 @@
 {
-  "Open": "Открыть",
-  "Edit": "Редактировать",
-  "Set as favorite": "Добавить в избранное",
-  "Set as completed": "Выполнить",
-  "Completed task is not editable": "Выполненная задача не редактируется",
-  "Description is empty": "Описание отсутствует",
-  "itemNotFound": "Задача с ID: {{id}} не найдена",
-  "Hide description": "Скрыть описание",
-  "Show description": "Show description",
+  "list_item_open_button_title": "Открыть",
+  "list_item_edit_button_title": "Редактировать",
+  "list_item_favorite_button_title": "Добавить в избранное",
+  "list_item_completed_button_title": "Выполнить",
+  "list_item_completed_disable_button_title": "Выполненная задача не редактируется",
+  "list_item_description_empty_p": "Описание отсутствует",
+  "list_item_not_found": "Задача с ID: {{id}} не найдена",
+  "list_item_hide_desc_button_title": "Скрыть описание",
+  "list_item_show_desc_button_title": "Show description",
 
-  "Add new task": "Добавить новую задачу",
-  "Title": "Название",
-  "Description": "Описание",
-  "Confirm delete task": "Подтверждение удаления задачи",
-  "You are about to delete this task": "Вы удалите эту задачу"
+  "add_new_task_modal_title": "Добавить новую задачу",
+  "list_item_title_input_label": "Название",
+  "list_item_desc_input_label": "Описание",
+  "list_item_delete_task_modal_title": "Подтверждение удаления задачи",
+  "list_item_delete_task_modal_message": "Вы удалите эту задачу"
 }

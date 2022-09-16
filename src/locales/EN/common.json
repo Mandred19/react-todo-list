@@ -1,26 +1,27 @@
 {
-  "Search": "Search",
-  "Clear search text field": "Clear search text field",
+  "common_search_label_input": "Search",
+  "common_search_clear_button_title": "Clear search text field",
 
-  "Back": "Back",
-  "Click to go back": "Click to go back",
+  "common_back_button": "Back",
+  "common_back_button_title": "Click to go back",
 
-  "Created date": "Created date",
-  "Updated date": "Updated date",
+  "common_created_date_p": "Created date",
+  "common_updated_date_p": "Updated date",
 
-  "User profile": "User profile",
+  "common_user_profile_li": "User profile",
 
-  "Logout": "Logout",
-  "Click to logged out": "Click to logged out",
-  "You will be logged out": "You will be logged out",
-  "Confirm logout": "Confirm logout",
+  "common_logout_li": "Logout",
+  "common_logout_button": "Logout",
+  "common_logout_button_title": "Click to logged out",
+  "common_logout_modal_title": "Confirm logout",
+  "common_logout_modal_message": "You will be logged out",
 
-  "Close modal": "Close modal",
+  "common_close_modal_button_title": "Close modal",
 
-  "Create": "Create",
-  "Delete": "Delete",
-  "Cancel": "Cancel",
-  "Save": "Save",
+  "common_create_text": "Create",
+  "common_delete_text": "Delete",
+  "common_cancel_text": "Cancel",
+  "common_save_text": "Save",
 
-  "Are you sure": "Are you sure?"
+  "common_are_you_sure_message": "Are you sure?"
 }

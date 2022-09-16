@@ -67,13 +67,13 @@ const AppCard: FC = (): ReactElement => {
           <Card raised className={classes.todoListCard} sx={{width: 360}}>
             <CardHeader
               avatar={
-                <Tooltip title={t('Back')}>
+                <Tooltip title={t('common_back_button_title')}>
                   <span>
                     <IconButton
                       onClick={() => navigate('list')}
                       color={'default'}
                       disabled={pending}
-                      aria-label={t('Back')}>
+                      aria-label={t('common_back_button_title')}>
                       <ArrowBackIcon />
                     </IconButton>
                   </span>
@@ -88,7 +88,7 @@ const AppCard: FC = (): ReactElement => {
             <CardContent>
               <Stack direction={'row'} alignItems={'flex-start'} justifyContent={'flex-start'} width={'100%'}>
                 <Typography variant={'caption'}>
-                  {t('Created date', { ns: 'listItem' })}:&nbsp;
+                  {t('common_created_date_p', { ns: 'listItem' })}:&nbsp;
                 </Typography>
 
                 <Typography variant={'caption'}>
@@ -98,7 +98,7 @@ const AppCard: FC = (): ReactElement => {
 
               <Stack direction={'row'} alignItems={'flex-start'} justifyContent={'flex-start'} width={'100%'}>
                 <Typography variant={'caption'}>
-                  {t('Updated date', { ns: 'listItem' })}:&nbsp;
+                  {t('common_created_date_p', { ns: 'listItem' })}:&nbsp;
                 </Typography>
 
                 <Typography variant={'caption'}>
@@ -109,13 +109,13 @@ const AppCard: FC = (): ReactElement => {
 
             <CardActions>
               <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} spacing={2} width={'100%'}>
-                <Tooltip title={expanded ? t('Hide description', { ns: 'listItem' }) : t('Show description', { ns: 'listItem' })}>
+                <Tooltip title={expanded ? t('list_item_hide_desc_button_title', { ns: 'listItem' }) : t('list_item_show_desc_button_title', { ns: 'listItem' })}>
                   <span>
                     <ExpandMore
                       expand={expanded}
                       onClick={() => setExpanded(!expanded)}
                       aria-expanded={expanded}
-                      aria-label={expanded ? t('Hide description', { ns: 'listItem' }) : t('Show description', { ns: 'listItem' })}>
+                      aria-label={expanded ? t('list_item_hide_desc_button_title', { ns: 'listItem' }) : t('list_item_show_desc_button_title', { ns: 'listItem' })}>
                       {
                         expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />
                       }
@@ -124,45 +124,45 @@ const AppCard: FC = (): ReactElement => {
                 </Tooltip>
 
                 <Stack direction={'row'} spacing={2}>
-                  <Tooltip title={isComplete ? t('Completed task is not editable', { ns: 'listItem' }) : t('Edit', { ns: 'listItem' })}>
+                  <Tooltip title={isComplete ? t('list_item_completed_disable_button_title', { ns: 'listItem' }) : t('list_item_edit_button_title', { ns: 'listItem' })}>
                     <span>
                       <IconButton
                         color={'default'}
                         disabled={pending || isComplete}
-                        aria-label={isComplete ? t('Completed task is not editable', { ns: 'listItem' }) : t('Edit', { ns: 'listItem' })}>
+                        aria-label={isComplete ? t('list_item_completed_disable_button_title', { ns: 'listItem' }) : t('list_item_edit_button_title', { ns: 'listItem' })}>
                         <EditIcon />
                       </IconButton>
                     </span>
                   </Tooltip>
 
-                  <Tooltip title={t('Set as completed', { ns: 'listItem' })}>
+                  <Tooltip title={t('list_item_completed_button_title', { ns: 'listItem' })}>
                     <span>
                       <IconButton
                         color={isComplete ? 'info' : 'default'}
                         disabled={pending}
-                        aria-label={t('Set as completed', { ns: 'listItem' })}>
+                        aria-label={t('list_item_completed_button_title', { ns: 'listItem' })}>
                         <CheckCircleIcon />
                       </IconButton>
                     </span>
                   </Tooltip>
 
-                  <Tooltip title={t('Set as favorite', { ns: 'listItem' })}>
+                  <Tooltip title={t('list_item_favorite_button_title', { ns: 'listItem' })}>
                     <span>
                       <IconButton
                         color={isFavorite ? 'warning' : 'default'}
                         disabled={pending}
-                        aria-label={t('Set as favorite', { ns: 'listItem' })}>
+                        aria-label={t('list_item_favorite_button_title', { ns: 'listItem' })}>
                         <StarIcon />
                       </IconButton>
                     </span>
                   </Tooltip>
 
-                  <Tooltip title={t('Delete')}>
+                  <Tooltip title={t('common_delete_text')}>
                     <span>
                       <IconButton
                         color={'error'}
                         disabled={pending}
-                        aria-label={t('Delete')}>
+                        aria-label={t('common_delete_text')}>
                         <DeleteIcon />
                       </IconButton>
                     </span>
@@ -174,7 +174,7 @@ const AppCard: FC = (): ReactElement => {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
                 <Typography variant={'body1'} paragraph>
-                  {description ? description : t('Description is empty', { ns: 'listItem' })}
+                  {description ? description : t('list_item_description_empty_p', { ns: 'listItem' })}
                 </Typography>
               </CardContent>
             </Collapse>

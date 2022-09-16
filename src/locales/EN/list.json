@@ -1,9 +1,9 @@
 {
-  "Add": "Add",
-  "Add new task": "Add new task",
-  "Clear list": "Clear list",
-  "List is empty": "List is empty",
+  "list_add_button": "Add",
+  "list_add_button_title": "Add new task",
+  "list_clear_list_button": "Clear list",
+  "list_is_empty_p": "List is empty",
 
-  "Confirm delete all tasks": "Confirm delete all tasks",
-  "You are about to delete all tasks in list": "You are about to delete all tasks in list"
+  "list_clear_list_modal_title": "Confirm delete all tasks",
+  "list_clear_list_modal_message": "You are about to delete all tasks in list"
 }

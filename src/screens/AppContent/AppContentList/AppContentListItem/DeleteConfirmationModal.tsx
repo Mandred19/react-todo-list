@@ -17,20 +17,20 @@ const DeleteConfirmationModal: FC<IDeleteConfirmationModal> = ({modalVisibility,
 
   return (
     <AppModal
-      headerText={t('Confirm delete task', { ns: 'listItem' })}
-      footerSubmitButtonText={t('Delete')}
-      footerCancelButtonText={t('Cancel')}
+      headerText={t('list_item_delete_task_modal_title', { ns: 'listItem' })}
+      footerSubmitButtonText={t('common_delete_text')}
+      footerCancelButtonText={t('common_cancel_text')}
       visibilityHandlers={{modalVisibility, setModalVisibility}}
       submitHandler={submitHandler}
       submitButtonType={'error'}
       isPending={isPending}>
       <Stack direction={'column'} spacing={2}>
         <Typography variant={'body1'}>
-          {t('You are about to delete this task', { ns: 'listItem' })}
+          {t('list_item_delete_task_modal_message', { ns: 'listItem' })}
         </Typography>
 
         <Typography variant={'body1'}>
-          {t('Are you sure')}
+          {t('common_are_you_sure_message')}
         </Typography>
       </Stack>
     </AppModal>

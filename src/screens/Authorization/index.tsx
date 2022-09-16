@@ -44,7 +44,7 @@ const Authorization: FC = (): ReactElement => {
         <Typography variant={'h4'}>{APP_NAME}</Typography>
 
         <Typography variant={'h5'}>
-          {isSignInRoute ? t('Sign in', { ns: 'authorization' }) : t('Sign up', { ns: 'authorization' })}
+          {isSignInRoute ? t('authorization_sign_in_p', { ns: 'authorization' }) : t('authorization_sign_up_p', { ns: 'authorization' })}
         </Typography>
 
         {

@@ -92,27 +92,27 @@ const UserInfo: FC = (): ReactElement => {
             <AppAvatar src={avatar} alt={name} user={user} className={classes.userInfoAvatar}/>
 
             <Stack direction={'row'} spacing={1}>
-              <Tooltip title={t('Click to upgrade avatar', { ns: 'userInfo' })}>
+              <Tooltip title={t('user_info_upgrade_avatar_button_title', { ns: 'userInfo' })}>
                 <span>
                   <IconButton
                     onClick={handleClick}
                     color={'primary'}
                     disabled={false}
                     size={'large'}
-                    aria-label={t('Click to upgrade avatar', { ns: 'userInfo' })}>
+                    aria-label={t('user_info_upgrade_avatar_button_title', { ns: 'userInfo' })}>
                     <AddAPhotoIcon />
                   </IconButton>
                 </span>
               </Tooltip>
 
-              <Tooltip title={t('Click to delete avatar', { ns: 'userInfo' })}>
+              <Tooltip title={t('user_info_delete_avatar_button_title', { ns: 'userInfo' })}>
                 <span>
                   <IconButton
                     onClick={() => console.warn(333)}
                     color={'error'}
                     disabled={false}
                     size={'large'}
-                    aria-label={t('Click to delete avatar', { ns: 'userInfo' })}>
+                    aria-label={t('user_info_delete_avatar_button_title', { ns: 'userInfo' })}>
                     <DeleteIcon />
                   </IconButton>
                 </span>
@@ -127,18 +127,18 @@ const UserInfo: FC = (): ReactElement => {
           <Stack direction={'column'} spacing={2} justifyContent={'space-between'}>
             <UserInfoItem propName={'ID:'} propValue={id} />
 
-            <UserInfoItem propName={`${t('Name', { ns: 'userInfo' })}:`} propValue={name} />
+            <UserInfoItem propName={`${t('user_info_name_p', { ns: 'userInfo' })}:`} propValue={name} />
 
-            <UserInfoItem propName={`${t('Email', { ns: 'userInfo' })}:`} propValue={email} />
+            <UserInfoItem propName={`${t('user_info_email_p', { ns: 'userInfo' })}:`} propValue={email} />
 
-            <UserInfoItem propName={`${t('Created date')}:`} propValue={formatDate(createdAt)} />
+            <UserInfoItem propName={`${t('common_created_date_p')}:`} propValue={formatDate(createdAt)} />
 
-            <UserInfoItem propName={`${t('Updated date')}:`} propValue={formatDate(updatedAt)} />
+            <UserInfoItem propName={`${t('common_created_date_p')}:`} propValue={formatDate(updatedAt)} />
 
             <Stack flexShrink={0} alignSelf={'flex-start'}>
-              <Tooltip title={t('Click to edit user info', { ns: 'userInfo' })}>
-                <Button onClick={() => editHandle()} variant={'outlined'} color={'inherit'} startIcon={<EditIcon />} aria-label={'Click to edit user info'}>
-                  {t('Edit user', { ns: 'userInfo' })}
+              <Tooltip title={t('user_info_edit_user_info_button_title', { ns: 'userInfo' })}>
+                <Button onClick={() => editHandle()} variant={'outlined'} color={'inherit'} startIcon={<EditIcon />} aria-label={'user_info_edit_user_info_button_title'}>
+                  {t('user_info_edit_user_info_button', { ns: 'userInfo' })}
                 </Button>
               </Tooltip>
             </Stack>
@@ -150,9 +150,14 @@ const UserInfo: FC = (): ReactElement => {
             </Stack>
 
             <Stack flexShrink={0} alignSelf={'flex-start'}>
-              <Tooltip title={t('Click to delete user info', { ns: 'userInfo' })}>
-                <Button onClick={() => deleteHandle()} variant={'outlined'} color={'error'} startIcon={<DeleteIcon />} aria-label={'Click to delete user'}>
-                  {t('Delete user', { ns: 'userInfo' })}
+              <Tooltip title={t('user_info_delete_user_button_title', { ns: 'userInfo' })}>
+                <Button
+                onClick={() => deleteHandle()}
+                variant={'outlined'}
+                color={'error'}
+                startIcon={<DeleteIcon />}
+                aria-label={t('user_info_delete_user_button_title', { ns: 'userInfo' })}>
+                  {t('user_info_delete_user_button', { ns: 'userInfo' })}
                 </Button>
               </Tooltip>
             </Stack>
@@ -178,14 +183,14 @@ const UserInfo: FC = (): ReactElement => {
           <ListItemIcon>
             <CameraAltIcon fontSize={'medium'} />
           </ListItemIcon>
-          {t('Make a photo with a webcam', { ns: 'userInfo' })}
+          {t('user_info_change_avatar_from_webcam_button_title', { ns: 'userInfo' })}
         </MenuItem>
 
         <MenuItem onClick={() => console.warn(222222)}>
           <ListItemIcon>
             <AddPhotoAlternateIcon fontSize={'medium'} />
           </ListItemIcon>
-          {t('Add photo from library', { ns: 'userInfo' })}
+          {t('user_info_change_avatar_from_library_button_title', { ns: 'userInfo' })}
         </MenuItem>
       </Menu>
 
