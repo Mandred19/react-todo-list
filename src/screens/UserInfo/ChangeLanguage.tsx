@@ -1,65 +1,47 @@
-import React, { FC, ReactElement } from 'react';
-import { Button, ListItemIcon, Menu, MenuItem, Tooltip } from '@mui/material';
+import React, { FC, ReactElement, useState } from 'react';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { AppLang } from '../../store/types/user.types';
+import { changeUserInfo } from '../../store/actions/user.action';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 const ChangeLanguage: FC = (): ReactElement => {
   const { t, i18n } = useTranslation(['userInfo']);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const openMenu = Boolean(anchorEl);
+  const dispatch = useAppDispatch();
+  const {user} = useAppSelector((state) => state.userSlice);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const {id, appLang} = user;
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const [language, setLanguage] = useState<AppLang>(appLang || AppLang.EN_US);
 
-  const handleChangeLanguage = async (lang: string): Promise<void> => {
-    await i18n.changeLanguage(lang);
+  const handleChangeLanguage = async (newLang: AppLang): Promise<void> => {
+    await dispatch(changeUserInfo({
+      id,
+      appLang: newLang,
+    }));
+
+    await i18n.changeLanguage(newLang);
+
+    setLanguage(newLang);
   };
 
   return (
     <div>
-      <Tooltip title={t('Change language', { ns: 'userInfo' })}>
-        <Button
-          onClick={handleClick}
-          variant={'outlined'}
-          color={'inherit'}
-          aria-label={t('Change language', { ns: 'userInfo' })}>
-          {t('Change language', { ns: 'userInfo' })}
-        </Button>
-      </Tooltip>
+      <FormControl fullWidth>
+        <InputLabel id="change-lang">
+          {t('Language', { ns: 'userInfo' })}
+        </InputLabel>
 
-      <Menu
-        anchorEl={anchorEl}
-        open={openMenu}
-        onClose={handleClose}
-        onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
-          },
-        }}
-        transformOrigin={{ horizontal: 'left', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}>
-        <MenuItem onClick={() => handleChangeLanguage('en')}>
-          <ListItemIcon>
-            EN
-          </ListItemIcon>
-          English
-        </MenuItem>
-
-        <MenuItem onClick={() => handleChangeLanguage('ru')}>
-          <ListItemIcon>
-            RU
-          </ListItemIcon>
-          Русский
-        </MenuItem>
-      </Menu>
+        <Select
+        labelId="change-lang"
+        id="change-lang"
+        value={language}
+        label={t('Language', { ns: 'userInfo' })}
+        onChange={(event) => handleChangeLanguage(event.target.value as AppLang)}>
+          <MenuItem value={AppLang.EN_US}>English</MenuItem>
+          <MenuItem value={AppLang.RU_RU}>Русский</MenuItem>
+        </Select>
+      </FormControl>
     </div>
   );
 };

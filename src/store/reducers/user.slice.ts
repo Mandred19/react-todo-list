@@ -31,7 +31,7 @@ export const userSlice: Slice = createSlice({
       state.isFetching = true;
     },
     [signIn.fulfilled.type]: (state, action: PayloadAction<SignInResponseDto>) => {
-      state.user = action.payload.payload;
+      state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
       state.isAuth = true;
       state.isFetching = false;
@@ -46,7 +46,7 @@ export const userSlice: Slice = createSlice({
       state.isFetching = true;
     },
     [autoLogin.fulfilled.type]: (state, action: PayloadAction<SignInResponseDto>) => {
-      state.user = action.payload.payload;
+      state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
       state.isAuth = true;
       state.isFetching = false;

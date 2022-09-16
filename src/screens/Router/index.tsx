@@ -8,6 +8,7 @@ import ProtectedRouter from './ProtectedRouter';
 import PublicRouter from './PublicRouter';
 import AppBreadcrumbs from '../../components/AppNavigationButtons';
 import { useLocation } from 'react-router-dom';
+import i18n from 'i18next';
 
 const useStyles = makeStyles({
   appWrapper: {
@@ -25,25 +26,31 @@ const Router: FC = (): ReactElement => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
-  const { isAuth } = useAppSelector((state) => state.userSlice);
+  const userSlice = useAppSelector((state) => state.userSlice);
+
+  const initApp = async (): Promise<void> => {
+    await dispatch(autoLogin());
+
+    await i18n.changeLanguage(userSlice.appLang);
+  };
 
   useEffect(() => {
-    dispatch(autoLogin());
+    initApp();
   }, []);
 
   return (
     <Stack direction={'column'} className={classes.appWrapper}>
       {
-        isAuth && <AppHeader/>
+        userSlice.isAuth && <AppHeader/>
       }
 
       {
-        isAuth && pathname !== '/list' && <AppBreadcrumbs/>
+        userSlice.isAuth && pathname !== '/list' && <AppBreadcrumbs/>
       }
 
       <Container maxWidth={'xl'} className={classes.container}>
         {
-          isAuth ? <ProtectedRouter/> : <PublicRouter/>
+          userSlice.isAuth ? <ProtectedRouter/> : <PublicRouter/>
         }
       </Container>
     </Stack>

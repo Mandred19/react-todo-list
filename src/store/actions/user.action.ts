@@ -39,7 +39,7 @@ export const autoLogin = createAsyncThunk(
 
         return {
           accessToken,
-          payload: response.data,
+          user: response.data,
         };
       }
 

@@ -1,8 +1,14 @@
+export enum AppLang {
+  EN_US = 'en-US',
+  RU_RU = 'ru-RU',
+}
+
 export interface UserEntity {
   id: string,
   name: string,
   email: string,
   avatar: string,
+  appLang: AppLang,
   createdAt: Date,
   updatedAt: Date,
 }
@@ -18,6 +24,7 @@ export interface UserEntityUpdateDto {
   name?: string,
   email?: string,
   avatar?: string,
+  appLang?: AppLang,
 }
 
 export interface SignInRequestDto {
@@ -27,5 +34,5 @@ export interface SignInRequestDto {
 
 export interface SignInResponseDto {
   accessToken: string;
-  payload: UserEntity;
+  user: UserEntity;
 }

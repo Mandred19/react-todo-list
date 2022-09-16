@@ -1,4 +1,4 @@
-export const APP_NAME = 'TODO list';
+export const APP_NAME = 'Task list';
 
 export const API_VERSION = 'api/v1';
 
